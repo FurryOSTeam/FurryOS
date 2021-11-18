@@ -1,14 +1,28 @@
-const {ShardingManager} = require('discord.js');
+const express = require('express');
+const app = express();
+const Discord = require('discord.js');
+const client = new Discord.Client();
+const config = require('./config.js');
 
-const shards = new ShardingManager('./bot.js', {
-    execArgv: ['--trace-warnings'],
-	  shardArgs: ['--ansi', '--color'],
-    token: process.env.token,
-    totalShards: "auto"
+let commandList = [];
+let commandListNSFW = [];
+
+client.commandList = commandList;
+client.commandListNSFW = commandListNSFW;
+client.config = config;
+client.commands = new Discord.Collection();
+client.events = new Discord.Collection();
+
+app.get('/', (request, response) => {
+    response.sendStatus(200);
 });
 
-shards.on("shardCreate", shard => {
-    console.log(`[${new Date().toString().split(" ", 5).join(" ")}] Launched shard #${shard.id}`);
+const listener = app.listen(process.env.PORT, () => {
+    console.log('Your app is currently listening on port: ' + listener.address().port);
 });
 
-shards.spawn(shards.totalShards, 100+00)
+['command_handler', 'event_handler'].forEach(handler =>{ 
+    require(`./handlers/${handler}`)(client, Discord);
+})
+
+client.login(process.env.token);
