@@ -1,0 +1,12 @@
+const chalk = require('chalk');
+const figlet = require('figlet');
+
+module.exports = (Discord, client) => {
+    client.user.setActivity("commands: 'f!help' | shork owo", {
+        type: "LISTENING"
+     });
+    console.log(`${chalk.hex(client.config.colors.info)(figlet.textSync('FurryOS', { horizontalLayout: 'full' }))}\n`);
+    console.log(`${chalk.hex('#60bf85')('Bot started!')}\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n`
+    + `${chalk.hex('#ffaa2b')('>')} ${chalk.hex('#7289DA')(`Servers: ${chalk.hex('#4e5f99')(`${client.guilds.cache.size}`)}`)}\n`
+    + `${chalk.hex('#ffaa2b')('>')} ${chalk.hex('#7289DA')(`Channels: ${chalk.hex('#4e5f99')(`${client.channels.cache.size}`)}`)}`);
+}
