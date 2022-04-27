@@ -1,13 +1,17 @@
-const Discord = require('discord.js');
+const ownerid = require('../../utils/config.json')
+
+//const shardstuff = require('../../index.js')
 
 module.exports = {
     name: 'eval',
     description: 'Runs code on the bot (only works with me)',
   	aliases: ['eval'],
   	usage: '<code>',
-	  category: 'Bot Works',
+	  category: 'Owner',
 async execute(client, message, args, Discord){
-    if(message.author.id !== "345959027143999490") return;
+    if (!ownerid.Owner.includes(message.author.id)) {
+      return message.channel.send(`You cannot use this command!`)
+   }
     if(!args[0]) {
         return message.channel.send("Please provide code for me to run!");
     }

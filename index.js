@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const config = require('./config.js');
+const config = require('./utils/config.json');
 
 let commandList = [];
 let commandListNSFW = [];

@@ -5,7 +5,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: 'play',
-    aliases: ['skip', 'stop'],
+    aliases: ['skip', 'stop', 'play'],
     description: 'Plays music in a vc.',
   	usage: '| f!stop | f!skip | <video name/url>',
 	  category: 'Music',
@@ -108,6 +108,7 @@ module.exports = {
 
         else if(cmd === 'skip') skip_song(message, server_queue);
         else if(cmd === 'stop') stop_song(message, server_queue);
+        else if(cmd === 'fuckoff') stop_song(message, server_queue);
     }
     
 }
@@ -117,6 +118,8 @@ const video_player = async (guild, song) => {
 
     
         if (!song){
+            setTimeout(function(){ 
+                  if (!song){
             song_queue.voice_channel.leave();
             queue.delete(guild.id);
             song_queue.text_channel.send(new Discord.MessageEmbed()
@@ -125,10 +128,12 @@ const video_player = async (guild, song) => {
             .setTimestamp()
     .setFooter('FurryOS'));
             return;
+            };
+            }, 5000);
     };
-   
+   try{
     const stream = ytdl(song.url, { filter: 'audioonly' });
-    
+
     song_queue.connection.play(stream, { seek: 0, volume: 0.5 }).on('finish', () => {
         song_queue.songs.shift();
         video_player(guild, song_queue.songs[0]);
@@ -138,6 +143,8 @@ const video_player = async (guild, song) => {
     .setTitle(`✅ Now playing **${song.title}**`)
     .setTimestamp()
     .setFooter('FurryOS'));
+  }catch(e){
+  }
 }
 
 const skip_song = (message, server_queue) => {

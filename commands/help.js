@@ -16,7 +16,7 @@ async execute(client, message, args, Discord){
                 embed.setTitle(`${command.name} - Command Info`);
                 embed.setDescription(command.description);
                 if(command.aliases.length !== 0) embed.addField('Aliases', command.aliases.join(', '), true);
-                embed.addField('Usage', `\`${client.config.prefix}${command.name}${command.usage ? ` ${command.config.usage}` : ''}\``, true);
+                embed.addField('Usage', `\`${client.config.prefix}${command.name}${command.usage ? ` ${command.usage}` : ''}\``, true);
                 embed.addField('Category', command.category, true);
                 embed.setColor(client.config.colors.info);
                 embed.setAuthor(message.author.tag, message.author.displayAvatarURL());

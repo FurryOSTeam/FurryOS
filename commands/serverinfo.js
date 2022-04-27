@@ -15,22 +15,6 @@ const verificationLevels = {
 	VERY_HIGH: '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻'
 };
 
-const regions = {
-	brazil: 'Brazil',
-	europe: 'Europe',
-	hongkong: 'Hong Kong',
-	india: 'India',
-	japan: 'Japan',
-	russia: 'Russia',
-	singapore: 'Singapore',
-	southafrica: 'South Africa',
-	sydeny: 'Sydeny',
-	'us-central': 'US Central',
-	'us-east': 'US East',
-	'us-west': 'US West',
-	'us-south': 'US South'
-};
-
 const config = {
 	description: 'Displays info about the server.',
 	aliases: ['serverinfo', 'guild'],
@@ -58,7 +42,6 @@ async execute(client, message, args, Discord){
 				`**❯ Name:** ${message.guild.name}`,
 				`**❯ ID:** ${message.guild.id}`,
 				`**❯ Owner:** ${message.guild.owner.user.tag} (${message.guild.ownerID})`,
-				`**❯ Region:** ${regions[message.guild.region]}`,
 				`**❯ Boost Tier:** ${message.guild.premiumTier ? `Tier ${message.guild.premiumTier}` : 'None'}`,
 				`**❯ Explicit Filter:** ${filterLevels[message.guild.explicitContentFilter]}`,
 				`**❯ Verification Level:** ${verificationLevels[message.guild.verificationLevel]}`,
