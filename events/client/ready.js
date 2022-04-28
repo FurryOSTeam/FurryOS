@@ -1,8 +1,8 @@
-const chalk = require('chalk');
+const chalk = require("chalk");
 const figlet = require('figlet');
 
 module.exports = (Discord, client) => {
-    client.user.setActivity("fc!help | fox owo", {
+    client.user.setActivity("fc!help | shork owo", {
         type: "LISTENING"
      });
     console.log(`${chalk.hex(client.config.colors.info)(figlet.textSync('FurryOS', { horizontalLayout: 'full' }))}\n`);

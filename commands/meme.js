@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
-const path = require('path');
-const fetch = require('node-fetch');
+const fetch = require("node-fetch");
 
 module.exports = {
     name: 'meme',

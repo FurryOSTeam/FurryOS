@@ -1,8 +1,3 @@
-const Discord = require('discord.js');
-const path = require('path');
-const fetch = require('node-fetch');
-//const yiffy = require('../Yiffy');
-//const { JSONResponse } = require("yiffy")
 const Yiffy = require("yiffy");
 const y = new Yiffy();
 

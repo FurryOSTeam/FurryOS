@@ -1,7 +1,5 @@
 const ownerid = require('../../utils/config.json')
 
-//const shardstuff = require('../../index.js')
-
 module.exports = {
     name: 'eval',
     description: 'Runs code on the bot (only works with me)',
