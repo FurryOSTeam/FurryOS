@@ -7,10 +7,10 @@ module.exports = {
   	usage: '',
 	  category: 'Info',
 async execute(client, message, args, Discord){
-        const embed = new MessageEmbed()
+    const embed = new MessageEmbed()
       .setDescription('`Pinging...`')
       .setColor(message.guild.me.displayHexColor);    
-    const msg = await message.channel.send(embed);
+    const msg = await message.channel.send({ embeds: [embed] });
     const timestamp = (message.editedTimestamp) ? message.editedTimestamp : message.createdTimestamp;
     const latency = `\`\`\`ini\n[ ${Math.floor(msg.createdTimestamp - timestamp)}ms ]\`\`\``;
     const apiLatency = `\`\`\`ini\n[ ${Math.round(message.client.ws.ping)}ms ]\`\`\``;
@@ -18,8 +18,8 @@ async execute(client, message, args, Discord){
       .setDescription('')
       .addField('Latency', latency, true)
       .addField('API Latency', apiLatency, true)
-      .setFooter(message.member.displayName,  message.author.displayAvatarURL({ dynamic: true }))
+      .setFooter({ text: message.member.displayName, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
       .setTimestamp();
-    msg.edit(embed);
+    msg.edit({ embeds: [embed] });
   }
 }

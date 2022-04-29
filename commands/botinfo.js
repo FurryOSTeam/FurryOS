@@ -21,7 +21,7 @@ async execute(client, message, args, Discord){
             }
             const duration = moment.duration(message.client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
             const botinfo = new Discord.MessageEmbed()
-                .setAuthor(message.client.user.username)
+                .setAuthor({ name: message.client.user.username })
                 .setTitle("__**Stats:**__")
                 .setColor("RANDOM")
                 .addField("`⏳` Mem Usage", `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} / ${(os.totalmem() / 1024 / 1024).toFixed(2)} MB`, true)
@@ -36,7 +36,7 @@ async execute(client, message, args, Discord){
                 .addField("`🤖` Arch", `\`${os.arch()}\``, true)
                 .addField("`💻` Platform", `\`\`${os.platform()}\`\``, true)
                 .addField("API Latency", `${(message.client.ws.ping)}ms`)
-         message.channel.send(botinfo)
+         message.channel.send({ embeds: [botinfo] })
         });
     }
 }

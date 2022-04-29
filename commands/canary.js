@@ -5,7 +5,7 @@ module.exports = {
   	usage: '',
 	  category: 'Info',
 async execute(client, message, args, Discord){
-     message.channel.send(new Discord.MessageEmbed()
+     const canary = new Discord.MessageEmbed()
      .setColor('BLUE')
      .setTitle(`FurryOS Canary`)
      .setDescription(`The invite to canary version of FurryOS. **NOTE THAT THE CANARY VERSION OF FurryOS IS HIGHLY UNSTABLE DUE TO ONGOING TESTING EFFORTS. THE BOT WILL GO DOWN OFTEN. YOU HAVE BEEN WARNED.**`)
@@ -13,6 +13,7 @@ async execute(client, message, args, Discord){
        { name: 'Canary version invite', value: '[Click here to add the canary version of FurryOS](https://discord.com/api/oauth2/authorize?client_id=854912437135736883&permissions=8&scope=bot)' },
       )
     .setTimestamp()
-    .setFooter('FurryOS'));
+    .setFooter({ text: 'FurryOS' });
+    message.channel.send({ embeds: [canary] })
   }
 }

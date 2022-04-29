@@ -10,11 +10,13 @@ module.exports = {
 async execute(client, message, args, Discord){
     let countries = args.join(" ");
 
-    if(!args[0]) return message.channel.send(new Discord.MessageEmbed()
+    if(!args[0]) return 
+    const error = new Discord.MessageEmbed()
     .setColor('BLUE')
     .setTitle(`❌ You need to provide a country to track covid statistics`)
     .setTimestamp()
-    .setFooter('FurryOS'))
+    .setFooter({ text: 'FurryOS' })
+    message.channel.send({ embeds: [error] })
 
     if(args[0] === "all"){
         fetch(`https://covid19.mathdro.id/api`)

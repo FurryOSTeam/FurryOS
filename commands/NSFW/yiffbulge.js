@@ -4,7 +4,7 @@ const y = new Yiffy();
 module.exports = {
     name: 'yiffbulge',
     description: "Shows a furries bulge.",
-  	aliases: ['yiffbulge', 'yiffb'],
+  	aliases: ['yiffbulge', 'yiffb', 'bulge'],
   	usage: '',
 	  category: 'Yiff',
 async execute(client, message, args, Discord){
@@ -14,8 +14,8 @@ async execute(client, message, args, Discord){
     .then(json => {
       const fboop = new Discord.MessageEmbed()
         .setTitle('Furries Bulge!')
-				.setAuthor(message.author.tag, message.author.displayAvatarURL())
-				.setFooter("OwO", message.author.displayAvatarURL())
+				.setAuthor({ name: message.author.tag, iconURL: message.author.displayAvatarURL() })
+				.setFooter({ text: 'OwO', iconURL: message.author.displayAvatarURL() })
 				.setTimestamp(new Date().toISOString())
 				.setDescription([
 					`[[ShortURL]](${json.shortURL})`,
@@ -25,7 +25,7 @@ async execute(client, message, args, Discord){
 				.setColor('#0099ff')
 				.setImage(json.url)
 
-      message.channel.send(fboop);
+      message.channel.send({ embeds: [fboop] });
       
 
     });
