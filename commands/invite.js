@@ -23,12 +23,11 @@ async execute(client, message, args, Discord){
         'furryos@bigbenster702.com'
       )
       .addField('Maintainers',
-        'bigbenster702#1337\n' +
-        'Koyonoko#0001'
+        'bigbenster702#1337'
       )
-      .setFooter(message.member.displayName,  message.author.displayAvatarURL({ dynamic: true }))
+      .setFooter({ text: message.member.displayName, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
       .setTimestamp()
       .setColor(message.guild.me.displayHexColor);
-    message.channel.send(embed);
+    message.channel.send({ embeds: [embed] });
   }
 };

@@ -20,8 +20,8 @@ async execute(client, message, args, Discord){
                 embed.addField('Usage', `\`${client.config.prefix}${command.name}${command.usage ? ` ${command.config.usage}` : ''}\``, true);
                 embed.addField('Category', command.category, true);
                 embed.setColor(client.config.colors.info);
-                embed.setAuthor(message.author.tag, message.author.displayAvatarURL());
-                return message.channel.send(embed);
+                embed.setAuthor({ name: message.author.tag, iconURL: message.author.displayAvatarURL() });
+                return message.channel.send({ embeds: [embed] });
             }
         }
 
@@ -33,8 +33,8 @@ async execute(client, message, args, Discord){
         }
         embed.setDescription('Here is a list of the NSFW commands:');
         embed.setColor(client.config.colors.info);
-        embed.setAuthor(message.author.tag, message.author.displayAvatarURL());
-        return message.channel.send(embed);
+        embed.setAuthor({ name: message.author.tag, iconURL: message.author.displayAvatarURL() });
+        return message.channel.send({ embeds: [embed] });
 
         } else {
         message.channel.send("This channel is SFW. Make it NSFW to see NSFW commands.");

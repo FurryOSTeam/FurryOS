@@ -25,7 +25,7 @@ async execute(client, message, args, Discord){
 
         let embed = new MessageEmbed()
           .setColor(16382454)
-          .setAuthor(`Urban Dictionary | ${word}`, img)
+          .setAuthor({ name: `Urban Dictionary | ${word}`, img })
           .setThumbnail(img)
           .setDescription(stripIndents`**Definition** ${definition || 'No definition'}
           **Example:** ${example || 'No example'}
@@ -33,9 +33,9 @@ async execute(client, message, args, Discord){
           **Downvote:** ${thumbs_down || 0}
           **Link:** [link to ${word}](${permalink || 'https://www.urbandictionary.com/'})`)
           .setTimestamp()
-          .setFooter(`Written by ${author || 'Unknown'}`);
+          .setFooter({ text: `Written by ${author || 'Unknown'}` });
         
-        message.channel.send(embed);
+        message.channel.send({ embeds: [embed] });
       });
     } catch(e){
       console.log(e);

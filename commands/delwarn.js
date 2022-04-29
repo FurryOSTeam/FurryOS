@@ -12,25 +12,27 @@ module.exports = {
 async execute(client, message, args, Discord){
     if (!args[0]) return message.reply("Use shorkhelp to see how to delete someones warn right.");
     const guild = message.guild.id
-    if(!message.member.hasPermission("KICK_MEMBERS")) {
+    if(!message.member.permissions.has("KICK_MEMBERS")) {
       message.channel.send("You do not have permission to delete someones warn! You need kick members on your role!"); return
     }
 
       await mongo().then(async (mongoose) => {
         try{
            await warnSchema.findOneAndUpdate({ guildId: guild }, { $pull: { "warnings": { "warnID": args[0] } }}, { safe: true, multi:true }, function(err, obj) {})
-         message.channel.send(new Discord.MessageEmbed()
+         const work = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle(`✅ Deleted warning!`)
         .setTimestamp()
-        .setFooter('FurryOS'))
+        .setFooter({ text: 'FurryOS' })
+          message.channel.send({ embeds: [work] })
           mongoose.connection.close()
       }catch(err){
-        message.channel.send(new Discord.MessageEmbed()
+        const fail = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle(`❌ This warning does not exist!`)
         .setTimestamp()
-        .setFooter('FurryOS'))
+        .setFooter({ text: 'FurryOS' })
+        message.channel.send({ embeds: [fail] })
         console.log(err)
       }
        })

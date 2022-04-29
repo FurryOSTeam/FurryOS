@@ -13,15 +13,16 @@ module.exports = {
 async execute(client, message, args, Discord){
     if (!args[0]) return message.reply("Use f!help to see how to warn someone right.");
     const target = message.mentions.users.first()
-    if(!message.member.hasPermission("KICK_MEMBERS")) {
+    if(!message.member.permissions.has("KICK_MEMBERS")) {
       message.channel.send("You do not have permission to warn someone! You need kick members on your role!"); return
     }
     if (!target) {
-      message.channel.send(new Discord.MessageEmbed()
+      const target = new Discord.MessageEmbed()
           .setColor('BLUE')
           .setTitle(`❌ Please specify a user to warn!`)
           .setTimestamp()
-          .setFooter('FurryOS'))
+          .setFooter({ text: 'FurryOS' })
+      message.channel.send({ embeds: [target] })
       return
     }
 
@@ -57,11 +58,12 @@ async execute(client, message, args, Discord){
           }
         )
       } finally {
-        message.channel.send(new Discord.MessageEmbed()
+        const win = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle(`✅ Warned user! || ${reason}`)
         .setTimestamp()
-        .setFooter('FurryOS'))
+        .setFooter({ text: 'FurryOS' })
+        message.channel.send({ embeds: [win] })
         mongoose.connection.close()
       }
     })

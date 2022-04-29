@@ -19,8 +19,8 @@ async execute(client, message, args, Discord){
                 embed.addField('Usage', `\`${client.config.prefix}${command.name}${command.usage ? ` ${command.usage}` : ''}\``, true);
                 embed.addField('Category', command.category, true);
                 embed.setColor(client.config.colors.info);
-                embed.setAuthor(message.author.tag, message.author.displayAvatarURL());
-                return message.channel.send(embed);
+                embed.setAuthor({ name: message.author.tag, iconURL: message.author.displayAvatarURL() });
+                return message.channel.send({ embeds: [embed] });
             }
         }
 
@@ -32,7 +32,7 @@ async execute(client, message, args, Discord){
         }
         embed.setDescription('Here is a list of the bot commands:');
         embed.setColor(client.config.colors.info);
-        embed.setAuthor(message.author.tag, message.author.displayAvatarURL());
-        return message.channel.send(embed);
+        embed.setAuthor({ name: message.author.tag, iconURL: message.author.displayAvatarURL() });
+        return message.channel.send({ embeds: [embed] });
     }
 }

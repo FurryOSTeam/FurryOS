@@ -16,11 +16,12 @@ async execute(client, message, args, Discord){
       message.channel.send("You do not have permission to see someones warnings! You need kick members on your role!"); return
     }
     if (!target) {
-      message.channel.send(new Discord.MessageEmbed()
+      const target = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle(`❌ Please specify a user to load warnings!`)
       .setTimestamp()
-      .setFooter('FurryOS'))
+      .setFooter({ text: 'FurryOS' })
+      message.channel.send({ embeds: [target] })
       return
     }
 
@@ -38,13 +39,13 @@ async execute(client, message, args, Discord){
         .setColor('BLUE')
         .setTitle(`No warnings found`)
         .setTimestamp()
-        .setFooter('FurryOS'))
+        .setFooter({ text: 'FurryOS' }))
        
         let reply = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle(`Warnings for: ${userId}`)
         .setTimestamp()
-        .setFooter('FurryOS')
+        .setFooter({ text: 'FurryOS' })
         
         for (const warning of results.warnings) {
           const { author, timestamp, reason, warnID } = warning
@@ -54,7 +55,7 @@ async execute(client, message, args, Discord){
           ).toLocaleDateString()} for "${reason}" \n\n`})
         }
 
-        message.channel.send(reply)
+        message.channel.send({ embeds: [reply] })
       } finally {
         mongoose.connection.close()
       }

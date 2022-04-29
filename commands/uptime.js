@@ -10,7 +10,7 @@ async execute(client, message, args, Discord){
 
   const time = require('ms')
   const uptime = time(client.uptime)
-  message.channel.send({embed: {
+  message.channel.send({embeds: [{
     color: 39423,
     description: `The bot has been up for ${uptime}.`,
     footer: {
@@ -18,6 +18,6 @@ async execute(client, message, args, Discord){
       icon_url: client.user.displayAvatarURL()
     },
     timestamp: new Date()
-  }})
+  }]})
   }
 }

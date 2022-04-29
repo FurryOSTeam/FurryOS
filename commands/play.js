@@ -56,10 +56,10 @@ module.exports = {
                     song = { title: video.title, url: video.url }
                 } else {
                     message.channel.send(new Discord.MessageEmbed()
-        .setColor('BLUE')
+                    .setColor('BLUE')
                     .setTitle(`❌ Error finding video`)
                     .setTimestamp()
-    .setFooter('FurryOS'));
+                    .setFooter('FurryOS'));
                 }
             }
 
