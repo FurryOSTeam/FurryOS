@@ -13,6 +13,7 @@
   "author": "bigbenster702",
   "license": "MIT",
   "dependencies": {
+    "@discordjs/opus": "^0.7.0",
     "chalk": "^4.1.2",
     "common-tags": "^1.8.2",
     "cpu-stat": "^2.0.1",
