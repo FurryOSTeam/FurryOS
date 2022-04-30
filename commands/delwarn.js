@@ -19,20 +19,18 @@ async execute(client, message, args, Discord){
       await mongo().then(async (mongoose) => {
         try{
            await warnSchema.findOneAndUpdate({ guildId: guild }, { $pull: { "warnings": { "warnID": args[0] } }}, { safe: true, multi:true }, function(err, obj) {})
-         const work = new Discord.MessageEmbed()
+         message.channel.send({ embeds: [new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle(`✅ Deleted warning!`)
         .setTimestamp()
-        .setFooter({ text: 'FurryOS' })
-          message.channel.send({ embeds: [work] })
+        .setFooter({ text: 'FurryOS'})]})
           mongoose.connection.close()
       }catch(err){
-        const fail = new Discord.MessageEmbed()
+        message.channel.send({ embeds: [new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle(`❌ This warning does not exist!`)
         .setTimestamp()
-        .setFooter({ text: 'FurryOS' })
-        message.channel.send({ embeds: [fail] })
+        .setFooter({ text: 'FurryOS'})]})
         console.log(err)
       }
        })
