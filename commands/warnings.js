@@ -1,5 +1,5 @@
-const mongo = require('../mongo')
-const warnSchema = require('../models/warnSchema')
+const mongo = require('../handlers/mongo')
+const warnSchema = require('../handlers/warnSchema')
 
 const Discord = require('discord.js');
 
@@ -12,7 +12,7 @@ module.exports = {
 async execute(client, message, args, Discord){
   if (!args[0]) return message.reply("Use f!help to see how to see someones warnings right.");
   const target = message.mentions.users.first()
-    if(!message.member.hasPermission("KICK_MEMBERS")) {
+    if(!message.member.permissions.has("KICK_MEMBERS")) {
       message.channel.send("You do not have permission to see someones warnings! You need kick members on your role!"); return
     }
     if (!target) {

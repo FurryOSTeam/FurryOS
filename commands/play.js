@@ -5,28 +5,28 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: 'play',
-    aliases: ['skip', 'stop', 'play'],
+    aliases: ['skip', 'stop'],
     description: 'Plays music in a vc.',
   	usage: '| f!stop | f!skip | <video name/url>',
 	  category: 'Music',
-    async execute(client, message, args, cmd){
+    async execute(client, message, args, olddiscordlmao, cmd){
         const voice_channel = message.member.voice.channel;
         if (!voice_channel) return message.channel.send({ embeds: [new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle(`❌ You need to be in a voice channel to use this command!`)
         .setTimestamp() 
-        .setFooter({ text: 'FurryOS'})]});
+        .setFooter({ text: 'FurryOS' })]});
         const permissions = voice_channel.permissionsFor(message.client.user);
         if (!permissions.has('CONNECT')) return message.channel.send({ embeds: [new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle(`❌ You do not have permission to run this command!`)
         .setTimestamp()
-        .setFooter({ text: 'FurryOS'})]});
+        .setFooter({ text: 'FurryOS' })]});
         if (!permissions.has('SPEAK')) return message.channel.send({ embeds: [new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle(`❌ You do not have permission to run this command!`)
         .setTimestamp()
-        .setFooter({ text: 'FurryOS'})]});
+        .setFooter({ text: 'FurryOS' })]});
 
 
         const server_queue = queue.get(message.guild.id);
@@ -37,7 +37,7 @@ module.exports = {
             .setColor('BLUE')
             .setTitle(`❌ You need to include the second argument!`)
             .setTimestamp()
-            .setFooter({ text: 'FurryOS'})]});
+            .setFooter({ text: 'FurryOS' })]});
             let song = {};
 
 
@@ -55,11 +55,11 @@ module.exports = {
                 if (video){
                     song = { title: video.title, url: video.url }
                 } else {
-                    message.channel.send({ embeds: [new Discord.MessageEmbed()
+                    message.channel.send(new Discord.MessageEmbed()
                     .setColor('BLUE')
                     .setTitle(`❌ Error finding video`)
                     .setTimestamp()
-                    .setFooter({ text: 'FurryOS'})]});
+                    .setFooter({ text: 'FurryOS' }));
                 }
             }
 
@@ -81,27 +81,27 @@ module.exports = {
                     const connection = await voice_channel.join();
                     queue_constructor.connection = connection;
                     video_player(message.guild, queue_constructor.songs[0]);
-                    message.channel.send({ embeds: [new Discord.MessageEmbed()
+                    message.channel.send(new Discord.MessageEmbed()
                 .setColor('BLUE')
                 .setTitle(`✅ Connected & bound to **${voice_channel.name}** VC`)
                 .setTimestamp()
-                .setFooter({ text: 'FurryOS'})]});
+                .setFooter({ text: 'FurryOS' }));
                 } catch (err) {
                     queue.delete(message.guild.id);
-                    message.channel.send({ embeds: [new Discord.MessageEmbed()
+                    message.channel.send(new Discord.MessageEmbed()
                     .setColor('BLUE')
                     .setTitle(`❌ Error connecting to the VC`)
                     .setTimestamp()
-                    .setFooter({ text: 'FurryOS'})]});
+                    .setFooter({ text: 'FurryOS' }));
                     throw err;
                 }
             } else{
                 server_queue.songs.push(song);
-                return message.channel.send({ embeds: [new Discord.MessageEmbed()
+                return message.channel.send(new Discord.MessageEmbed()
                 .setColor('BLUE')
                 .setTitle(`✅ **${song.title}** added to the queue!`)
                 .setTimestamp()
-                .setFooter({ text: 'FurryOS'})]});
+                .setFooter({ text: 'FurryOS' }));
                 
             }
         }
@@ -119,14 +119,14 @@ const video_player = async (guild, song) => {
     
         if (!song){
             setTimeout(function(){ 
-          if (!song){
+                  if (!song){
             song_queue.voice_channel.leave();
             queue.delete(guild.id);
-            song_queue.text_channel.send({ embeds: [new Discord.MessageEmbed()
+            song_queue.text_channel.send(new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle(`✅ Disconnected from VC!`)
             .setTimestamp()
-            .setFooter({ text: 'FurryOS'})]});
+            .setFooter({ text: 'FurryOS' }));
             return;
             };
             }, 5000);
@@ -138,37 +138,37 @@ const video_player = async (guild, song) => {
         song_queue.songs.shift();
         video_player(guild, song_queue.songs[0]);
     });
-    await song_queue.text_channel.send({ embeds: [new Discord.MessageEmbed()
-        .setColor('BLUE')
-        .setTitle(`✅ Now playing **${song.title}**`)
-        .setTimestamp()
-        .setFooter({ text: 'FurryOS'})]});
-    }catch(e){
+    await song_queue.text_channel.send(new Discord.MessageEmbed()
+    .setColor('BLUE')
+    .setTitle(`✅ Now playing **${song.title}**`)
+    .setTimestamp()
+    .setFooter({ text: 'FurryOS' }));
+  }catch(e){
   }
 }
 
 const skip_song = (message, server_queue) => {
-    if (!message.member.voice.channel) return message.channel.send({ embeds: [new Discord.MessageEmbed()
+    if (!message.member.voice.channel) return message.channel.send(new Discord.MessageEmbed()
     .setColor('BLUE')
     .setTitle(`❌ You need to be in a voice channel to use this command!`)
     .setTimestamp()
-    .setFooter({ text: 'FurryOS'})]});
+    .setFooter({ text: 'FurryOS' }));
     if(!server_queue){
-        return message.channel.send({ embeds: [new Discord.MessageEmbed()
+        return message.channel.send(new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle(`❌ There are no songs in the queue.`)
         .setTimestamp()
-        .setFooter({ text: 'FurryOS'})]});
+        .setFooter({ text: 'FurryOS' }));
     }
     server_queue.connection.dispatcher.end();
 }
 
 const stop_song = (message, server_queue) => {
-    if (!message.member.voice.channel) return message.channel.send({ embeds: [new Discord.MessageEmbed()
-    .setColor('BLUE')
+    if (!message.member.voice.channel) return message.channel.send(new Discord.MessageEmbed()
+        .setColor('BLUE')
     .setTitle(`❌ You need to be in a voice channel to use this command!`)
     .setTimestamp()
-    .setFooter({ text: 'FurryOS'})]});
+    .setFooter({ text: 'FurryOS' }));
     server_queue.songs = [];
     server_queue.connection.dispatcher.end();
 }

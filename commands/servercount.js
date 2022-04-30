@@ -8,7 +8,8 @@ module.exports = {
   	aliases: ['servercount', 'servers'],
   	usage: '',
 	  category: 'Info',
-async execute(client, message, args, Discord){    const counts = stripIndent`
+async execute(client, message, args, Discord){
+  const counts = stripIndent`
       Servers :: ${client.guilds.cache.size}
     `;
     const embed = new MessageEmbed()
