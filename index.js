@@ -2,15 +2,17 @@ const express = require("express");
 const app = express();
 const Discord = require('discord.js');
 const client = new Discord.Client({
-    //fetchAllMembers: false,
-    //restTimeOffset: 0,
-    //restWsBridgetimeout: 100,
+    messageCacheLifetime: 60,
+    fetchAllMembers: false,
+    messageCacheMaxSize: 10,
+    restTimeOffset: 0,
+    restWsBridgetimeout: 100,
     shards: "auto",
     allowedMentions: {
       parse: [ ],
       repliedUser: false,
     },
-    partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
+    partials: ["GUILD_MEMBER", "MESSAGE", "USER", "CHANNEL"],
     intents: [ 
         Discord.Intents.FLAGS.GUILDS,
         Discord.Intents.FLAGS.GUILD_MEMBERS,
