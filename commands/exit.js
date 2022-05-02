@@ -4,18 +4,19 @@ module.exports = {
     name: 'exit',
     description: 'Creates the exit car meme.',
   	aliases: ['exit'],
-  	usage: '<left sign> <right sign> <car>',
+  	usage: '"/" = space | <left sign> <right sign> <car>',
 	  category: 'Image',
 async execute(client, message, args, Discord){
-    const memetext1 = args[0];
+    const splitArgs = args.join(" ").split("/")
+    const memetext1 = splitArgs[0];
     if (!memetext1) {
       return message.channel.send("Enter the text to be placed at left side of the sign!");
     }
-    const memetext2 = args[1];
+    const memetext2 = splitArgs[1];
     if (!memetext2) {
       return message.channel.send("Enter the text to be placed at right side of the sign!");
     }
-    const memetext3 = args[2];
+    const memetext3 = splitArgs[2];
     if (!memetext3) {
       return message.channel.send("Enter the text to be placed on the car!");
     }
