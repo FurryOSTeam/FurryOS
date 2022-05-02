@@ -1,7 +1,36 @@
-const express = require('express');
+ const express = require("express");
 const app = express();
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const client = new Discord.Client({
+    messageCacheLifetime: 60,
+    fetchAllMembers: false,
+    messageCacheMaxSize: 10,
+    restTimeOffset: 0,
+    restWsBridgetimeout: 100,
+    shards: "auto",
+    allowedMentions: {
+      parse: [ ],
+      repliedUser: false,
+    },
+    partials: ["GUILD_MEMBER", "MESSAGE", "USER", "CHANNEL"],
+    intents: [ 
+        Discord.Intents.FLAGS.GUILDS,
+        Discord.Intents.FLAGS.GUILD_MEMBERS,
+        Discord.Intents.FLAGS.GUILD_BANS,
+        //Discord.Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
+        //Discord.Intents.FLAGS.GUILD_INTEGRATIONS,
+        //Discord.Intents.FLAGS.GUILD_WEBHOOKS,
+        //Discord.Intents.FLAGS.GUILD_INVITES,
+        Discord.Intents.FLAGS.GUILD_VOICE_STATES,
+        Discord.Intents.FLAGS.GUILD_PRESENCES,
+        Discord.Intents.FLAGS.GUILD_MESSAGES,
+        Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+        //Discord.Intents.FLAGS.GUILD_MESSAGE_TYPING,
+        //Discord.Intents.FLAGS.DIRECT_MESSAGES,
+        //Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
+        //Discord.Intents.FLAGS.DIRECT_MESSAGE_TYPING
+    ],
+});
 const config = require('./utils/config.json');
 
 let commandList = [];
@@ -26,3 +55,5 @@ const listener = app.listen(process.env.PORT, () => {
 })
 
 client.login(process.env.token);
+
+//i'm so sorry

@@ -8,16 +8,17 @@ module.exports = {
   	aliases: ['servercount', 'servers'],
   	usage: '',
 	  category: 'Info',
-async execute(client, message, args, Discord){    const counts = stripIndent`
+async execute(client, message, args, Discord){
+  const counts = stripIndent`
       Servers :: ${client.guilds.cache.size}
     `;
     const embed = new MessageEmbed()
       .setTitle('FurryOS\'s Server Count')
       .setDescription(stripIndent`\`\`\`AsciiDoc\n${counts}\`\`\``)
-      .setFooter(message.member.displayName,  message.author.displayAvatarURL({ dynamic: true }))
+      .setFooter({ text: message.member.displayName, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
       .setTimestamp()
       .setColor(message.guild.me.displayHexColor);
-    message.channel.send(embed);
+    message.channel.send({ embeds: [embed] });
   }
 };
 

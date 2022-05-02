@@ -1,5 +1,5 @@
-const mongo = require('../mongo')
-const warnSchema = require('../models/warnSchema')
+const mongo = require('../handlers/mongo')
+const warnSchema = require('../handlers/warnSchema')
 
 const Discord = require('discord.js');
 
@@ -10,17 +10,17 @@ module.exports = {
   	usage: '<@user>',
 	  category: 'Moderation',
 async execute(client, message, args, Discord){
-  if (!args[0]) return message.reply("Use f!help to see how to see someones warnings right.");
+  if (!args[0]) return message.reply(`Use ${config.prefix}help to see how to see someones warnings right.`);
   const target = message.mentions.users.first()
-    if(!message.member.hasPermission("KICK_MEMBERS")) {
+    if(!message.member.permissions.has("KICK_MEMBERS")) {
       message.channel.send("You do not have permission to see someones warnings! You need kick members on your role!"); return
     }
     if (!target) {
-      message.channel.send(new Discord.MessageEmbed()
+      message.channel.send({ embeds: [new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle(`❌ Please specify a user to load warnings!`)
       .setTimestamp()
-      .setFooter('FurryOS'))
+      .setFooter({ text: 'FurryOS' })]})
       return
     }
 
@@ -34,17 +34,17 @@ async execute(client, message, args, Discord){
           guildId,
           userId,
         })
-        if(!results || isempty === null) return message.channel.send(new Discord.MessageEmbed()
+        if(!results || isempty === null) return message.channel.send({ embeds: [new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle(`No warnings found`)
         .setTimestamp()
-        .setFooter('FurryOS'))
+        .setFooter({ text: 'FurryOS' })]})
        
         let reply = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle(`Warnings for: ${userId}`)
         .setTimestamp()
-        .setFooter('FurryOS')
+        .setFooter({ text: 'FurryOS' })
         
         for (const warning of results.warnings) {
           const { author, timestamp, reason, warnID } = warning
@@ -54,7 +54,7 @@ async execute(client, message, args, Discord){
           ).toLocaleDateString()} for "${reason}" \n\n`})
         }
 
-        message.channel.send(reply)
+        message.channel.send({ embeds: [reply] })
       } finally {
         mongoose.connection.close()
       }

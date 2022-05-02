@@ -5,8 +5,11 @@ module.exports = {
   	usage: '<# of messages>',
 	  category: 'Moderation',
 async execute(client, message, args, Discord){
-    if(!message.member.hasPermission(["MANAGE_MESSAGES"])) return message.channel.send("You do not have permission to use this command! You need manage messages on your role!");
-    if(!args[0]) return message.reply('You forgot to include a number!');
-    message.channel.bulkDelete(args[0]);
+  if (message.member.permissions.has("MANAGE_MESSAGES")) {
+        if(!args[0]) return message.reply('You forgot to include a number!');
+        message.channel.bulkDelete(args[0]);
+        } else {
+            message.channel.send('You do not have permission to use this command! You need manage messages on your role!')
+     }
   }
 }

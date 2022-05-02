@@ -16,11 +16,11 @@ async execute(client, message, args, Discord){
 		let question = args.slice(0).join(" ");
 
 		let ballembed = new Discord.MessageEmbed()
-			.setAuthor(message.author.tag)
+			.setAuthor({ name: message.author.tag})
 			.setColor("#FF9900")
 			.addField("Question", question)
 			.addField("Answer", replies[result]);
 
-		message.channel.send(ballembed)
+		message.channel.send({ embeds: [ballembed] })
 	}
 }

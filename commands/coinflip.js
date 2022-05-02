@@ -15,9 +15,9 @@ async execute(client, message, args, Discord){
     const embed = new MessageEmbed()
       .setTitle(`${coinflip}  Coinflip  ${coinflip}`)
       .setDescription(`I flipped a coin, ${message.member}. The result was **${result}**!`)
-      .setFooter(message.member.displayName,  message.author.displayAvatarURL({ dynamic: true }))
+      .setFooter({ text: message.member.displayName, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
       .setTimestamp()
       .setColor(message.guild.me.displayHexColor);
-    message.channel.send(embed);
+    message.channel.send({ embeds: [embed] });
     }
 }

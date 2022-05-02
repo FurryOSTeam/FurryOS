@@ -1,75 +1,48 @@
-const { MessageEmbed } = require('discord.js');
-const moment = require('moment');
-
-const filterLevels = {
-	DISABLED: 'Off',
-	MEMBERS_WITHOUT_ROLES: 'No Role',
-	ALL_MEMBERS: 'Everyone'
-};
-
-const verificationLevels = {
-	NONE: 'None',
-	LOW: 'Low',
-	MEDIUM: 'Medium',
-	HIGH: '(╯°□°）╯︵ ┻━┻',
-	VERY_HIGH: '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻'
-};
-
-const config = {
-	description: 'Displays info about the server.',
-	aliases: ['serverinfo', 'guild'],
-	usage: '',
-	category: 'Info'
-}
+const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
+const moment = require("moment");
 
 module.exports = {
-    name: 'serverinfo',
-    description: 'Displays info about the server.',
-  	aliases: ['serverinfo', 'guild'],
-  	usage: '',
-	  category: 'Info',
+  name: 'serverinfo',
+  description: 'Displays info about the server.',
+  aliases: ['serverinfo', 'guild'],
+  usage: '',
+  category: 'Info',
 async execute(client, message, args, Discord){
-		const roles = message.guild.roles.cache.sort((a, b) => b.position - a.position).map(role => role.toString());
-		const members = message.guild.members.cache;
-		const channels = message.guild.channels.cache;
-		const emojis = message.guild.emojis.cache;
+      let boosts = message.guild.premiumSubscriptionCount;
+      var boostlevel = 0;
+      if (boosts >= 2) boostlevel = "1";
+      if (boosts >= 15) boostlevel = "2";
+      if (boosts >= 30) boostlevel = "3 / ∞";
+      let maxbitrate = 96000;
+      if (boosts >= 2) maxbitrate = 128000;
+      if (boosts >= 15) maxbitrate = 256000;
+      if (boosts >= 30) maxbitrate = 384000;
+        message.channel.send({embeds: [new Discord.MessageEmbed()
+        .setAuthor({ name: "Server Information About: " +  message.guild.name, iconURL: message.guild.iconURL({dynamic: true})})
+        .setColor('#3498db')
+        .addField("❱ Owner", `${message.guild.members.cache.get(message.guild.ownerId)}`, true)
+        .addField("❱ Created On", "\`" + moment(message.guild.createdTimestamp).format("DD/MM/YYYY") + "\`\n" + "`"+ moment(message.guild.createdTimestamp).format("hh:mm:ss") +"`", true)
+        .addField("❱ You Joined", "\`" + moment(message.member.joinedTimestamp).format("DD/MM/YYYY") + "\`\n" + "`"+ moment(message.member.joinedTimestamp).format("hh:mm:ss") +"`", true)
+      
+        .addField("❱ All Channels", "👁‍🗨 \`" + message.guild.channels.cache.size + "\`", true)
+        .addField("❱ Text Channels", "💬 \`" + message.guild.channels.cache.filter((channel) => channel.type == "GUILD_TEXT").size + "\`", true)
+        .addField("❱ Voice Channels", "🔈 \`" + message.guild.channels.cache.filter((channel) => channel.type == "GUILD_VOICE").size + "\`", true)
+       
+        .addField("❱ Total USERS", "😀 \`" + message.guild.memberCount + "\`", true)
+        .addField("❱ Total HUMANS", "👤 \`" + message.guild.members.cache.filter(member => !member.user.bot).size + "\`", true)
+        .addField("❱ Total BOTS", "🤖 \`" + message.guild.members.cache.filter(member => member.user.bot).size + "\`", true)
 
-		const embed = new MessageEmbed()
-			.setDescription(`**Guild information for __${message.guild.name}__**`)
-			.setColor('BLUE')
-			.setThumbnail(message.guild.iconURL({ dynamic: true }))
-			.addField('General', [
-				`**❯ Name:** ${message.guild.name}`,
-				`**❯ ID:** ${message.guild.id}`,
-				`**❯ Owner:** ${message.guild.owner.user.tag} (${message.guild.ownerID})`,
-				`**❯ Boost Tier:** ${message.guild.premiumTier ? `Tier ${message.guild.premiumTier}` : 'None'}`,
-				`**❯ Explicit Filter:** ${filterLevels[message.guild.explicitContentFilter]}`,
-				`**❯ Verification Level:** ${verificationLevels[message.guild.verificationLevel]}`,
-				`**❯ Time Created:** ${moment(message.guild.createdTimestamp).format('LT')} ${moment(message.guild.createdTimestamp).format('LL')} ${moment(message.guild.createdTimestamp).fromNow()}`,
-				'\u200b'
-			])
-			.addField('Statistics', [
-				`**❯ Role Count:** ${roles.length}`,
-				`**❯ Emoji Count:** ${emojis.size}`,
-				`**❯ Regular Emoji Count:** ${emojis.filter(emoji => !emoji.animated).size}`,
-				`**❯ Animated Emoji Count:** ${emojis.filter(emoji => emoji.animated).size}`,
-				`**❯ Member Count:** ${message.guild.memberCount}`,
-				`**❯ Humans:** ${members.filter(member => !member.user.bot).size}`,
-				`**❯ Bots:** ${members.filter(member => member.user.bot).size}`,
-				`**❯ Text Channels:** ${channels.filter(channel => channel.type === 'text').size}`,
-				`**❯ Voice Channels:** ${channels.filter(channel => channel.type === 'voice').size}`,
-				`**❯ Boost Count:** ${message.guild.premiumSubscriptionCount || '0'}`,
-				'\u200b'
-			])
-			.addField('Presence', [
-				`**❯ Online:** ${members.filter(member => member.presence.status === 'online').size}`,
-				`**❯ Idle:** ${members.filter(member => member.presence.status === 'idle').size}`,
-				`**❯ Do Not Disturb:** ${members.filter(member => member.presence.status === 'dnd').size}`,
-				`**❯ Offline:** ${members.filter(member => member.presence.status === 'offline').size}`,
-				'\u200b'
-			])
-			.setTimestamp();
-		message.channel.send(embed);
-	}
-
-};
+        .addField("❱ ONLINE", "🟢 \`" + message.guild.members.cache.filter((member) => member.presence && member.presence.status != "offline").size + "\`", true)
+        .addField("❱ OFFLINE", "⚫ \`" + message.guild.members.cache.filter((member) => member.presence && member.presence.status == "offline").size + "\`", true)
+        
+        .addField("❱ Total Boosts", "\`" + message.guild.premiumSubscriptionCount + "\`", true)
+        .addField("❱ Boost-Level", "\`" + boostlevel + "\`", true)
+        .addField("❱ Max-Talk-Bitrate", "👾 \`" + maxbitrate + " kbps\`", true)
+        
+        .addField("❱ Total Emojis", "\`" + message.guild.emojis.cache.size + "\`", true)
+        .addField("❱ Total Roles", "\`" + message.guild.roles.cache.size + "\`", true)
+        .setThumbnail(message.guild.iconURL({dynamic: true}))
+        .setFooter({ text: "ID: " + message.guild.id, iconURL: message.guild.iconURL({dynamic: true})})]});
+  }
+}

@@ -31,9 +31,9 @@ async execute(client, message, args, Discord){
             .addField('Server', `${message.guild.name}`, true)
             .setDescription(`**Reason:** ${reason}`)
             .setTimestamp()
-            .setFooter(`© ${message.guild.me.displayName}`, client.user.displayAvatarURL());
+            .setFooter({ text: `© ${message.guild.me.displayName}`, iconURL: client.user.displayAvatarURL() });
 
-          message.channel.send(embed);
+          message.channel.send({ embeds: [embed] });
         } else{
             message.channel.send("Member not found.");
       }

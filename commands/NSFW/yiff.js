@@ -1,6 +1,3 @@
-const Discord = require('discord.js');
-const path = require('path');
-const fetch = require('node-fetch');
 const Yiffy = require("yiffy");
 const y = new Yiffy();
 
@@ -20,8 +17,8 @@ async execute(client, message, args, Discord){
     .then(json => {
       const fboop = new Discord.MessageEmbed()
         .setTitle(`${query.charAt(0).toUpperCase() + query.slice(1)} yiff!`)
-				.setAuthor(message.author.tag, message.author.displayAvatarURL())
-				.setFooter("OwO", message.author.displayAvatarURL())
+				.setAuthor({ name: message.author.tag, iconURL: message.author.displayAvatarURL() })
+				.setFooter({ text: 'OwO', iconURL: message.author.displayAvatarURL() })
 				.setTimestamp(new Date().toISOString())
 				.setDescription([
 					`[[ShortURL]](${json.shortURL})`,
@@ -31,7 +28,7 @@ async execute(client, message, args, Discord){
 				.setColor('#0099ff')
 				.setImage(json.url)
 
-      message.channel.send(fboop);
+      message.channel.send({ embeds: [fboop] });
 
     });
       }catch(err){

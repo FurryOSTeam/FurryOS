@@ -1,7 +1,5 @@
 const ownerid = require('../../utils/config.json')
 
-//const shardstuff = require('../../index.js')
-
 module.exports = {
     name: 'eval',
     description: 'Runs code on the bot (only works with me)',
@@ -22,7 +20,7 @@ async execute(client, message, args, Discord){
             evaled = require("util").inspect(evaled);
         }
     } catch (err) {
-        return message.channel.send({embed: {
+        return message.channel.send({embeds: [{
             color: 7948427,
             description: `**Error:**\n`
             + `\`There was an error while compiling your code: ${err}\``,
@@ -30,9 +28,9 @@ async execute(client, message, args, Discord){
                 name: message.author.tag,
                 icon_url: message.author.displayAvatarURL()
             }
-        }});
+        }]});
     }
-    return message.channel.send({embed: {
+    return message.channel.send({embeds: [{
         color: 7948427,
         description: `**Success:**\n`
             + `\`Your code compiled successfully!\``,
@@ -40,5 +38,5 @@ async execute(client, message, args, Discord){
             name: message.author.id,
             icon_url: message.author.displayAvatarURL()
         }
-    }});
+    }]});
 }}

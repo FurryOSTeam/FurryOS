@@ -22,7 +22,7 @@ async execute(client, message, args, Discord){
 
         const weatherinfo = new Discord.MessageEmbed()
         .setDescription(`**${current.skytext}**`)
-        .setAuthor(`Weather forecast for ${current.observationpoint}`)
+        .setAuthor({ name: `Weather forecast for ${current.observationpoint}` })
         .setThumbnail(current.imageUrl)
         .setColor('RANDOM')
         .addField('Timezone', `UTC${location.timezone}`, true)
@@ -33,7 +33,7 @@ async execute(client, message, args, Discord){
         .addField('Humidity', `${current.humidity}%`, true)
         .addField('Day', `${current.day}`, true)
 
-        message.channel.send(weatherinfo)
+        message.channel.send({ embeds: [weatherinfo] })
         })        
     }
 }

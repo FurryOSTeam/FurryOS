@@ -7,7 +7,7 @@ module.exports = {
   	usage: '<@user> or <id> | <reason>',
 	  category: 'Moderation',
 async execute(client, message, args, Discord){
-    if(!message.member.hasPermission('KICK_MEMBERS')) {
+    if(!message.member.permissions.has("KICK_MEMBERS")) {
       message.channel.send("You do not have permission to kick someone! You need to have kick members on your role!");
     } else if(!args[0]){
       message.channel.send("You have to enter a user to kick.");
@@ -29,9 +29,9 @@ async execute(client, message, args, Discord){
             .addField('Server', `${message.guild.name}`, true)
             .setDescription(`**Reason:** ${reason}`)
             .setTimestamp()
-            .setFooter(`© ${message.guild.me.displayName}`, client.user.displayAvatarURL());
+            .setFooter({ text: `© ${message.guild.me.displayName}`, iconURL: client.user.displayAvatarURL() });
 
-          message.channel.send(embed);
+          message.channel.send({ embeds: [embed] });
         } else{
           message.channel.send("Member not found.");
       }

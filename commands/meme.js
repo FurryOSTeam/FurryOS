@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
-const path = require('path');
-const fetch = require('node-fetch');
+const fetch = require("node-fetch");
 
 module.exports = {
     name: 'meme',
@@ -18,9 +17,9 @@ async execute(client, message, args, Discord){
       .setTitle(json.title)
       .setDescription('Here is your meme!')
       .setImage(json.url)
-      .setFooter(`${json.subreddit} ${json.postLink}`);
+      .setFooter({ text: `${json.subreddit} ${json.postLink}` });
 
-      message.channel.send(memeEmbed);
+      message.channel.send({ embeds: [memeEmbed] });
 
     });
 
