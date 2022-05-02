@@ -15,4 +15,4 @@ const profileSchema = mongoose.Schema({
   },
 })
 
-module.exports = mongoose.model('shorkwarn', profileSchema)
+module.exports = mongoose.model('warn', profileSchema)

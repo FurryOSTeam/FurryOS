@@ -14,15 +14,14 @@ async execute(client, message, args, Discord){
     if (!args[0]) return message.reply(`Use ${config.prefix}help to see how to warn someone right.`);
     const target = message.mentions.users.first()
     if(!message.member.permissions.has("KICK_MEMBERS")) {
-      message.channel.send("You do not have permission to warn someone! You need kick members on your role!");
-      return
+      message.channel.send("You do not have permission to warn someone! You need kick members on your role!"); return
     }
     if (!target) {
       message.channel.send({ embeds: [new Discord.MessageEmbed()
           .setColor('BLUE')
           .setTitle(`❌ Please specify a user to warn!`)
           .setTimestamp()
-          .setFooter({ text: 'FurryOS'})]})
+          .setFooter({ text: 'FurryOS' })]})
       return
     }
 
@@ -62,7 +61,7 @@ async execute(client, message, args, Discord){
         .setColor('BLUE')
         .setTitle(`✅ Warned user! || ${reason}`)
         .setTimestamp()
-        .setFooter({ text: 'FurryOS'})]})
+        .setFooter({ text: 'FurryOS' })]})
         mongoose.connection.close()
       }
     })

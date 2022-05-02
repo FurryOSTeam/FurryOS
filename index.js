@@ -55,3 +55,5 @@ const listener = app.listen(process.env.PORT, () => {
 })
 
 client.login(process.env.token);
+
+//i'm so sorry
