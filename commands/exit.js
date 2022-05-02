@@ -8,15 +8,15 @@ module.exports = {
 	  category: 'Image',
 async execute(client, message, args, Discord){
     const memetext1 = args[0];
-    if (!nothing) {
+    if (!memetext1) {
       return message.channel.send("Enter the text to be placed on the car!");
     }
     const memetext2 = args[1];
-    if (!memetext1) {
+    if (!memetext2) {
       return message.channel.send("Enter the text to be placed at left side of the sign!");
     }
     const memetext3 = args[2];
-    if (!memetext2) {
+    if (!memetext3) {
       return message.channel.send("Enter the text to be placed at the right side of the sign!");
     }
     message.channel.send({
