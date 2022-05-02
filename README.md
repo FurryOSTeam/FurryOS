@@ -13,7 +13,6 @@ Self-hosting is recommended for advanced users only who are experienced with the
 3. Use NPM to install the dependencies from the project folder: `npm install`
 4. Create a .env file with the properties listed in the .env section.
 5. Start the bot from the project folder: `node .`
-6. (IF ON REPL) Make a file called `.replit` and only have `run = 'npx node .'` in it.
 
 ### Environment variables
 Various environment variables for all of the bots main features.
