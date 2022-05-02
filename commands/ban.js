@@ -7,7 +7,7 @@ module.exports = {
   	usage: '<@user> or <id> | <reason>',
 	  category: 'Moderation',
 async execute(client, message, args, Discord){
-    if(!message.member.hasPermission('BAN_MEMBERS')) {
+    if(!message.member.permissions.has('BAN_MEMBERS')) {
       message.channel.send("You do not have permission to ban someone! You need ban members on your role!");
     } else if(!args[0]){
       message.channel.send("You have to enter a user to ban.");

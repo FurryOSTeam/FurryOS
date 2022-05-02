@@ -2,8 +2,8 @@ const _ = require('lodash');
 
 module.exports = {
     name: 'help',
-    description: 'Shows a list of commands.',
-  	aliases: ['help'],
+    description: 'Bruh ok this shows commands why did you even need to check lol.',
+  	aliases: ['help', 'h'],
   	usage: '[command name]',
 	  category: 'Info',
 async execute(client, message, args, Discord){
