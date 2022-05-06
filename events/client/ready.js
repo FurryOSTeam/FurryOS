@@ -5,7 +5,7 @@ module.exports = (Discord, client) => {
     //client.user.setActivity("fc!help | shork owo", {
     //    type: "LISTENING"
     // });
-    let activities = [ `${client.config.prefix}help`, `shork owo`, `${client.guilds.cache.size} servers` ], i = 0;
+    let activities = [ `${client.config.prefix}help`, `shork owo`, `${client.guilds.cache.size} servers`, 'Discord.JS v13 wooooo' ], i = 0;
     setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, { type: "LISTENING" }), 15000);
   
     console.log(`${chalk.hex(client.config.colors.info)(figlet.textSync('FurryOS', { horizontalLayout: 'full' }))}\n`);

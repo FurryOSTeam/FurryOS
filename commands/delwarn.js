@@ -10,7 +10,7 @@ module.exports = {
   	usage: '<@user> <id>',
 	  category: 'Moderation',
 async execute(client, message, args, Discord){
-    if (!args[0]) return message.reply(`Use ${config.prefix}help to see how to delete someones warn right.`);
+    if (!args[0]) return message.reply(`Use ${client.config.prefix}help to see how to delete someones warn right.`);
     const guild = message.guild.id
     if(!message.member.permissions.has("KICK_MEMBERS")) {
       message.channel.send("You do not have permission to delete someones warn! You need kick members on your role!"); return

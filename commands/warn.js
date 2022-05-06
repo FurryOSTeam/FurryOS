@@ -11,7 +11,7 @@ module.exports = {
   	usage: '<@user> <reason>',
 	  category: 'Moderation',
 async execute(client, message, args, Discord){
-    if (!args[0]) return message.reply(`Use ${config.prefix}help to see how to warn someone right.`);
+    if (!args[0]) return message.reply(`Use ${client.config.prefix}help to see how to warn someone right.`);
     const target = message.mentions.users.first()
     if(!message.member.permissions.has("KICK_MEMBERS")) {
       message.channel.send("You do not have permission to warn someone! You need kick members on your role!"); return

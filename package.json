@@ -1,17 +1,21 @@
 {
-  "name": "FurryOSCanary",
+  "name": "furry-os",
   "version": "3.0.0",
   "description": "A furry discord bot.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engines": {
-    "node": "16.x"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FurryOSTeam/FurryOS.git"
   },
-  "keywords": [],
   "author": "bigbenster702",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FurryOSTeam/FurryOS/issues"
+  },
+  "homepage": "https://github.com/FurryOSTeam/FurryOS#readme",
   "dependencies": {
     "chalk": "^4.1.2",
     "common-tags": "^1.8.2",
@@ -24,7 +28,6 @@
     "moment-duration-format": "^2.3.2",
     "mongoose": "^5.13.14",
     "ms": "^2.1.3",
-    "node": "^16.14.2",
     "node-fetch": "^2.6.7",
     "superagent": "^7.1.3",
     "urban": "^0.3.4",
