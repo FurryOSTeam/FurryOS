@@ -1,7 +1,7 @@
 {
-  "prefix": "f!",
+  "prefix": "fc!",
   "Owner": ["345959027143999490"],
-  "name": "FurryOS",
+  "name": "FurryOS-Canary",
   "colors": {
       "info": "#5b57d9",
       "error": "#de554e",
