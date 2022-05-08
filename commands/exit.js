@@ -4,7 +4,7 @@ module.exports = {
     name: 'exit',
     description: 'Creates the exit car meme.',
   	aliases: ['exit'],
-  	usage: '"/" = space | <left sign> <right sign> <car>',
+  	usage: '"/" = spaces Ex. one test/two test/three test | <left sign> <right sign> <car>',
 	  category: 'Image',
 async execute(client, message, args, Discord){
     const splitArgs = args.join(" ").split("/")

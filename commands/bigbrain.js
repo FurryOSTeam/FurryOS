@@ -4,7 +4,7 @@ module.exports = {
     name: 'bigbrain',
     description: 'Creates the big brain meme.',
   	aliases: ['bigbrain'],
-  	usage: '<x4 text | "/" = space | Ex. cat/food car dog rat>',
+  	usage: '<x4 text | "/" = spaces Ex. one test/two test/three test test | Ex. cat/food car dog rat>',
 	  category: 'Image',
 async execute(client, message, args, Discord){
     const splitArgs = args.join(" ").split("/")
