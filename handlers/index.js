@@ -58,6 +58,5 @@ const loadSlashCommands = async function (client) {
 
 module.exports = {
     loadEvents,
-    loadCommands,
     loadSlashCommands
 }

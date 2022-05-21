@@ -1,5 +1,5 @@
-const mongo = require('../handlers/mongo')
-const warnSchema = require('../handlers/warnSchema')
+const mongo = require('../../handlers/mongo')
+const warnSchema = require('../../handlers/warnSchema')
 const { v4: uuidv4 } = require('uuid');
 
 const Discord = require('discord.js');

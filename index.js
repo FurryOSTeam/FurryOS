@@ -36,7 +36,7 @@ const client = new Discord.Client({
 module.exports = client;
 
 client.discord = Discord;
-client.slash = new Collection();
+client.slash = new Discord.Collection();
 client.config = require('./config')
 
 handler.loadEvents(client);

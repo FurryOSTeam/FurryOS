@@ -1,5 +1,3 @@
-const ownerid = require('../../utils/config.json')
-
 module.exports = {
     name: 'eval',
     description: 'Runs code on the bot (only works with me)',
@@ -7,9 +5,6 @@ module.exports = {
   	usage: '<code>',
 	  category: 'Owner',
 async execute(client, message, args, Discord){
-    if (!ownerid.Owner.includes(message.author.id)) {
-      return message.channel.send(`You cannot use this command!`)
-   }
     if(!args[0]) {
         return message.channel.send("Please provide code for me to run!");
     }

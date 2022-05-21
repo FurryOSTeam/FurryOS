@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const { MessageEmbed } = require("discord.js");
 const moment = require('moment');
-const { GetUser, GetGlobalUser } = require("../handlers/functions.js")
+const { GetUser, GetGlobalUser } = require("../../handlers/functions.js")
 const flags = {
 	DISCORD_EMPLOYEE: 'Discord Employee',
 	DISCORD_PARTNER: 'Discord Partner',
