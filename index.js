@@ -8,7 +8,7 @@ const client = new Discord.Client({
     //messageCacheMaxSize: 10,
     //restTimeOffset: 0,
     //restWsBridgetimeout: 100,
-    shards: "auto",
+    ///shards: "auto",
     //allowedMentions: {
     //  parse: [ ],
     //  repliedUser: false,
