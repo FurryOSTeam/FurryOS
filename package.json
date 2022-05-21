@@ -1,5 +1,5 @@
 {
-  "name": "furry-os-canary",
+  "name": "furry-os",
   "version": "3.0.0",
   "description": "A furry discord bot.",
   "main": "index.js",
