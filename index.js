@@ -46,9 +46,9 @@ handler.loadSlashCommands(client);
 //    console.log("Uncaught Exception: " + err);
 //});
   
-process.on("unhandledRejection", (reason, promise) => {
-    console.log("[FATAL] Possibly Unhandled Rejection at: Promise ", promise, " reason: ", reason.message);
-});
+//process.on("unhandledRejection", (reason, promise) => {
+//    console.log("[FATAL] Possibly Unhandled Rejection at: Promise ", promise, " reason: ", reason.message);
+//});
 
 app.get('/', (request, response) => {
     response.sendStatus(200);

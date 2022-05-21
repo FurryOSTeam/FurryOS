@@ -5,7 +5,7 @@ module.exports = {
         if (!interaction.isCommand()) return;
         
         const command = client.slash.get(interaction.commandName);
-        if (!command) return interaction.reply({ content: 'an Error check console' });
+        if (!command) return interaction.reply({ content: 'Error check console.' });
         
         if (command.ownerOnly) {
             if (!client.config.ownerID.includes(interaction.user.id)) {

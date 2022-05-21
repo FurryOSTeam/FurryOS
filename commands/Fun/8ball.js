@@ -15,7 +15,7 @@ module.exports = {
   ],
     run: async (client, interaction) => {
   
-		  const question = interaction.options.getString("question");
+		  let question = interaction.options.getString("question");
 
 		  let replies = ["Yes.", "No.", "Ask again later.", "Maybe.", "Yes and definitely.", "It is certain.", "As I see it, yes.", "Very doubtful.", "Eh I will say yes to that.", "NO!", "Never.", "Nope."];
 
