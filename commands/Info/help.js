@@ -84,11 +84,11 @@ module.exports = {
                 .setColor(client.config.embedColor)
                 .setFooter({ text: `${client.config.embedfooterText}`, iconURL: `${client.user.displayAvatarURL()}` });
 
-            interaction.reply({ embeds: [helpEmbed], components: [row] });
+            interaction.reply({ embeds: [helpEmbed], components: [row], ephemeral: true});
         } else {
             const command = client.slash.get(commandInt.toLowerCase());
             if (!command) {
-                interaction.reply({ content: `There isn't any SlashCommand named "${commandInt}"` });
+                interaction.reply({ content: `There isn't any SlashCommand named "${commandInt}"`, ephemeral: true });
             } else {
                 let command = client.slash.get(commandInt.toLowerCase());
                 let name = command.name;
@@ -105,7 +105,7 @@ module.exports = {
                     .setColor(client.config.embedColor)
                     .setFooter({ text: `${client.config.embedfooterText}`, iconURL: `${client.user.displayAvatarURL()}` });
 
-                interaction.reply({ embeds: [helpCmdEmbed] });
+                interaction.reply({ embeds: [helpCmdEmbed], ephemeral: true});
             }
         }
     },
