@@ -1,9 +1,6 @@
 const fs = require("fs");
 const chalk = require("chalk");
 
-/**
- * Load Events
- */
 const loadEvents = async function (client) {
     const eventFolders = fs.readdirSync("./events");
     for (const folder of eventFolders) {

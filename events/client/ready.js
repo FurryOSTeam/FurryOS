@@ -8,6 +8,7 @@ module.exports = {
     async execute(client) {
 
       const activities = [
+        `/help`,
 			  `shork owo`,
 			  `${client.guilds.cache.size} servers`,
         `Discord.JS v13 wooooo`

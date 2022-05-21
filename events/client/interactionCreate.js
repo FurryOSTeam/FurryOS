@@ -9,7 +9,7 @@ module.exports = {
         
         if (command.ownerOnly) {
             if (!client.config.ownerID.includes(interaction.user.id)) {
-                return interaction.reply({ content: "This command only for Bot Owner!", ephemeral: true });
+                return interaction.reply({ content: "This command only for the bot owner!", ephemeral: true });
             }
         }
         
