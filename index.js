@@ -1,18 +1,19 @@
 const express = require("express");
 const app = express();
 const Discord = require('discord.js');
+const handler = require("./handlers/index");
 const client = new Discord.Client({
-    messageCacheLifetime: 60,
-    fetchAllMembers: false,
-    messageCacheMaxSize: 10,
-    restTimeOffset: 0,
-    restWsBridgetimeout: 100,
+    //messageCacheLifetime: 60,
+    //fetchAllMembers: false,
+    //messageCacheMaxSize: 10,
+    //restTimeOffset: 0,
+    //restWsBridgetimeout: 100,
     shards: "auto",
-    allowedMentions: {
-      parse: [ ],
-      repliedUser: false,
-    },
-    partials: ["GUILD_MEMBER", "MESSAGE", "USER", "CHANNEL"],
+    //allowedMentions: {
+    //  parse: [ ],
+    //  repliedUser: false,
+    //},
+    //partials: ["GUILD_MEMBER", "MESSAGE", "USER", "CHANNEL"],
     intents: [ 
         Discord.Intents.FLAGS.GUILDS,
         Discord.Intents.FLAGS.GUILD_MEMBERS,
@@ -31,16 +32,23 @@ const client = new Discord.Client({
         //Discord.Intents.FLAGS.DIRECT_MESSAGE_TYPING
     ],
 });
-const config = require('./utils/config.json');
 
-let commandList = [];
-let commandListNSFW = [];
+module.exports = client;
 
-client.commandList = commandList;
-client.commandListNSFW = commandListNSFW;
-client.config = config;
-client.commands = new Discord.Collection();
-client.events = new Discord.Collection();
+client.discord = Discord;
+client.slash = new Collection();
+client.config = require('./config')
+
+handler.loadEvents(client);
+handler.loadSlashCommands(client);
+
+process.on("uncaughtException", (err) => {
+    console.log("Uncaught Exception: " + err);
+});
+  
+process.on("unhandledRejection", (reason, promise) => {
+    console.log("[FATAL] Possibly Unhandled Rejection at: Promise ", promise, " reason: ", reason.message);
+});
 
 app.get('/', (request, response) => {
     response.sendStatus(200);
@@ -49,10 +57,6 @@ app.get('/', (request, response) => {
 const listener = app.listen(process.env.PORT, () => {
     console.log('Your app is currently listening on port: ' + listener.address().port);
 });
-
-['command_handler', 'event_handler'].forEach(handler =>{ 
-    require(`./handlers/${handler}`)(client, Discord);
-})
 
 client.login(process.env.token);
 

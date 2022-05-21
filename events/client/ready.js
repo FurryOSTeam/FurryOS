@@ -1,7 +1,10 @@
 const chalk = require("chalk");
 const figlet = require('figlet');
 
-module.exports = (Discord, client) => {
+module.exports = {
+    name: 'ready',
+    once: true,
+  
     //client.user.setActivity("fc!help | shork owo", {
     //    type: "LISTENING"
     // });
