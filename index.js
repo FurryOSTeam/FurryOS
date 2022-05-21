@@ -3,17 +3,17 @@ const app = express();
 const Discord = require('discord.js');
 const handler = require("./handlers/index");
 const client = new Discord.Client({
-    //messageCacheLifetime: 60,
-    //fetchAllMembers: false,
-    //messageCacheMaxSize: 10,
-    //restTimeOffset: 0,
-    //restWsBridgetimeout: 100,
-    ///shards: "auto",
-    //allowedMentions: {
-    //  parse: [ ],
-    //  repliedUser: false,
-    //},
-    //partials: ["GUILD_MEMBER", "MESSAGE", "USER", "CHANNEL"],
+    messageCacheLifetime: 60,
+    fetchAllMembers: false,
+    messageCacheMaxSize: 10,
+    restTimeOffset: 0,
+    restWsBridgetimeout: 100,
+    shards: "auto",
+    allowedMentions: {
+      parse: [ ],
+      repliedUser: false,
+    },
+    partials: ["GUILD_MEMBER", "MESSAGE", "USER", "CHANNEL"],
     intents: [ 
         Discord.Intents.FLAGS.GUILDS,
         Discord.Intents.FLAGS.GUILD_MEMBERS,
@@ -42,13 +42,13 @@ client.config = require('./config')
 handler.loadEvents(client);
 handler.loadSlashCommands(client);
 
-//process.on("uncaughtException", (err) => {
-//    console.log("Uncaught Exception: " + err);
-//});
+process.on("uncaughtException", (err) => {
+    console.log("Uncaught Exception: " + err);
+});
   
-//process.on("unhandledRejection", (reason, promise) => {
-//    console.log("[FATAL] Possibly Unhandled Rejection at: Promise ", promise, " reason: ", reason.message);
-//});
+process.on("unhandledRejection", (reason, promise) => {
+    console.log("[FATAL] Possibly Unhandled Rejection at: Promise ", promise, " reason: ", reason.message);
+});
 
 app.get('/', (request, response) => {
     response.sendStatus(200);
