@@ -1,16 +1,12 @@
-const ownerid = require('../../utils/config.json')
+const Discord = require('discord.js');
 
 module.exports = {
-    name: 'shutdown',
-    description: 'Shuts down the bot.',
-  	aliases: ['shutdown'],
-  	usage: '',
-	  category: 'Owner',
-async execute(client, message, args, Discord){
-  if (!ownerid.Owner.includes(message.author.id)) {
-      return message.channel.send(`You cannot use this command!`)
-   }
-    await message.channel.send(`Shutting down...`)
+    name: "shutdown",
+    category: "Owner",
+    description: "Shuts down the bot.",
+    ownerOnly: true,
+    run: async (client, interaction) => {
+    await interaction.reply(`Shutting down...`)
     process.exit();
-  }
+	}
 }

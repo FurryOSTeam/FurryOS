@@ -1,24 +1,30 @@
 const Yiffy = require("yiffy");
 const y = new Yiffy();
-
+const Discord = require("discord.js");
 
 module.exports = {
-    name: 'yiff',
+    name: "yiff",
+    category: "NSFW",
     description: "Shows yiff that you pick.",
-  	aliases: ['yiff'],
-  	usage: '<gay, straight, lesbian>',
-	  category: 'Yiff',
-async execute(client, message, args, Discord){
-    if (message.author.bot) return false;
-    if (message.channel.nsfw) {
-      const query = args[0].toLowerCase()
-      try{
+    ownerOnly: false,
+    options: [
+      {
+          name: "type",
+          description: "Sends the type of yiff. (gay, straight, or lesbian)",
+          type: 'STRING',
+          required: true
+      }
+  ],
+    run: async (client, interaction) => {
+    if (interaction.channel.nsfw) {
+      let query = interaction.options.getString("type");
+   try{
      y.furry.yiff[query]("json", 1)
     .then(json => {
       const fboop = new Discord.MessageEmbed()
         .setTitle(`${query.charAt(0).toUpperCase() + query.slice(1)} yiff!`)
-				.setAuthor({ name: message.author.tag, iconURL: message.author.displayAvatarURL() })
-				.setFooter({ text: 'OwO', iconURL: message.author.displayAvatarURL() })
+				.setAuthor({ name: interaction.user.tag, iconURL: interaction.user.displayAvatarURL() })
+				.setFooter({ text: 'OwO', iconURL: interaction.user.displayAvatarURL() })
 				.setTimestamp(new Date().toISOString())
 				.setDescription([
 					`[[ShortURL]](${json.shortURL})`,
@@ -28,15 +34,13 @@ async execute(client, message, args, Discord){
 				.setColor('#0099ff')
 				.setImage(json.url)
 
-      message.channel.send({ embeds: [fboop] });
-
+      interaction.reply({ embeds: [fboop] });
     });
       }catch(err){
-        return message.channel.send(`${args[0]} is not a valid yiff parameter.`)
+        return interaction.reply({ content: `${query.charAt(0).toUpperCase() + query.slice(1)} is not a valid yiff parameter.`, ephemeral: true });
       }
         } else {
-        message.channel.send("This channel is SFW. Make it NSFW to see NSFW commands.");
+        interaction.reply({ content: "This channel is SFW. Make it NSFW to see NSFW commands.", ephemeral: true });
       }
-
     }
 };
