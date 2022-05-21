@@ -78,7 +78,7 @@ module.exports = {
                 .addField("🌃 - Image SlashCommands", imageCommandsList.map((data) => `${data}`).join(", "), true)
                 .addField("📷 - Furry Images SlashCommands", furryimagesCommandsList.map((data) => `${data}`).join(", "), true)
                 .addField("🔞 - NSFW SlashCommands", nsfwCommandsList.map((data) => `${data}`).join(", "), true)
-                .addField("🔧 - Moderation SlashCommands", moderationCommandsListCommandsList.map((data) => `${data}`).join(", "), true)
+                .addField("🔧 - Moderation SlashCommands", moderationCommandsList.map((data) => `${data}`).join(", "), true)
                 .addField("🔒 - Owner SlashCommands", ownerCommandsList.map((data) => `${data}`).join(", "), true)
                 .addField("ℹ - Info SlashCommands", infoCommandsList.map((data) => `${data}`).join(", "), true)
                 .setColor(client.config.embedColor)
