@@ -1,6 +1,9 @@
 const fs = require("fs");
 const chalk = require("chalk");
 
+/**
+ * Load Events
+ */
 const loadEvents = async function (client) {
     const eventFolders = fs.readdirSync("./events");
     for (const folder of eventFolders) {
@@ -51,7 +54,8 @@ const loadSlashCommands = async function (client) {
     }
 
     client.on("ready", async() => {
-         await client.guilds.cache.get("841499641953648700").commands.set(slash);
+        await client.guilds.cache.get("841499641953648700").commands.set(slash);
+
         //await client.application.commands.set(slash)
     })
 }

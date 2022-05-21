@@ -69,4 +69,4 @@ function GetGlobalUser(message, arg){
         return resolve(user);
      }
   })
-}
+} 

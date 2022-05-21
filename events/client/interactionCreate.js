@@ -1,6 +1,6 @@
 module.exports = {
     name: 'interactionCreate',
-    
+
     async execute(interaction, client) {
         if (!interaction.isCommand()) return;
         
@@ -8,8 +8,8 @@ module.exports = {
         if (!command) return interaction.reply({ content: 'an Error check console' });
         
         if (command.ownerOnly) {
-            if (interaction.user.id !== client.config.ownerID) {
-                return interaction.reply({ content: "This command only for the bot owner!", ephemeral: true });
+            if (!client.config.ownerID.includes(interaction.user.id)) {
+                return interaction.reply({ content: "This command only for Bot Owner!", ephemeral: true });
             }
         }
         

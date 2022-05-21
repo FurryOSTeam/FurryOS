@@ -1,3 +1,5 @@
+const Discord = require("discord.js");
+
 module.exports = {
     name: "8ball",
     category: "Fun",
@@ -20,7 +22,7 @@ module.exports = {
 		  let result = Math.floor((Math.random() * replies.length));
 
 		  let ballembed = new Discord.MessageEmbed()
-		  	.setAuthor({ name: message.author.tag})
+		  	.setAuthor({ name: interaction.user.tag})
 		  	.setColor("#FF9900")
 		  	.addField("Question", question)
 		  	.addField("Answer", replies[result]);

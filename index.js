@@ -42,9 +42,9 @@ client.config = require('./config')
 handler.loadEvents(client);
 handler.loadSlashCommands(client);
 
-process.on("uncaughtException", (err) => {
-    console.log("Uncaught Exception: " + err);
-});
+//process.on("uncaughtException", (err) => {
+//    console.log("Uncaught Exception: " + err);
+//});
   
 process.on("unhandledRejection", (reason, promise) => {
     console.log("[FATAL] Possibly Unhandled Rejection at: Promise ", promise, " reason: ", reason.message);
@@ -59,5 +59,3 @@ const listener = app.listen(process.env.PORT, () => {
 });
 
 client.login(process.env.token);
-
-//i'm so sorry
