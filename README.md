@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://discord.com/oauth2/authorize?client_id=840765753983762434&permissions=8&scope=bot"><img src="https://cdn.discordapp.com/attachments/830220362326999041/863234691652649000/shittyawesome.png" alt="FurryOS" height="150" /></a>
+<a href="https://discord.com/api/oauth2/authorize?client_id=840765753983762434&permissions=1376909651062&scope=bot%20applications.commands"><img src="https://cdn.discordapp.com/attachments/830220362326999041/863234691652649000/shittyawesome.png" alt="FurryOS" height="150" /></a>
 </p>
 
 
