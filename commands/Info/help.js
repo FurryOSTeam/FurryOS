@@ -53,12 +53,12 @@ module.exports = {
                 const name = `\`${filen.name}\``
                 furryimagesCommandsList.push(name);
             });
-            const nsfwCommandsList = [];
-            readdirSync(`./commands/NSFW`).forEach((file) => {
-                const filen = require(`../../commands/NSFW/${file}`);
-                const name = `\`${filen.name}\``
-                nsfwCommandsList.push(name);
-            });
+            //const nsfwCommandsList = [];
+            //readdirSync(`./commands/NSFW`).forEach((file) => {
+            //    const filen = require(`../../commands/NSFW/${file}`);
+            //    const name = `\`${filen.name}\``
+            //    nsfwCommandsList.push(name);
+            //});
             const ownerCommandsList = [];
             readdirSync(`./commands/Owner`).forEach((file) => {
                 const filen = require(`../../commands/Owner/${file}`);
