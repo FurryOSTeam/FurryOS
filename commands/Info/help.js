@@ -53,12 +53,12 @@ module.exports = {
                 const name = `\`${filen.name}\``
                 furryimagesCommandsList.push(name);
             });
-            //const nsfwCommandsList = [];
-            //readdirSync(`./commands/NSFW`).forEach((file) => {
-            //    const filen = require(`../../commands/NSFW/${file}`);
-            //    const name = `\`${filen.name}\``
-            //    nsfwCommandsList.push(name);
-            //});
+            const nsfwCommandsList = [];
+            readdirSync(`./commands/NSFW`).forEach((file) => {
+                const filen = require(`../../commands/NSFW/${file}`);
+                const name = `\`${filen.name}\``
+                nsfwCommandsList.push(name);
+            });
             const ownerCommandsList = [];
             readdirSync(`./commands/Owner`).forEach((file) => {
                 const filen = require(`../../commands/Owner/${file}`);
@@ -77,12 +77,17 @@ module.exports = {
                 .addField("🎉 - Fun", funCommandsList.map((data) => `${data}`).join(", "), true)
                 .addField("🌃 - Image", imageCommandsList.map((data) => `${data}`).join(", "), true)
                 .addField("📷 - Furry Images", furryimagesCommandsList.map((data) => `${data}`).join(", "), true)
-                //.addField("🔞 - NSFW", nsfwCommandsList.map((data) => `${data}`).join(", "), true)
                 .addField("🔧 - Moderation", moderationCommandsList.map((data) => `${data}`).join(", "), true)
                 .addField("🔒 - Owner", ownerCommandsList.map((data) => `${data}`).join(", "), true)
                 .addField("ℹ - Info", infoCommandsList.map((data) => `${data}`).join(", "), true)
                 .setColor(client.config.embedColor)
                 .setFooter({ text: `${client.config.embedfooterText}`, iconURL: `${client.user.displayAvatarURL()}` });
+
+                if (interaction.channel.nsfw) {
+                    helpEmbed.addField("🔞 - NSFW", nsfwCommandsList.map((data) => `${data}`).join(", "), true);
+                } else {
+                    helpEmbed.addField("🔞 - NSFW", "NSFW commands are only available in NSFW channels!", true);
+                };
 
             interaction.reply({ embeds: [helpEmbed], components: [row], ephemeral: true});
         } else {
