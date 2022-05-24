@@ -20,7 +20,7 @@ module.exports = {
         // 'C' can be changed to 'F' for farneheit results
         if(error) return interaction.reply({ content: error, ephemeral: true });
 
-        if(result === undefined || result.length === 0) return message.channel.send('**Invalid** location');
+        if(result === undefined || result.length === 0) return interaction.reply({ content: '**Invalid** location', ephemeral: true });
 
         var current = result[0].current;
         var location = result[0].location;
