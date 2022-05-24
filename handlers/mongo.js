@@ -10,7 +10,7 @@ module.exports = async () => {
 
   function ping() {
 		const currentNano = process.hrtime();
-		await mongoose.connection.db.command({ ping: 1 });
+	  mongoose.connection.db.command({ ping: 1 });
 		const time = process.hrtime(currentNano);
 		return (time[0] * 1e9 + time[1]) * 1e-6;
 	}
