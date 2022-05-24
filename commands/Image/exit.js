@@ -26,9 +26,9 @@ module.exports = {
       },
   ],
     run: async (client, interaction) => {
-    let memetext1 = interaction.options.getString("text-1");
-    let memetext2 = interaction.options.getString("text-2");
-    let memetext3 = interaction.options.getString("text-3");
+    let memetext1 = interaction.options.getString("text-1").replace(/[^\w\s]|_/g,"");
+    let memetext2 = interaction.options.getString("text-2").replace(/[^\w\s]|_/g,"");
+    let memetext3 = interaction.options.getString("text-3").replace(/[^\w\s]|_/g,"");
     
     await interaction.reply({
       files: [
