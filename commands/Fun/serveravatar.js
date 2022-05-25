@@ -23,21 +23,20 @@ module.exports = {
             Authorization: `Bot ${process.env.token}`
         }
     });
-    console.log(user.avatar)
-    //if(res.data.avatar !== undefined && res.data.avatar !== null) {
-      function getImageEnding(base) {
-        //return `https://cdn.discordapp.com/guilds/${interaction.guild.id}/users/${user.id}/avatars/${res.data.avatar}.${base}`
-        return `https://cdn.discordapp.com/guilds/${interaction.guild.id}/users/${user.id}/avatars/${user.avatar}.${base}`
+
+    if(res.data.avatar !== undefined && res.data.avatar !== null) {
+      function getImageEnding(arg1) {
+        return `https://cdn.discordapp.com/guilds/${interaction.guild.id}/users/${user.id}/avatars/${res.data.avatar}.${arg1}`
       }
         const embed = new Discord.MessageEmbed()
           .setTitle(`${user.username}'s Server Avatar`)
           .setColor('BLUE')
-          .setImage(getImageEnding(webp))
-          .setDescription(`[Png](${getImageEnding(png)}) | [Webp](${getImageEnding(webp)}) | [Jpg](${getImageEnding(jpg)})`)
+          .setImage(getImageEnding(`webp`))
+          .setDescription(`[Png](${getImageEnding(`png`)}) | [Webp](${getImageEnding(`webp`)}) | [Jpg](${getImageEnding(`jpg`)})`)
           .setFooter({ text: `Requested by: ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) });
         await interaction.reply({ embeds: [embed] });
-    //} else {
-      //interaction.reply("This user has no avatar set.")
-    //}
+    } else {
+      interaction.reply("This user has no avatar set.")
+    }
   }
 }
