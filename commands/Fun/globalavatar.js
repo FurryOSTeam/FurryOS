@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 
 module.exports = {
-    name: "global avatar",
+    name: "globalavatar",
     category: "Fun",
     description: "Shows a persons global discord avatar.",
     ownerOnly: false,

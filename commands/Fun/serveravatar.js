@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 
 module.exports = {
-    name: "server avatar",
+    name: "serveravatar",
     category: "Fun",
     description: "Shows a persons server discord avatar.",
     ownerOnly: false,
