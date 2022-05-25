@@ -27,7 +27,7 @@ module.exports = {
     ],
     run: async (client, interaction) => {
     const user = interaction.options.getUser("user")
-    const choice = interaction.options.getSubcommand("server") || interaction.options.getSubcommand("global")
+    const choice = interaction.options.getSubcommand()
     
     if(choice === "global") {
       const embed = new Discord.MessageEmbed()
@@ -40,7 +40,7 @@ module.exports = {
       await interaction.reply({ embeds: [embed] });
     } else if(choice === "server") {
       const embed = new Discord.MessageEmbed()
-        .setTitle(`${user.username}'s Avatar`)
+        .setTitle(`${user.username}'s Server Avatar`)
         .setColor('BLUE')
         .setImage(user.displayAvatarURL({ dynamic: true, size: 1024 }))
         .setDescription(`[Png](${user.avatarURL({ format: 'png' })}) | [Webp](${user.avatarURL({ dynamic: true })}) | [Jpg](${user.avatarURL({ format: 'jpg' })})`)
