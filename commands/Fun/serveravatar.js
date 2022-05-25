@@ -15,13 +15,14 @@ module.exports = {
         }
     ],
     run: async (client, interaction) => {
+    if(!user) user = interaction.user
     const user = interaction.options.getUser("user")
     
     let res = await fetch(`https://discord.com/api/guilds/${interaction.guild.id}/members/${user.id}`, {
         headers: {
             Authorization: `Bot ${process.env.token}`
         }
-    })
+    });
 
     if(res.data.avatar !== undefined && res.data.avatar !== null) {
       function getImageEnding(base) {
