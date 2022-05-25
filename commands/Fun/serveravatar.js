@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const fetch = require('node-fetch');
+const fetch = require('axios');
 
 module.exports = {
     name: "serveravatar",
@@ -15,10 +15,9 @@ module.exports = {
         }
     ],
     run: async (client, interaction) => {
-    const user = interaction.options.getUser("user")
-    if(!user) user = interaction.user
+    const user = interaction.options.getUser("user");
     
-    let res = await fetch(`https://discord.com/api/guilds/${interaction.guild.id}/members/${user.id}`, {
+    let res = await fetch.get(`https://discord.com/api/guilds/${interaction.guild.id}/members/${user.id}`, {
         headers: {
             Authorization: `Bot ${process.env.token}`
         }
@@ -36,7 +35,12 @@ module.exports = {
           .setFooter({ text: `Requested by: ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) });
         await interaction.reply({ embeds: [embed] });
     } else {
-      interaction.reply("This user has no avatar set.")
+      const embed = new Discord.MessageEmbed()
+          .setTitle(`${user.username}'s Server Avatar`)
+          .setColor('BLUE')
+          .setDescription(`This user has no server avatar.`)
+          .setFooter({ text: `Requested by: ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) });
+        await interaction.reply({ embeds: [embed] });
     }
   }
 }
