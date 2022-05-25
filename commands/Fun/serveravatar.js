@@ -15,8 +15,8 @@ module.exports = {
         }
     ],
     run: async (client, interaction) => {
-    if(!user) user = interaction.user
     const user = interaction.options.getUser("user")
+    if(!user) user = interaction.user
     
     let res = await fetch(`https://discord.com/api/guilds/${interaction.guild.id}/members/${user.id}`, {
         headers: {
