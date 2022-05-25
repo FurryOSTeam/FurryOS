@@ -19,10 +19,10 @@ module.exports = {
     
     let res = await fetch(`https://discord.com/api/guilds/${interaction.guild.id}/members/${user.id}`, {
         headers: {
-            'Authorization': `Bot ${process.env.token}`
+            Authorization: `Bot ${process.env.token}`
         }
-    });
-    
+    })
+
     if(res.data.avatar !== undefined && res.data.avatar !== null) {
       function getImageEnding(base) {
         return `https://cdn.discordapp.com/guilds/${interaction.guild.id}/users/${user.id}/avatars/${res.data.avatar}.${base}`
@@ -34,6 +34,8 @@ module.exports = {
           .setDescription(`[Png](${getImageEnding(png)}) | [Webp](${getImageEnding(webp)}) | [Jpg](${getImageEnding(jpg)})`)
           .setFooter({ text: `Requested by: ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) });
         await interaction.reply({ embeds: [embed] });
+    } else {
+      interaction.reply("This user has no avatar set.")
     }
   }
 }
