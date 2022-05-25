@@ -1,9 +1,9 @@
 const Discord = require('discord.js');
 
 module.exports = {
-    name: "avatar",
+    name: "server avatar",
     category: "Fun",
-    description: "Shows a persons discord avatar.",
+    description: "Shows a persons server discord avatar.",
     ownerOnly: false,
     options: [
         {
@@ -17,7 +17,7 @@ module.exports = {
     const user = interaction.options.getUser("user")
 
     const embed = new Discord.MessageEmbed()
-      .setTitle(`${user.username}'s Avatar`)
+      .setTitle(`${user.username}'s Server Avatar`)
       .setColor('BLUE')
       .setImage(user.displayAvatarURL({ dynamic: true, size: 1024 }))
       .setDescription(`[Png](${user.avatarURL({ format: 'png' })}) | [Webp](${user.avatarURL({ dynamic: true })}) | [Jpg](${user.avatarURL({ format: 'jpg' })})`)
