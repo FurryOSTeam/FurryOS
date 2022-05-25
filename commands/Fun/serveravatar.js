@@ -23,7 +23,7 @@ module.exports = {
             Authorization: `Bot ${process.env.token}`
         }
     });
-
+    console.log(user.avatar)
     //if(res.data.avatar !== undefined && res.data.avatar !== null) {
       function getImageEnding(base) {
         //return `https://cdn.discordapp.com/guilds/${interaction.guild.id}/users/${user.id}/avatars/${res.data.avatar}.${base}`
