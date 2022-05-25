@@ -27,7 +27,7 @@ module.exports = {
     ],
     run: async (client, interaction) => {
     const user = interaction.options.getUser("user")
-    const choice = interaction.options.getSubcommand()
+    const choice = interaction.options.getSubcommand("server") || interaction.options.getSubcommand("global")
     
     if(choice === "global") {
       const embed = new Discord.MessageEmbed()
