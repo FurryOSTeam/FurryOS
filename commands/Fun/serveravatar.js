@@ -24,9 +24,10 @@ module.exports = {
         }
     });
 
-    if(res.data.avatar !== undefined && res.data.avatar !== null) {
+    //if(res.data.avatar !== undefined && res.data.avatar !== null) {
       function getImageEnding(base) {
-        return `https://cdn.discordapp.com/guilds/${interaction.guild.id}/users/${user.id}/avatars/${res.data.avatar}.${base}`
+        //return `https://cdn.discordapp.com/guilds/${interaction.guild.id}/users/${user.id}/avatars/${res.data.avatar}.${base}`
+        return `https://cdn.discordapp.com/guilds/${interaction.guild.id}/users/${user.id}/avatars/${user.avatar}.${base}`
       }
         const embed = new Discord.MessageEmbed()
           .setTitle(`${user.username}'s Server Avatar`)
@@ -35,8 +36,8 @@ module.exports = {
           .setDescription(`[Png](${getImageEnding(png)}) | [Webp](${getImageEnding(webp)}) | [Jpg](${getImageEnding(jpg)})`)
           .setFooter({ text: `Requested by: ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) });
         await interaction.reply({ embeds: [embed] });
-    } else {
-      interaction.reply("This user has no avatar set.")
-    }
+    //} else {
+      //interaction.reply("This user has no avatar set.")
+    //}
   }
 }
