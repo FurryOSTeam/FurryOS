@@ -15,13 +15,24 @@ module.exports = {
     ],
     run: async (client, interaction) => {
     const user = interaction.options.getUser("user")
-
-    const embed = new Discord.MessageEmbed()
-      .setTitle(`${user.username}'s Server Avatar`)
-      .setColor('BLUE')
-      .setImage(user.displayAvatarURL({ dynamic: true, size: 1024 }))
-      .setDescription(`[Png](${user.avatarURL({ format: 'png' })}) | [Webp](${user.avatarURL({ dynamic: true })}) | [Jpg](${user.avatarURL({ format: 'jpg' })})`)
-      .setFooter({ text: `Requested by: ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) });
-    await interaction.reply({ embeds: [embed] });
+    
+    let res = await fetch(`https://discord.com/api/guilds/${interaction.guild.id}/members/${user.id}`, {
+        headers: {
+            'Authorization': `Bot ${process.env.token}`
+        }
+    });
+    
+    if(res.data.avatar !== undefined && res.data.avatar !== null) {
+      function getImageEnding(base) {
+        return `https://cdn.discordapp.com/guilds/${interaction.guild.id}/users/${user.id}/avatars/${res.data.avatar}.${base}`
+      }
+        const embed = new Discord.MessageEmbed()
+          .setTitle(`${user.username}'s Server Avatar`)
+          .setColor('BLUE')
+          .setImage(getImageEnding(webp))
+          .setDescription(`[Png](${getImageEnding(png)}) | [Webp](${getImageEnding(webp)}) | [Jpg](${getImageEnding(jpg)})`)
+          .setFooter({ text: `Requested by: ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) });
+        await interaction.reply({ embeds: [embed] });
+    }
   }
 }
