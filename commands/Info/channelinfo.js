@@ -24,7 +24,7 @@ module.exports = {
             .addField("**Channel Type**", channel.type)
             .addField("**Channel Description**", `${channel.topic || "No Description"}`)
             .addField("**Channel Created At**", channel.createdAt)
-            .setColor("BLUE")
+            .setColor("BLUE");
         await interaction.reply({ embeds: [embed] });
     }
 }
