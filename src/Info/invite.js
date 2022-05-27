@@ -19,7 +19,7 @@ module.exports = {
         '**[Support Server](https://discord.gg/pD2QwAqdMY)**'
       )
       .addField('Support Services',
-        //'+1 (786) 766-0258‬\n' +
+        //'+1 (786) 766-0258\n' +
         'furryos@bigbenster702.com'
       )
       .addField('Maintainers',
