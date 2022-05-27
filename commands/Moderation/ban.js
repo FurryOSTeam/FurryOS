@@ -35,7 +35,7 @@ module.exports = {
           member.ban({ reason })
 
           const embed = new MessageEmbed()
-            .setColor(11098277)
+            .setColor(client.config.embedcolors.default)
             .setTitle(`Member banned by ${banner}`)
             .addField('Banned Member', `${banned}`, true)
             .addField('Server', `${interaction.guild.name}`, true)

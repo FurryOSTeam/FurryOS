@@ -29,7 +29,7 @@ module.exports = {
         .setDescription(`**${current.skytext}**`)
         .setAuthor({ name: `Weather forecast for ${current.observationpoint}` })
         .setThumbnail(current.imageUrl)
-        .setColor('RANDOM')
+        .setColor(client.config.embedcolors.default)
         .addField('Timezone', `UTC${location.timezone}`, true)
         .addField('Degree Type', 'Fahrenheit', true)
         .addField('Temperature', `${current.temperature}°`, true)

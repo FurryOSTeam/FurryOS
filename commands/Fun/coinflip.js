@@ -15,7 +15,7 @@ module.exports = {
       .setDescription(`I flipped a coin, ${interaction.member}. The result was **${result}**!`)
       .setFooter({ text: interaction.member.displayName, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) })
       .setTimestamp()
-      .setColor(interaction.guild.me.displayHexColor);
+      .setColor(client.config.embedcolors.default);
     await interaction.reply({ embeds: [embed] });
     }
 }

@@ -80,7 +80,7 @@ module.exports = {
                 .addField("🔧 - Moderation", moderationCommandsList.map((data) => `${data}`).join(", "), true)
                 .addField("🔒 - Owner", ownerCommandsList.map((data) => `${data}`).join(", "), true)
                 .addField("ℹ - Info", infoCommandsList.map((data) => `${data}`).join(", "), true)
-                .setColor(client.config.embedColor)
+                .setColor(client.config.embedcolors.default)
                 .setFooter({ text: `${client.config.embedfooterText}`, iconURL: `${client.user.displayAvatarURL()}` });
 
                 if (interaction.channel.nsfw) {
@@ -107,7 +107,7 @@ module.exports = {
                         { name: "Description", value: `${description}` },
                         { name: "Usage", value: `${usage}` },
                         { name: 'Category', value: `${category}` })
-                    .setColor(client.config.embedColor)
+                    .setColor(client.config.embedcolors.default)
                     .setFooter({ text: `${client.config.embedfooterText}`, iconURL: `${client.user.displayAvatarURL()}` });
 
                 interaction.reply({ embeds: [helpCmdEmbed], ephemeral: true});

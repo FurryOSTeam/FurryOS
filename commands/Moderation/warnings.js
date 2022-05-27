@@ -33,13 +33,13 @@ module.exports = {
           userId,
         })
         if(!results || isempty === null) return await interaction.reply({ embeds: [new Discord.MessageEmbed()
-        .setColor('BLUE')
+        .setColor(client.config.embedcolors.default)
         .setTitle(`No warnings found`)
         .setTimestamp()
         .setFooter({ text: 'FurryOS' })]})
        
         let reply = new Discord.MessageEmbed()
-        .setColor('BLUE')
+        .setColor(client.config.embedcolors.default)
         .setTitle(`Warnings for: ${userId}`)
         .setTimestamp()
         .setFooter({ text: 'FurryOS' })

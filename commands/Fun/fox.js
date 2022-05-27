@@ -14,7 +14,7 @@ module.exports = {
         .setImage(img)
         .setFooter({ text: interaction.member.displayName,  iconURL: interaction.user.displayAvatarURL({ dynamic: true }) })
         .setTimestamp()
-        .setColor(interaction.guild.me.displayHexColor);
+        .setColor(client.config.embedcolors.warning);
       await interaction.reply({ embeds: [embed] });
   }
 };

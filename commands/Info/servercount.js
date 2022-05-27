@@ -15,7 +15,7 @@ module.exports = {
       .setTitle('FurryOS\'s Server Count')
       .setDescription(stripIndent`\`\`\`AsciiDoc\n${counts}\`\`\``)
       .setTimestamp()
-      .setColor(interaction.guild.me.displayHexColor);
+      .setColor(client.config.embedcolors.default);
     await interaction.reply({ embeds: [embed] });
   }
 };

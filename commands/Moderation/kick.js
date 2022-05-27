@@ -35,7 +35,7 @@ module.exports = {
           member.kick({ reason })
 
           const embed = new MessageEmbed()
-            .setColor(11098277)
+            .setColor(client.config.embedcolors.default)
             .setTitle(`Member kicked by ${kicker}`)
             .addField('Kicked Member', `${kicked}`, true)
             .addField('Server', `${interaction.guild.name}`, true)

@@ -32,14 +32,14 @@ module.exports = {
         try{
            await warnSchema.findOneAndUpdate({ guildId: guild }, { $pull: { "warnings": { "warnID": interaction.options.getString("id") } }}, { safe: true, multi:true }, function(err, obj) {})
          await interaction.reply({ embeds: [new Discord.MessageEmbed()
-            .setColor('BLUE')
+            .setColor(client.config.embedcolors.default)
             .setTitle(`✅ Deleted warning!`)
             .setTimestamp()
             .setFooter({ text: 'FurryOS'})]})
           mongoose.connection.close()
         }catch(err){
           await interaction.reply({ embeds: [new Discord.MessageEmbed()
-            .setColor('BLUE')
+            .setColor(client.config.embedcolors.default)
             .setTitle(`❌ This warning does not exist!`)
             .setTimestamp()
             .setFooter({ text: 'FurryOS'})]})

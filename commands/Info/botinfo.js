@@ -21,7 +21,7 @@ module.exports = {
             const botinfo = new Discord.MessageEmbed()
                 .setAuthor({ name: interaction.client.user.username })
                 .setTitle("__**Stats:**__")
-                .setColor("RANDOM")
+                .setColor(client.config.embedcolors.default)
                 .addField("`⏳` Mem Usage", `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} / ${(os.totalmem() / 1024 / 1024).toFixed(2)} MB`, true)
                 .addField("`⌚️` Uptime ", `${duration}`, true)
                 .addField("`📁` Users", `${interaction.client.users.cache.size}`, true)

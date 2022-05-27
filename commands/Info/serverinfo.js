@@ -19,7 +19,7 @@ module.exports = {
       if (boosts >= 30) maxbitrate = 384000;
         await interaction.reply({embeds: [new Discord.MessageEmbed()
         .setAuthor({ name: "Server Information About: " +  interaction.guild.name, iconURL: interaction.guild.iconURL({dynamic: true})})
-        .setColor('#3498db')
+        .setColor(client.config.embedcolors.default)
         .addField("❱ Owner", `${interaction.guild.members.cache.get(interaction.guild.ownerId)}`, true)
         .addField("❱ Created On", "\`" + moment(interaction.guild.createdTimestamp).format("DD/MM/YYYY") + "\`\n" + "`"+ moment(interaction.guild.createdTimestamp).format("hh:mm:ss") +"`", true)
         .addField("❱ You Joined", "\`" + moment(interaction.member.joinedTimestamp).format("DD/MM/YYYY") + "\`\n" + "`"+ moment(interaction.member.joinedTimestamp).format("hh:mm:ss") +"`", true)

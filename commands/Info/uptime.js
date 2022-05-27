@@ -9,7 +9,7 @@ module.exports = {
     const time = require('ms')
     const uptime = time(client.uptime)
     await interaction.reply({embeds: [{
-      color: 39423,
+      color: client.config.embedcolors.default,
       description: `The bot has been up for ${uptime}.`,
       footer: {
         text: client.user.username,

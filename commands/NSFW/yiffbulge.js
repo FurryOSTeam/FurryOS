@@ -21,7 +21,7 @@ module.exports = {
 					`[[ReportURL]](${json.reportURL})`,
 					`${!json.sources || json.sources.length === 0 || !json.sources[0] ? `[NoSource]` : `[[Source]](${json.sources[0]})`}`
 				].join("\n"))
-				.setColor('#0099ff')
+				.setColor(client.config.embedcolors.default)
 				.setImage(json.url)
 
       interaction.reply({ embeds: [fboop] });

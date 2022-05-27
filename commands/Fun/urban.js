@@ -29,7 +29,7 @@ module.exports = {
         let { word, definition, example, thumbs_up, thumbs_down, permalink, author } = result;
 
         let embed = new MessageEmbed()
-          .setColor(16382454)
+          .setColor(client.config.embedcolors.default)
           .setAuthor({ name: `Urban Dictionary | ${word}`, img })
           .setThumbnail(img)
           .setDescription(stripIndents`**Definition** ${definition || 'No definition'}

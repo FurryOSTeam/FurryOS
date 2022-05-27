@@ -8,7 +8,7 @@ module.exports = {
     run: async (client, interaction) => {
     const embed = new MessageEmbed()
       .setDescription('`Pinging...`')
-      .setColor(interaction.guild.me.displayHexColor);    
+      .setColor(client.config.embedcolors.default);    
     const msg = await interaction.reply({ embeds: [embed], fetchReply: true });
     const timestamp = (interaction.editedTimestamp) ? interaction.editedTimestamp : interaction.createdTimestamp;
     const latency = `\`\`\`ini\n[ ${Math.floor(msg.createdTimestamp - timestamp)}ms ]\`\`\``;

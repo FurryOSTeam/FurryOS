@@ -29,7 +29,7 @@ module.exports = {
       }
         const embed = new Discord.MessageEmbed()
           .setTitle(`${user.username}'s Server Avatar`)
-          .setColor('BLUE')
+          .setColor(client.config.embedcolors.default)
           .setImage(getImageEnding(`webp`))
           .setDescription(`[Png](${getImageEnding(`png`)}) | [Webp](${getImageEnding(`webp`)}) | [Jpg](${getImageEnding(`jpg`)})`)
           .setFooter({ text: `Requested by: ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) });
@@ -37,7 +37,7 @@ module.exports = {
     } else {
       const embed = new Discord.MessageEmbed()
           .setTitle(`${user.username}'s Server Avatar`)
-          .setColor('BLUE')
+          .setColor(client.config.embedcolors.default)
           .setDescription(`This user has no server avatar.`)
           .setFooter({ text: `Requested by: ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) });
         await interaction.reply({ embeds: [embed] });

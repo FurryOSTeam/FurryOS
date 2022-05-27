@@ -22,7 +22,7 @@ module.exports = {
         }
     } catch (err) {
         return await interaction.reply({embeds: [{
-            color: 7948427,
+            color: client.config.embedcolors.default,
             description: `**Error:**\n`
             + `\`There was an error while compiling your code: ${err}\``,
             author: {
