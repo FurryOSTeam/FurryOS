@@ -33,7 +33,7 @@ module.exports = {
           userId,
         })
         if(!results || isempty === null) return await interaction.reply({ embeds: [new Discord.MessageEmbed()
-        .setColor(client.config.embedcolors.default)
+        .setColor(client.config.embedcolors.error)
         .setTitle(`No warnings found`)
         .setTimestamp()
         .setFooter({ text: 'FurryOS' })]})

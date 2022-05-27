@@ -60,7 +60,7 @@ module.exports = {
         )
       } finally {
         await interaction.reply({ embeds: [new Discord.MessageEmbed()
-        .setColor(client.config.embedcolors.default)
+        .setColor(client.config.embedcolors.success)
         .setTitle(`✅ Warned user! || ${reason}`)
         .setTimestamp()
         .setFooter({ text: 'FurryOS' })]})
