@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const Discord = require('discord.js');
 
 module.exports = {
     name: "channelinfo",
@@ -14,17 +14,17 @@ module.exports = {
         }
     ],
     run: async (client, interaction) => {
-        let channel = interaction.options.getChannel("channel");
+        const channel = interaction.options.getChannel("channel");
 
-        let embed = new MessageEmbed()
+        const embed = new Discord.MessageEmbed()
             .setTitle(`Channel Information for ${channel.name}`)
-            .setThumbnail(interaction.guild.iconURL())
-            .addField("**NSFW**", channel.nsfw, true)
-            .addField("**Channel ID**", channel.id, true)
-            .addField("**Channel Type**", channel.type)
+            .setThumbnail(interaction.guild.iconURL({ dynamic: true, size: 512 }))
+            .addField("**NSFW**", `${channel.nsfw || "Channel does not have nsfw setting."}`, true)
+            .addField("**Channel ID**", `${channel.id}`, true)
+            .addField("**Channel Type**", `${channel.type}`)
             .addField("**Channel Description**", `${channel.topic || "No Description"}`)
-            .addField("**Channel Created At**", channel.createdAt)
-            .setColor("BLUE");
+            .addField("**Channel Created At**", `${channel.createdAt}`)
+            .setColor('#3498db');
         await interaction.reply({ embeds: [embed] });
     }
 }
