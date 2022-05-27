@@ -3,6 +3,7 @@ const superagent = require('superagent');
 
 module.exports = {
     name: "owoify",
+    usage: "/owoify <message>",
     category: "Fun",
     description: "Owoifys a message.",
     ownerOnly: false,

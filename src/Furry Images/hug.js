@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "hug",
+    usage: "/hug",
     category: "Furry Images",
     description: "Furry hug!",
     ownerOnly: false,

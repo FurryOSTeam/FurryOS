@@ -3,6 +3,7 @@ const fetch = require('axios');
 
 module.exports = {
     name: "serveravatar",
+    usage: "/serveravatar <user>",
     category: "Fun",
     description: "Shows a persons server discord avatar.",
     ownerOnly: false,

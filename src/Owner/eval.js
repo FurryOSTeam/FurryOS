@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "eval",
+    usage: "/eval <code>",
     category: "Owner",
     description: "Runs code on the bot.",
     ownerOnly: true,

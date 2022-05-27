@@ -4,6 +4,7 @@ const urban = require('urban');
 
 module.exports = {
     name: "urban",
+    usage: "/urban <term>",
     category: "Fun",
     description: "Shows a defnition from the urban dictionary.",
     ownerOnly: false,

@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "weather",
+    usage: "/weather <location>",
     category: "Info",
     description: "Shows the weather in a place you pick.",
     ownerOnly: false,

@@ -3,6 +3,7 @@ const fetch = require("node-fetch");
 
 module.exports = {
     name: "fox",
+    usage: "/fox",
     category: "Fun",
     description: "Sends an image of a fox!",
     ownerOnly: false,

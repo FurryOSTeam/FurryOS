@@ -4,6 +4,7 @@ const Discord = require("discord.js")
 
 module.exports = {
     name: "servercount",
+    usage: "/servercount",
     category: "Info",
     description: "Displays the number of servers the bot is in.",
     ownerOnly: false,

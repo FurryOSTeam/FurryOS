@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "dockofshame",
+    usage: "/dockofshame <user>",
     category: "Image",
     description: "Sends a user to the dock of shame.",
     ownerOnly: false,

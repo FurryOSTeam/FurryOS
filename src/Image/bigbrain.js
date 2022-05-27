@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "bigbrain",
+    usage: "/bigbrain <text 1> <text 2> <text 3> <text 4>",
     category: "Image",
     description: "Creates the big brain meme.",
     ownerOnly: false,

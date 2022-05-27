@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "adios",
+    usage: "/adios <user>",
     category: "Image",
     description: "Adios.",
     ownerOnly: false,

@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "rps",
+    usage: "/rps <rock, paper, or scissors>",
     category: "Fun",
     description: "Starts a game of rock, paper, scissors.",
     ownerOnly: false,

@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "alert",
+    usage: "/alert <message>",
     category: "Image",
     description: "Funny meme phone alert.",
     ownerOnly: false,

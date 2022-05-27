@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "purge",
+    usage: "/purge <number>",
     category: "Moderation",
     description: "Purges messages.",
     ownerOnly: false,

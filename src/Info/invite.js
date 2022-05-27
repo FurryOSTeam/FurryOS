@@ -3,6 +3,7 @@ const { oneLine } = require('common-tags');
 
 module.exports = {
     name: "invite",
+    usage: "/invite",
     category: "Info",
     description: "Gives an invite for the support server and an invite for the bot.",
     ownerOnly: false,

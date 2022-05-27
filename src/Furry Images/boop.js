@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "boop",
+    usage: "/boop",
     category: "Furry Images",
     description: "Shows a picture of a furry booping a snoot!",
     ownerOnly: false,

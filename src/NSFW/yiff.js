@@ -4,6 +4,7 @@ const Discord = require("discord.js");
 
 module.exports = {
     name: "yiff",
+    usage: "/yiff <gay, straight, or lesbian>",
     category: "NSFW",
     description: "Shows yiff that you pick.",
     ownerOnly: false,

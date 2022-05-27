@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "yiffbulge",
+    usage: "/yiffbulge",
     category: "NSFW",
     description: "Shows a furries bulge.",
     ownerOnly: false,

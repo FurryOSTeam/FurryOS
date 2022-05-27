@@ -3,6 +3,7 @@ const fetch = require("node-fetch");
 
 module.exports = {
     name: "meme",
+    usage: "/meme",
     category: "Fun",
     description: "Shows memes!",
     ownerOnly: false,

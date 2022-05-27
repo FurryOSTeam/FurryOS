@@ -20,6 +20,7 @@ const flags = {
 
 module.exports = {
     name: "userinfo",
+    usage: "/userinfo <user>",
     category: "Info",
     description: "Shows info about a user.",
     ownerOnly: false,

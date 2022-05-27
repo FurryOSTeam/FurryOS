@@ -5,6 +5,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "delwarn",
+    usage: "/delwarn <user> <id>",
     category: "Moderation",
     description: "Deletes a warn from a user.",
     ownerOnly: false,

@@ -4,6 +4,7 @@ const moment = require("moment");
 
 module.exports = {
     name: "serverinfo",
+    usage: "/serverinfo",
     category: "Info",
     description: "Displays info about the server.",
     ownerOnly: false,

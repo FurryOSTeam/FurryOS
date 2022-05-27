@@ -9,6 +9,7 @@ const ms = require("ms")
 
 module.exports = {
     name: "botinfo",
+    usage: "/botinfo",
     category: "Info",
     description: "Shows lots of info about the bot.",
     ownerOnly: false,

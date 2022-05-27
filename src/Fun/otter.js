@@ -3,6 +3,7 @@ const got = require("got");
 
 module.exports = {
     name: "otter",
+    usage: "/otter",
     category: "Fun",
     description: "Shows a random image of an otter.",
     ownerOnly: false,

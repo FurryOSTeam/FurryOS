@@ -6,6 +6,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "warn",
+    usage: "/warn <user> <reason>",
     category: "Moderation",
     description: "Warns a user.",
     ownerOnly: false,

@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "tableflip",
+    usage: "/tableflip <user>",
     category: "Image",
     description: "Makes a user flip a table.",
     ownerOnly: false,

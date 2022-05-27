@@ -2,6 +2,7 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: "coinflip",
+    usage: "/coinflip",
     category: "Fun",
     description: "Flips a coin.",
     ownerOnly: false,

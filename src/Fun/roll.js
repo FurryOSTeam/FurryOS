@@ -2,6 +2,7 @@ const discord = require("discord.js");
 
 module.exports = {
     name: "roll",
+    usage: "/roll",
     category: "Fun",
     description: "Rolls a dice.",
     ownerOnly: false,

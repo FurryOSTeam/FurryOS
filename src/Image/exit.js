@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "exit",
+    usage: "/exit <text 1> <text 2> <text 3>",
     category: "Image",
     description: "Creates the exit car meme.",
     ownerOnly: false,

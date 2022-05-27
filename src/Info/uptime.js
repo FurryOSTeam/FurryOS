@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "uptime",
+    usage: "/uptime",
     category: "Info",
     description: "Shows the uptime of the bot.",
     ownerOnly: false,

@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "channelinfo",
+    usage: "/channelinfo <channel>",
     category: "Info",
     description: "Shows info about a channel.",
     ownerOnly: false,
