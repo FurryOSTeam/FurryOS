@@ -9,13 +9,14 @@ module.exports = {
 
       const activities = [
         `/help`,
-			  `shork owo`,
-			  `${client.guilds.cache.size} servers`,
-        `Discord.JS v13 wooooo`
-		  ];
-
-		  let i = 0;
-		  setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, { type: 'LISTENING' }), 15000);
+	`shork owo`,
+	`${client.guilds.cache.size} servers`,
+        `Discord.JS v13 wooooo
+      ];
+      
+      let i = 0;
+      
+      setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, { type: 'LISTENING' }), 15000);
       
       console.log(`${chalk.hex("#5b57d9")(figlet.textSync('FurryOS', { horizontalLayout: 'full' }))}\n`);
       console.log(`${chalk.hex('#60bf85')('Bot started!')}\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n`
