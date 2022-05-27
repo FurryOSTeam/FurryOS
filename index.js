@@ -37,7 +37,7 @@ module.exports = client;
 
 client.discord = Discord;
 client.slash = new Discord.Collection();
-client.config = require('./config')
+client.config = require('./config');
 
 handler.loadEvents(client);
 handler.loadSlashCommands(client);
