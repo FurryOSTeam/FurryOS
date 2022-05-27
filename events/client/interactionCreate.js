@@ -1,3 +1,5 @@
+const Discord = require('discord.js');
+
 module.exports = {
     name: 'interactionCreate',
 
@@ -5,11 +7,21 @@ module.exports = {
         if (!interaction.isCommand()) return;
         
         const command = client.slash.get(interaction.commandName);
-        if (!command) return interaction.reply({ content: 'Error check console or contact dev.' });
+        if (!command) return interaction.reply({ content: [new Discord.MessageEmbed()
+            .setColor(client.config.embedcolors.error)
+            .setTitle(`Error.`)
+            .setDescription(`Error check console or contact dev.`)
+            .setTimestamp()
+            .setFooter({ text: client.config.embedfooterText})], ephemeral: true });
         
         if (command.ownerOnly) {
             if (!client.config.ownerID.includes(interaction.user.id)) {
-                return interaction.reply({ content: "This command only for the bot owner!", ephemeral: true });
+                return interaction.reply({ content: [new Discord.MessageEmbed()
+                    .setColor(client.config.embedcolors.error)
+                    .setTitle(`Error.`)
+                    .setDescription(`This command only for the bot owner!`)
+                    .setTimestamp()
+                    .setFooter({ text: client.config.embedfooterText})], ephemeral: true });
             }
         }
         
