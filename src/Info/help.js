@@ -30,44 +30,44 @@ module.exports = {
         const commandInt = interaction.options.getString("command");
         if (!commandInt) {
             const funCommandsList = [];
-            readdirSync(`./commands/Fun`).forEach((file) => {
-                const filen = require(`../../commands/Fun/${file}`);
+            readdirSync(`./src/Fun`).forEach((file) => {
+                const filen = require(`../../src/Fun/${file}`);
                 const name = `\`${filen.name}\``
                 funCommandsList.push(name);
             });
             const imageCommandsList = [];
-            readdirSync(`./commands/Image`).forEach((file) => {
-                const filen = require(`../../commands/Image/${file}`);
+            readdirSync(`./src/Image`).forEach((file) => {
+                const filen = require(`../../src/Image/${file}`);
                 const name = `\`${filen.name}\``
                 imageCommandsList.push(name);
             });
             const moderationCommandsList = [];
-            readdirSync(`./commands/Moderation`).forEach((file) => {
-                const filen = require(`../../commands/Moderation/${file}`);
+            readdirSync(`./src/Moderation`).forEach((file) => {
+                const filen = require(`../../src/Moderation/${file}`);
                 const name = `\`${filen.name}\``
                 moderationCommandsList.push(name);
             });
             const furryimagesCommandsList = [];
-            readdirSync(`./commands/Furry Images`).forEach((file) => {
-                const filen = require(`../../commands/Furry Images/${file}`);
+            readdirSync(`./src/Furry Images`).forEach((file) => {
+                const filen = require(`../../src/Furry Images/${file}`);
                 const name = `\`${filen.name}\``
                 furryimagesCommandsList.push(name);
             });
             const nsfwCommandsList = [];
-            readdirSync(`./commands/NSFW`).forEach((file) => {
-                const filen = require(`../../commands/NSFW/${file}`);
+            readdirSync(`./src/NSFW`).forEach((file) => {
+                const filen = require(`../../src/NSFW/${file}`);
                 const name = `\`${filen.name}\``
                 nsfwCommandsList.push(name);
             });
             const ownerCommandsList = [];
-            readdirSync(`./commands/Owner`).forEach((file) => {
-                const filen = require(`../../commands/Owner/${file}`);
+            readdirSync(`./src/Owner`).forEach((file) => {
+                const filen = require(`../../src/Owner/${file}`);
                 const name = `\`${filen.name}\``
                 ownerCommandsList.push(name);
             });
             const infoCommandsList = [];
-            readdirSync(`./commands/Info`).forEach((file) => {
-                const filen = require(`../../commands/Info/${file}`);
+            readdirSync(`./src/Info`).forEach((file) => {
+                const filen = require(`../../src/Info/${file}`);
                 const name = `\`${filen.name}\``
                 infoCommandsList.push(name);
             });

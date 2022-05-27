@@ -30,14 +30,14 @@ const loadEvents = async function (client) {
 const loadSlashCommands = async function (client) {
     let slash = []
 
-    const commandFolders = fs.readdirSync("./commands");
+    const commandFolders = fs.readdirSync("./src");
     for (const folder of commandFolders) {
         const commandFiles = fs
-        .readdirSync(`./commands/${folder}`)
+        .readdirSync(`./src/${folder}`)
         .filter((file) => file.endsWith(".js"));
         
         for (const file of commandFiles) {
-            const command = require(`../commands/${folder}/${file}`);
+            const command = require(`../src/${folder}/${file}`);
             
             if (command.name) {
                 client.slash.set(command.name, command);
