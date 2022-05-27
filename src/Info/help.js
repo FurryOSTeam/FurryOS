@@ -93,7 +93,12 @@ module.exports = {
         } else {
             const command = client.slash.get(commandInt.toLowerCase());
             if (!command) {
-                interaction.reply({ content: `There isn't any SlashCommand named "${commandInt}"`, ephemeral: true });
+                interaction.reply({ content: [new Discord.MessageEmbed()
+                    .setColor(client.config.embedcolors.error)
+                    .setTitle(`Error.`)
+                    .setDescription(`There isn't any SlashCommand named "${commandInt}"`)
+                    .setTimestamp()
+                    .setFooter({ text: client.config.embedfooterText})], ephemeral: true });
             } else {
                 let command = client.slash.get(commandInt.toLowerCase());
                 let name = command.name;
