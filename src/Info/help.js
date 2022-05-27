@@ -93,7 +93,7 @@ module.exports = {
         } else {
             const command = client.slash.get(commandInt.toLowerCase());
             if (!command) {
-                interaction.reply({ content: [new Discord.MessageEmbed()
+                interaction.reply({ embeds: [new Discord.MessageEmbed()
                     .setColor(client.config.embedcolors.error)
                     .setTitle(`Error.`)
                     .setDescription(`There isn't any SlashCommand named "${commandInt}"`)

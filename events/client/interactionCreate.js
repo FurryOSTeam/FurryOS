@@ -7,7 +7,7 @@ module.exports = {
         if (!interaction.isCommand()) return;
         
         const command = client.slash.get(interaction.commandName);
-        if (!command) return interaction.reply({ content: [new Discord.MessageEmbed()
+        if (!command) return interaction.reply({ embeds: [new Discord.MessageEmbed()
             .setColor(client.config.embedcolors.error)
             .setTitle(`Error.`)
             .setDescription(`Error check console or contact dev.`)
@@ -16,7 +16,7 @@ module.exports = {
         
         if (command.ownerOnly) {
             if (!client.config.ownerID.includes(interaction.user.id)) {
-                return interaction.reply({ content: [new Discord.MessageEmbed()
+                return interaction.reply({ embeds: [new Discord.MessageEmbed()
                     .setColor(client.config.embedcolors.error)
                     .setTitle(`Error.`)
                     .setDescription(`This command only for the bot owner!`)
