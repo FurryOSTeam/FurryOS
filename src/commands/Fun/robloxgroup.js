@@ -33,6 +33,7 @@ module.exports = {
                     //.addField("**Group roles and ranks**", `${roles.map((role) => "``" + role.name + " | " + role.rank +"``" )}`, true)
                     .addField("**Group description**", `${groupInfo.description}`, true)
                     .addField("**Group members**", `${groupInfo.memberCount}`, true)
+                    .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
                     .setColor(client.config.embedcolors.default);
             await interaction.reply({ embeds: [embed], ephemeral: true });
         }catch(e){
@@ -41,7 +42,7 @@ module.exports = {
                 .setTitle(`Error.`)
                 .setDescription(`Either you did not type the name correctly, the group does not exist, or the command errored.`)
                 .setTimestamp()
-                .setFooter({ text: client.config.embedfooterText})], ephemeral: true });
+                .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true })})], ephemeral: true });
         }
     }
 };

@@ -16,7 +16,7 @@ module.exports = {
       .setTitle(json.title)
       .setDescription('Here is your meme!')
       .setImage(json.url)
-      .setFooter({ text: `${json.subreddit} ${json.postLink}` });
+      .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 
       interaction.reply({ embeds: [memeEmbed] });
     });

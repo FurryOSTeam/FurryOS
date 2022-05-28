@@ -39,7 +39,8 @@ module.exports = {
           **Downvote:** ${thumbs_down || 0}
           **Link:** [link to ${word}](${permalink || 'https://www.urbandictionary.com/'})`)
           .setTimestamp()
-          .setFooter({ text: `Written by ${author || 'Unknown'}` });
+          .setFields({ name: `Written by`, value: `${author || 'Unknown'}` })
+          .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
         
         interaction.reply({ embeds: [embed] });
       });

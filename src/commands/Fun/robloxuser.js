@@ -29,6 +29,7 @@ module.exports = {
             .addField(`Join Date`, `${playerInfo.joinDate}` || "Not available", true)
             .addField(`Description`, `${playerInfo.blurb}` || "Not available", true)
             .setThumbnail(`https://www.roblox.com/headshot-thumbnail/image?userId=${userid}&width=420&height=420&format=png`)
+            .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
         interaction.reply({ embeds: [infoEmbed] });
         });
     } catch (e) {
@@ -37,7 +38,7 @@ module.exports = {
             .setTitle(`Error.`)
             .setDescription(`Either you did not type the name correctly, the user does not exist, or the command errored.`)
             .setTimestamp()
-            .setFooter({ text: client.config.embedfooterText})], ephemeral: true });
+            .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true })})], ephemeral: true });
         }
     }
 };

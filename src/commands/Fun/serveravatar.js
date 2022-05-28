@@ -33,14 +33,14 @@ module.exports = {
           .setColor(client.config.embedcolors.default)
           .setImage(getImageEnding(`webp`))
           .setDescription(`[Png](${getImageEnding(`png`)}) | [Webp](${getImageEnding(`webp`)}) | [Jpg](${getImageEnding(`jpg`)})`)
-          .setFooter({ text: `Requested by: ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) });
+          .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
         await interaction.reply({ embeds: [embed] });
     } else {
       const embed = new Discord.MessageEmbed()
           .setTitle(`${user.username}'s Server Avatar`)
           .setColor(client.config.embedcolors.default)
           .setDescription(`This user has no server avatar.`)
-          .setFooter({ text: `Requested by: ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) });
+          .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
         await interaction.reply({ embeds: [embed] });
     }
   }

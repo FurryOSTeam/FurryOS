@@ -13,7 +13,7 @@ module.exports = {
       const embed = new MessageEmbed()
         .setTitle('🦊  F O X  🦊')
         .setImage(img)
-        .setFooter({ text: interaction.member.displayName,  iconURL: interaction.user.displayAvatarURL({ dynamic: true }) })
+        .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
         .setTimestamp()
         .setColor(client.config.embedcolors.warning);
       await interaction.reply({ embeds: [embed] });
