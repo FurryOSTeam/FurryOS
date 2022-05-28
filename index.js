@@ -1,3 +1,5 @@
+const express = require("express");
+const app = express();
 const Discord = require('discord.js');
 const handler = require("./handlers/index");
 const client = new Discord.Client({
@@ -46,6 +48,14 @@ process.on("uncaughtException", (err) => {
   
 process.on("unhandledRejection", (reason, promise) => {
     console.log("[FATAL] Possibly Unhandled Rejection at: Promise ", promise, " reason: ", reason.message);
+});
+
+app.get('/', (request, response) => {
+    response.sendStatus(200);
+});
+
+const listener = app.listen(process.env.PORT, () => {
+    console.log('Your app is currently listening on port: ' + listener.address().port);
 });
 
 client.login(process.env.token);
