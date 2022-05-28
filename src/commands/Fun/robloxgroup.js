@@ -33,6 +33,7 @@ module.exports = {
                     //.addField("**Group roles and ranks**", `${roles.map((role) => "``" + role.name + " | " + role.rank +"``" )}`, true)
                     .addField("**Group description**", `${groupInfo.description}`, true)
                     .addField("**Group members**", `${groupInfo.memberCount}`, true)
+                    .setTimestamp()
                     .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
                     .setColor(client.config.embedcolors.default);
             await interaction.reply({ embeds: [embed], ephemeral: true });

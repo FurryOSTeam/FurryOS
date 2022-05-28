@@ -28,6 +28,7 @@ module.exports = {
             .addField(`Account Age (in days)`, `${playerInfo.age}` || "Not available", true)
             .addField(`Join Date`, `${playerInfo.joinDate}` || "Not available", true)
             .addField(`Description`, `${playerInfo.blurb}` || "Not available", true)
+            .setTimestamp()
             .setThumbnail(`https://www.roblox.com/headshot-thumbnail/image?userId=${userid}&width=420&height=420&format=png`)
             .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
         interaction.reply({ embeds: [infoEmbed] });

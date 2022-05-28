@@ -27,6 +27,7 @@ module.exports = {
 		  	.setColor(client.config.embedcolors.default)
 		  	.addField("Question", question)
 		  	.addField("Answer", replies[result])
+        .setTimestamp()
         .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 
 		  await interaction.reply({ embeds: [ballembed] })

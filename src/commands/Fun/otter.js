@@ -15,6 +15,7 @@ module.exports = {
           let embed = new MessageEmbed()
           embed.setTitle(`Otter 🦦`)
           embed.setImage(otterimage)
+          embed.setTimestamp()
           embed.setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
           embed.setColor('#7F674F');
       interaction.reply({ embeds: [embed] });

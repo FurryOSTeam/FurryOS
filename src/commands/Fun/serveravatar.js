@@ -33,6 +33,7 @@ module.exports = {
           .setColor(client.config.embedcolors.default)
           .setImage(getImageEnding(`webp`))
           .setDescription(`[Png](${getImageEnding(`png`)}) | [Webp](${getImageEnding(`webp`)}) | [Jpg](${getImageEnding(`jpg`)})`)
+          .setTimestamp()
           .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
         await interaction.reply({ embeds: [embed] });
     } else {
@@ -40,6 +41,7 @@ module.exports = {
           .setTitle(`${user.username}'s Server Avatar`)
           .setColor(client.config.embedcolors.default)
           .setDescription(`This user has no server avatar.`)
+          .setTimestamp()
           .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
         await interaction.reply({ embeds: [embed] });
     }
