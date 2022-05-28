@@ -10,6 +10,14 @@ app.get('/', (request, response) => {
     return response.sendFile('./src/web/index.html', { root: '.' });
 });
 
+app.use(function(req, res) {
+    res.status(404);
+    if (req.accepts('html')) {
+      res.render('/404', { url: req.url });
+      return;
+    }
+  });
+
 const listener = app.listen(process.env.PORT, () => {
     console.log('Your app is currently listening on port: ' + listener.address().port);
 });
