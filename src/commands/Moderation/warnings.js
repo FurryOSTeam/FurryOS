@@ -37,13 +37,13 @@ module.exports = {
         .setColor(client.config.embedcolors.error)
         .setTitle(`No warnings found`)
         .setTimestamp()
-        .setFooter({ text: 'FurryOS' })]})
+        .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })]})
        
         let reply = new Discord.MessageEmbed()
         .setColor(client.config.embedcolors.default)
         .setTitle(`Warnings for: ${userId}`)
         .setTimestamp()
-        .setFooter({ text: 'FurryOS' })
+        .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
         
         for (const warning of results.warnings) {
           const { author, timestamp, reason, warnID } = warning

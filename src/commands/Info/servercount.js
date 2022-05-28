@@ -16,6 +16,7 @@ module.exports = {
       .setTitle('FurryOS\'s Server Count')
       .setDescription(stripIndent`\`\`\`AsciiDoc\n${counts}\`\`\``)
       .setTimestamp()
+      .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
       .setColor(client.config.embedcolors.default);
     await interaction.reply({ embeds: [embed] });
   }

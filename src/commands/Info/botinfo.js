@@ -35,6 +35,7 @@ module.exports = {
                 .addField("`🤖` Arch", `\`${os.arch()}\``, true)
                 .addField("`💻` Platform", `\`\`${os.platform()}\`\``, true)
                 .addField("API Latency", `${(interaction.client.ws.ping)}ms`)
+                .setTimestamp()
                 .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL() });
            await interaction.reply({ embeds: [botinfo] })
         });

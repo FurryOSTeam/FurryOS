@@ -27,8 +27,8 @@ module.exports = {
             description: `**Error:**\n`
             + `\`There was an error while compiling your code: ${err}\``,
             author: {
-                name: interaction.user.tag,
-                icon_url: interaction.user.displayAvatarURL()
+                name: client.config.embedfooterText,
+                icon_url: client.user.displayAvatarURL({ dynamic: true })
             }
         }]});
     }

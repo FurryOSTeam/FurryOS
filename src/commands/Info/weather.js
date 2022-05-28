@@ -38,6 +38,8 @@ module.exports = {
         .addField('Feels like', `${current.feelslike}°`, true)
         .addField('Humidity', `${current.humidity}%`, true)
         .addField('Day', `${current.day}`, true)
+        .setTimestamp()
+        .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 
         interaction.reply({ embeds: [weatherinfo] })
         })        

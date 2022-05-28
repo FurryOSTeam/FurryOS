@@ -42,7 +42,9 @@ module.exports = {
         
         .addField("❱ Total Emojis", "\`" + interaction.guild.emojis.cache.size + "\`", true)
         .addField("❱ Total Roles", "\`" + interaction.guild.roles.cache.size + "\`", true)
+        .addField("❱ ID", `${interaction.guild.id}`, true)
         .setThumbnail(interaction.guild.iconURL({dynamic: true}))
-        .setFooter({ text: "ID: " + interaction.guild.id, iconURL: interaction.guild.iconURL({dynamic: true})})]});
+        .setTimestamp()
+        .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })]});
   }
 }

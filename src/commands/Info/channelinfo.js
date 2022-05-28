@@ -25,6 +25,8 @@ module.exports = {
             .addField("**Channel Type**", `${channel.type}`)
             .addField("**Channel Description**", `${channel.topic || "No Description"}`)
             .addField("**Channel Created At**", `${channel.createdAt}`)
+            .setTimestamp()
+            .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
             .setColor(client.config.embedcolors.default);
         await interaction.reply({ embeds: [embed] });
     }

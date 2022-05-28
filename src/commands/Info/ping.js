@@ -18,7 +18,8 @@ module.exports = {
       .setDescription('')
       .addField('Latency', latency, true)
       .addField('API Latency', apiLatency, true)
-      .setTimestamp();
+      .setTimestamp()
+      .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
     msg.edit({ embeds: [embed] });
   }
 }

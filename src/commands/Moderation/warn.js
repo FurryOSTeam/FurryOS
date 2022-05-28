@@ -64,7 +64,7 @@ module.exports = {
         .setColor(client.config.embedcolors.success)
         .setTitle(`✅ Warned user! || ${reason}`)
         .setTimestamp()
-        .setFooter({ text: 'FurryOS' })]})
+        .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })]})
         mongoose.connection.close()
       }
     })

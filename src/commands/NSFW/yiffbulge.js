@@ -15,8 +15,8 @@ module.exports = {
       const fboop = new Discord.MessageEmbed()
         .setTitle('Furries Bulge!')
 				.setAuthor({ name: interaction.user.tag, iconURL: interaction.user.displayAvatarURL() })
-				.setFooter({ text: 'OwO', iconURL: interaction.user.displayAvatarURL() })
-				.setTimestamp(new Date().toISOString())
+				.setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
+				.setTimestamp()
 				.setDescription([
 					`[[ShortURL]](${json.shortURL})`,
 					`[[ReportURL]](${json.reportURL})`,

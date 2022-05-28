@@ -36,14 +36,14 @@ module.exports = {
             .setColor(client.config.embedcolors.success)
             .setTitle(`✅ Deleted warning!`)
             .setTimestamp()
-            .setFooter({ text: 'FurryOS'})]})
+            .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })]})
           mongoose.connection.close()
         }catch(err){
           await interaction.reply({ embeds: [new Discord.MessageEmbed()
             .setColor(client.config.embedcolors.error)
             .setTitle(`❌ This warning does not exist!`)
             .setTimestamp()
-            .setFooter({ text: 'FurryOS'})]})
+            .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })]})
           console.log(err)
           }
        })

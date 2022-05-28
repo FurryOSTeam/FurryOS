@@ -82,7 +82,8 @@ module.exports = {
                 .addField("🔒 - Owner", ownerCommandsList.map((data) => `${data}`).join(", "), true)
                 .addField("ℹ - Info", infoCommandsList.map((data) => `${data}`).join(", "), true)
                 .setColor(client.config.embedcolors.default)
-                .setFooter({ text: `${client.config.embedfooterText}`, iconURL: `${client.user.displayAvatarURL()}` });
+                .setTimestamp()
+                .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 
                 if (interaction.channel.nsfw) {
                     helpEmbed.addField("🔞 - NSFW", nsfwCommandsList.map((data) => `${data}`).join(", "), true);
@@ -99,7 +100,7 @@ module.exports = {
                     .setTitle(`Error.`)
                     .setDescription(`There isn't any SlashCommand named "${commandInt}"`)
                     .setTimestamp()
-                    .setFooter({ text: client.config.embedfooterText})], ephemeral: true });
+                    .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })], ephemeral: true });
             } else {
                 let command = client.slash.get(commandInt.toLowerCase());
                 let name = command.name;
@@ -114,7 +115,8 @@ module.exports = {
                         { name: "Usage", value: `${usage}` },
                         { name: 'Category', value: `${category}` })
                     .setColor(client.config.embedcolors.default)
-                    .setFooter({ text: `${client.config.embedfooterText}`, iconURL: `${client.user.displayAvatarURL()}` });
+                    .setTimestamp()
+                    .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 
                 interaction.reply({ embeds: [helpCmdEmbed], ephemeral: true});
             }

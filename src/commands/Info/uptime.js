@@ -13,8 +13,8 @@ module.exports = {
       color: client.config.embedcolors.default,
       description: `The bot has been up for ${uptime}.`,
       footer: {
-        text: client.user.username,
-        icon_url: client.user.displayAvatarURL()
+        text: client.config.embedfooterText,
+        icon_url: client.user.displayAvatarURL({ dynamic: true })
       },
       timestamp: new Date()
     }]})

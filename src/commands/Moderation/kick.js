@@ -33,7 +33,7 @@ module.exports = {
           if(!member.kickable || member.user.id === client.user.id) return interaction.reply({ content: "That user is not kickable.", ephemeral: true });
           
           await member.user.send(`You were kicked from **\`${interaction.guild.name}\`** for \`${reason}\``).catch(err => {})
-          member.kick({ reason })
+          await member.kick({ reason })
 
           const embed = new MessageEmbed()
             .setColor(client.config.embedcolors.success)
@@ -42,8 +42,8 @@ module.exports = {
             .addField('Server', `${interaction.guild.name}`, true)
             .setDescription(`**Reason:** ${reason}`)
             .setTimestamp()
-            .setFooter({ text: `© ${interaction.guild.me.displayName}`, iconURL: client.user.displayAvatarURL() });
-
+            .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
+            
           await interaction.reply({ embeds: [embed] });
         } else{
           await interaction.reply({ content: "Member not found.", ephemeral: true });

@@ -33,7 +33,7 @@ module.exports = {
           if(!member.bannable || member.user.id === client.user.id) return interaction.reply({ content: "That user is not bannable.", ephemeral: true });
           
           await member.user.send(`You are banned from **\`${interaction.guild.name}\`** for \`${reason}\``).catch(err => {})
-          member.ban({ reason })
+          await member.ban({ reason })
 
           const embed = new MessageEmbed()
             .setColor(client.config.embedcolors.success)
@@ -42,7 +42,7 @@ module.exports = {
             .addField('Server', `${interaction.guild.name}`, true)
             .setDescription(`**Reason:** ${reason}`)
             .setTimestamp()
-            .setFooter({ text: `© ${interaction.guild.me.displayName}`, iconURL: client.user.displayAvatarURL() });
+            .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 
           await interaction.reply({ embeds: [embed] });
         } else{

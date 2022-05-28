@@ -25,8 +25,8 @@ module.exports = {
       const fboop = new Discord.MessageEmbed()
         .setTitle(`${query.charAt(0).toUpperCase() + query.slice(1)} yiff!`)
 				.setAuthor({ name: interaction.user.tag, iconURL: interaction.user.displayAvatarURL() })
-				.setFooter({ text: 'OwO', iconURL: interaction.user.displayAvatarURL() })
-				.setTimestamp(new Date().toISOString())
+				.setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
+				.setTimestamp()
 				.setDescription([
 					`[[ShortURL]](${json.shortURL})`,
 					`[[ReportURL]](${json.reportURL})`,

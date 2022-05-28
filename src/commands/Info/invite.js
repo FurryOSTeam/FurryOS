@@ -25,7 +25,7 @@ module.exports = {
       .addField('Maintainers',
         'bigbenster702#1337'
       )
-      .setFooter({ text: interaction.member.displayName, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) })
+      .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
       .setTimestamp()
       .setColor(client.config.embedcolors.default);
     await interaction.reply({ embeds: [embed] });
