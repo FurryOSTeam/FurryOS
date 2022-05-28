@@ -1,0 +1,14 @@
+:root {
+	
+	--primary: #262626;
+	--primary-disabled: #292222;
+	
+	--secondary: white;
+	--secondary-disabled: #fffff;
+	
+	--third: #738adb;
+	--third-disabled: #ababab;
+	
+	--o1: #00b2c9;
+	--o1-disabled: #008191;
+}
