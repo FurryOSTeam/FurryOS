@@ -51,7 +51,7 @@ process.on("unhandledRejection", (reason, promise) => {
 });
 
 app.get('/', (request, response) => {
-    response.sendStatus(200);
+    return response.sendFile('./src/web/index.html', { root: '.' });
 });
 
 const listener = app.listen(process.env.PORT, () => {
