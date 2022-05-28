@@ -22,8 +22,10 @@ module.exports = {
 		  let ballembed = new Discord.MessageEmbed()
 		  	.setAuthor({ name: interaction.user.tag})
 		  	.setColor(client.config.embedcolors.default)
-		  	.addField({ name: "Question", value: interaction.options.getString("question") })
-		  	.addField({ name: "Answer", value: replies[result] })
+		  	.addField(
+            { name: "Question", value: interaction.options.getString("question") },
+            { name: "Answer", value: replies[result] }
+        )
         .setTimestamp()
         .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 
