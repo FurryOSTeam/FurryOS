@@ -26,7 +26,8 @@ module.exports = {
 		  	.setAuthor({ name: interaction.user.tag})
 		  	.setColor(client.config.embedcolors.default)
 		  	.addField("Question", question)
-		  	.addField("Answer", replies[result]);
+		  	.addField("Answer", replies[result])
+        .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 
 		  await interaction.reply({ embeds: [ballembed] })
 	}
