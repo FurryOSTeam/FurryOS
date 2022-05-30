@@ -32,6 +32,8 @@ const client = new Discord.Client({
         //Discord.Intents.FLAGS.DIRECT_MESSAGE_TYPING
     ],
 });
+const discordModals = require('discord-modals');
+discordModals(client);
 
 module.exports = client;
 
