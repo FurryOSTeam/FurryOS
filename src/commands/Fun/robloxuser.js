@@ -36,7 +36,7 @@ module.exports = {
             .addField(`Description`, `${playerInfo.blurb}` || "Not available")
             .setTimestamp()
             .setThumbnail(`https://www.roblox.com/headshot-thumbnail/image?userId=${userid}&width=420&height=420&format=png`)
-            .setColor(client.config.embedcolors.error)
+            .setColor(client.config.embedcolors.default)
             .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
         interaction.reply({ embeds: [infoEmbed] });
         });
