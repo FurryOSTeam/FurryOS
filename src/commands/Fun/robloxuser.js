@@ -25,6 +25,7 @@ module.exports = {
             .setURL(`https://www.roblox.com/users/${userid}/profile`)
             .setTitle(`${playerInfo.username}'s profile`)
             //.addField(`Status`, `${playerInfo.status}` || "Not available", true) //gone BOOHOO WAAA OSAHFDSHFGSDGFSUIRGFRUIGFHRGNFIUG
+            .setFields(`User ID`, `${userid}` || "Not available", true)
             .addField(`Account Age (in days)`, `${playerInfo.age}` || "Not available", true)
             .addField(`Join Date`, `${playerInfo.joinDate}` || "Not available", true)
             .addField(`Description`, `${playerInfo.blurb}` || "Not available", true)
