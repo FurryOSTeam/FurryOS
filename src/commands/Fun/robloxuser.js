@@ -29,7 +29,7 @@ module.exports = {
             .addField(`Account Age (in days)`, `${playerInfo.age || "Not available"}`, true)
             .addField(`Join Date`, `${playerInfo.joinDate || "Not available"}`, true)
             .addField(`User Display Name`, `${playerInfo.displayName || "Not available"}`, true)
-            .addField(`Is Banned`, `${playerInfo.isBanned || "Not available"}`, true)
+            .addField(`Is Banned`, `${playerInfo.isBanned}`, true)
             .addField(`Friends`, `${playerInfo.friendCount || "Not available"}`, true)
             .addField(`Followers`, `${playerInfo.followerCount || "Not available"}`, true)
             .addField(`Following`, `${playerInfo.followingCount || "Not available"}`, true)
