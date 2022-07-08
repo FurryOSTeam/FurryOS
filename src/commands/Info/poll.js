@@ -20,8 +20,8 @@ module.exports = {
         const embed = new MessageEmbed()
         .setTitle("📊 Poll")
         .setDescription(question);
-        
-        await message.channel.send({ embeds: [embed] }).then(msg => {
+
+        await interaction.reply({ embeds: [embed] }).then(msg => {
             msg.react('👍');
             msg.react('👎');
         });
