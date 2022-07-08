@@ -21,6 +21,7 @@ module.exports = {
         const embed = new MessageEmbed()
         .setTitle("📊 Poll")
         .setDescription(question)
+        .setColor(client.config.embedcolors.default)
         .setTimestamp()
         .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 
