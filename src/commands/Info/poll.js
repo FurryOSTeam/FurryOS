@@ -21,9 +21,9 @@ module.exports = {
         .setTitle("📊 Poll")
         .setDescription(question);
 
-        await interaction.reply({ embeds: [embed] }).then(function (message) {
-            message.react('👍')
-            message.react('👎')
+        await interaction.reply({ embeds: [embed], fetchReply: true }).then(message => {
+            message.react('👍');
+            message.react('👎');
         });
   }
 }
