@@ -36,7 +36,8 @@ module.exports = {
                     .setTimestamp()
                     .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
                     .setColor(client.config.embedcolors.default);
-            await interaction.reply({ embeds: [embed], ephemeral: true });
+            await interaction.reply({ embeds: [embed] });
+            //await interaction.reply({ embeds: [embed], ephemeral: true });
         }catch(e){
             interaction.reply({ embeds: [new Discord.MessageEmbed()
                 .setColor(client.config.embedcolors.error)
