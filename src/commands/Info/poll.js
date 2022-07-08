@@ -16,14 +16,17 @@ module.exports = {
     ],
     run: async (client, interaction) => {
         const question = interaction.options.getString("question");
+        if (question.length > 4096) return interaction.reply({ content: '**You Are Not Allowed To Go Over 4096 Characters!**', ephemeral: true });
 
         const embed = new MessageEmbed()
         .setTitle("📊 Poll")
-        .setDescription(question);
+        .setDescription(question)
+        .setTimestamp()
+        .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 
         await interaction.reply({ embeds: [embed], fetchReply: true }).then(message => {
             message.react('👍');
             message.react('👎');
         });
-  }
+    }
 }
