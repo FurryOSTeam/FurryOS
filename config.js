@@ -1,7 +1,7 @@
 module.exports = {
     botClientID: "840765753983762434",
     ownerID: ["345959027143999490"],
-    embedfooterText: "utumOS",
+    embedfooterText: "FurryOS",
     embedcolors: {
         error: "#ff0000",
         success: "#00ff00",
