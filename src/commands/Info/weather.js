@@ -27,19 +27,19 @@ module.exports = {
         var location = result[0].location;
 
         const weatherinfo = new Discord.MessageEmbed()
-        .setDescription(`**${current.skytext}**`)
-        .setAuthor({ name: `Weather forecast for ${current.observationpoint}` })
-        .setThumbnail(current.imageUrl)
-        .setColor(client.config.embedcolors.default)
-        .addField('Timezone', `UTC${location.timezone}`, true)
-        .addField('Degree Type', 'Fahrenheit', true)
-        .addField('Temperature', `${current.temperature}°`, true)
-        .addField('Wind', current.winddisplay, true)
-        .addField('Feels like', `${current.feelslike}°`, true)
-        .addField('Humidity', `${current.humidity}%`, true)
-        .addField('Day', `${current.day}`, true)
-        .setTimestamp()
-        .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
+            .setDescription(`**${current.skytext}**`)
+            .setAuthor({ name: `Weather forecast for ${current.observationpoint}` })
+            .setThumbnail(current.imageUrl)
+            .setColor(client.config.embedcolors.default)
+            .addField('Timezone', `UTC${location.timezone}`, true)
+            .addField('Degree Type', 'Fahrenheit', true)
+            .addField('Temperature', `${current.temperature}°`, true)
+            .addField('Wind', current.winddisplay, true)
+            .addField('Feels like', `${current.feelslike}°`, true)
+            .addField('Humidity', `${current.humidity}%`, true)
+            .addField('Day', `${current.day}`, true)
+            .setTimestamp()
+            .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 
         interaction.reply({ embeds: [weatherinfo] })
         })        
