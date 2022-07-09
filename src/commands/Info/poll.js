@@ -27,7 +27,7 @@ module.exports = {
 
         //await interaction.reply({ content: `Poll sent! You may now dismiss this message.`, ephemeral: true });
 
-        await interaction.channel.send({ mbeds: [embed], fetchReply: true }).then(message => {
+        await interaction.reply({ embeds: [embed], fetchReply: true }).then(message => {
             message.react('👍');
             message.react('👎');
         });
