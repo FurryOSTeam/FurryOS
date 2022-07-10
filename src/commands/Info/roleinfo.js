@@ -45,7 +45,7 @@ module.exports = {
         {
             name: 'role',
             description: 'The role to show info about.',
-            type: 'STRING',
+            type: 'ROLE',
             required: true
         }
     ],
