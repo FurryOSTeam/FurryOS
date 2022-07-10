@@ -78,7 +78,7 @@ module.exports = {
             .addField('Hoisted', `\`${role.hoist}\``, true)
             .addField(
                 'Created On',
-                `\`${moment(role.createdAt).format("DD/MM/YYYY") + "\n" + moment(role.createdAt).format("hh:mm:ss")}`,
+                `${moment(role.createdAt).format("DD/MM/YYYY") + "\n" + moment(role.createdAt).format("hh:mm:ss")}`,
                 true
             )
             .addField(
