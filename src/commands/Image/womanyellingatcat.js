@@ -24,7 +24,7 @@ module.exports = {
     let mention = interaction.options.getMentionable("user-woman");
     const avatar = mention.user.displayAvatarURL({ size: 2048, format: "png" });
     let mention2 = interaction.options.getMentionable("user-cat");
-    const avatar2 = mention.user.displayAvatarURL({ size: 2048, format: "png" });
+    const avatar2 = mention2.user.displayAvatarURL({ size: 2048, format: "png" });
 
     await interaction.reply({ files: [{ attachment: `https://vacefron.nl/api/womanyellingatcat?woman=${avatar}&cat=${avatar2}`, name: "womanyellingatcat.png" }] });
 	}
