@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const { Calculator } = require('weky');
 
 module.exports = {
     name: "math",
