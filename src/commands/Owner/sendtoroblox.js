@@ -19,13 +19,17 @@ module.exports = {
     const mess = interaction.options.getString("message");
 
     try {
-        let res = await fetch.post(`https://apis.roblox.com/messaging-service/v1/universes/1725206480/topics/Announcements`, {
-            headers: {
-                "x-api-key": process.env.thingy
-            },
-            data: {
-                message: mess,
-            }});
+        fetch({
+            method: "POST",
+            url: "https://apis.roblox.com/messaging-service/v1/universes/1725206480/topics/Announcements",
+              headers: {
+                   'x-api-key': process.env.thingy,
+                   'Content-Type': "application/json"
+               },
+               data: {
+                 message: mess,
+               },
+             })
         const embed = new Discord.MessageEmbed()
             .setColor(client.config.embedcolors.success)
             .setTitle(`Message.`)
@@ -38,8 +42,8 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
             .setColor(client.config.embedcolors.error)
             .setTitle(`Message.`)
-            .addField('Failed to send message: ', `${mess}`, true)
-            .addField('Error: ', `${err}`, true)
+            .addField('Failed to send message: ', `${mess}`)
+            .addField('Error: ', `${err}`)
             .setTimestamp()
             .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 
