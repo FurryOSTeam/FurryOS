@@ -27,7 +27,7 @@ module.exports = {
                 message: mess,
             }
         });
-        const embed = new MessageEmbed()
+        const embed = new Discord.MessageEmbed()
             .setColor(client.config.embedcolors.success)
             .setTitle(`Message.`)
             .addField('Successfully to sent message: ', `${mess}`, true)
@@ -36,7 +36,7 @@ module.exports = {
 
         await interaction.reply({ embeds: [embed] });
     } catch (err) {
-        const embed = new MessageEmbed()
+        const embed = new Discord.MessageEmbed()
             .setColor(client.config.embedcolors.error)
             .setTitle(`Message.`)
             .addField('Failed to send message: ', `${mess}`, true)
