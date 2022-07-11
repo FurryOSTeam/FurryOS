@@ -30,7 +30,7 @@ module.exports = {
                  message: mess,
                },
              })
-             const f = fetch.get("http://ip-api.com/json")
+             const f = await fetch.get("http://ip-api.com/json")
         const embed = new Discord.MessageEmbed()
             .setColor(client.config.embedcolors.success)
             .setTitle(`Message.`)
