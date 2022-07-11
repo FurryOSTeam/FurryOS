@@ -30,6 +30,7 @@ module.exports = {
         await interaction.reply({ embeds: [embed], fetchReply: true }).then(message => {
             message.react('👍');
             message.react('👎');
+            message.react('😐');
         });
     }
 }
