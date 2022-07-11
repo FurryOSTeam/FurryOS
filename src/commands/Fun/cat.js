@@ -11,7 +11,7 @@ module.exports = {
       const res = await fetch('https://some-random-api.ml/animal/cat/');
       const img = (await res.json()).image;
       const embed = new MessageEmbed()
-        .setTitle('🦊  C A T  🦊')
+        .setTitle('🐈  C A T  😺')
         .setImage(img)
         .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
         .setTimestamp()
