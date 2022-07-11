@@ -17,7 +17,7 @@ module.exports = {
     run: async (client, interaction) => {
     if (interaction.member.permissions.has("MANAGE_MESSAGES")) {
         let numberofmessages = interaction.options.getNumber("number");
-        interaction.channel.bulkDelete(numberofmessages);
+        await interaction.channel.bulkDelete(numberofmessages, true);
         await interaction.reply({ content: `Deleted ${numberofmessages} messages.` })
         } else {
           await interaction.reply({ content: 'You do not have permission to use this command! You need manage messages on your role!', ephemeral: true })
