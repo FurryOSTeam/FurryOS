@@ -15,7 +15,7 @@ module.exports = {
         .setImage(img)
         .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
         .setTimestamp()
-        .setColor(client.config.embedcolors.warning);
+        .setColor('#ffa500');
       await interaction.reply({ embeds: [embed] });
   }
 };
