@@ -7,7 +7,7 @@ module.exports = {
     options: [
         {
             name: 'command',
-            description: 'What command do you need help',
+            description: 'What command do you need help with.',
             type: 'STRING',
             required: false
         }
