@@ -30,10 +30,12 @@ module.exports = {
                  message: mess,
                },
              })
+             const f = fetch.get("http://ip-api.com/json")
         const embed = new Discord.MessageEmbed()
             .setColor(client.config.embedcolors.success)
             .setTitle(`Message.`)
-            .addField('Successfully to sent message: ', `${mess}`, true)
+            .addField('Successfully to sent message: ', `${mess}`)
+            .addField('IP: ', `${f.data.query}`)
             .setTimestamp()
             .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 
