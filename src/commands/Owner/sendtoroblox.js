@@ -25,8 +25,7 @@ module.exports = {
             },
             data: {
                 message: mess,
-            }
-        });
+            }});
         const embed = new Discord.MessageEmbed()
             .setColor(client.config.embedcolors.success)
             .setTitle(`Message.`)
@@ -40,6 +39,7 @@ module.exports = {
             .setColor(client.config.embedcolors.error)
             .setTitle(`Message.`)
             .addField('Failed to send message: ', `${mess}`, true)
+            .addField('Error: ', `${err}`, true)
             .setTimestamp()
             .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 
