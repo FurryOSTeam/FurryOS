@@ -28,7 +28,7 @@ module.exports = {
             await channel.send(message);
             interaction.reply({ content: "Sent.", ephemeral: true });
         } catch (err) {
-            interaction.reply({ content: "Error sending message.", ephemeral: true });
+            interaction.reply({ content: "Error sending message. " + err, ephemeral: true });
         }
 	}
 }
