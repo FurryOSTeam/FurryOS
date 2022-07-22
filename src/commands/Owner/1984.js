@@ -1,5 +1,9 @@
 const Discord = require('discord.js');
 
+const ids = {
+    id: ["345959027143999490", "502947692046057473", "615225900514017312"]
+}
+
 module.exports = {
     name: "1984",
     usage: "/1984 <user>",
@@ -9,14 +13,25 @@ module.exports = {
     options: [
         {
             name: "user",
-            type: "SUB_COMMAND",
             description: "1984s a user.",
             type: 'USER',
             required: true
         }
     ],
     run: async (client, interaction) => {
-        console.log("amongus");
-        await interaction.reply("Among Us");
+        if (ids.id.includes(interaction.user.id)) {
+            const role = interaction.guild.roles.cache.find(r => r.id === "999868292162404464");
+            const member = interaction.options.getUser("user");
+            member.roles.add(role);
+            const embed = new Discord.MessageEmbed()
+                .setTitle("1984'd")
+                .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
+                .setTimestamp()
+                .setDescription(`${member.user.tag} has been 1984'd.`)
+                .setColor(client.config.embedcolors.default)
+            await interaction.reply({ embeds: [embed] });
+        } else {
+            await interaction.reply({ content: "You don't have permission to use this command.", ephemeral: true })
+        }
 	}
 }
