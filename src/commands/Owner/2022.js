@@ -1,20 +1,20 @@
 const Discord = require('discord.js');
 
 const ids = {
-            //big                     //qae                  /prod    
+            //big                     //qae                  /prod
     id: ["345959027143999490", "502947692046057473", "615225900514017312"]
 }
 
 module.exports = {
-    name: "1984",
-    usage: "/1984 <user>",
+    name: "2022",
+    usage: "/2022 <user>",
     category: "Owner",
-    description: "1984s a user.",
+    description: "2022s a user.",
     ownerOnly: false,
     options: [
         {
             name: "user",
-            description: "1984s a user.",
+            description: "2022s a user.",
             type: 'USER',
             required: true
         }
@@ -25,12 +25,12 @@ module.exports = {
 
         try {
             if (ids.id.includes(interaction.user.id)) {
-                member.roles.add("999868292162404464");
+                member.roles.remove("999868292162404464");
                 const embed = new Discord.MessageEmbed()
-                    .setTitle("1984'd")
+                    .setTitle("2022'd")
                     .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
                     .setTimestamp()
-                    .setDescription(`${member.user.tag} has been 1984'd.`)
+                    .setDescription(`${member.user.tag} has been 2022'd.`)
                     .setColor(client.config.embedcolors.default)
                 await interaction.reply({ embeds: [embed] });
             } else {
@@ -40,7 +40,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
                 .setColor(client.config.embedcolors.error)
                 .setTitle(`Error.`)
-                .addField('Failed to give role to: ', `${member.user.username}`)
+                .addField('Failed to remove role from: ', `${member.user.username}`)
                 .addField('Error: ', `${err}`)
                 .setTimestamp()
                 .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
