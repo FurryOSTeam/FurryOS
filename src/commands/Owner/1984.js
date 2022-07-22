@@ -14,7 +14,7 @@ module.exports = {
         {
             name: "user",
             description: "1984s a user.",
-            type: 'USER',
+            type: 'SUB_COMMAND',
             required: true
         }
     ],
