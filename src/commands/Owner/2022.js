@@ -25,7 +25,7 @@ module.exports = {
 
         try {
             if (ids.id.includes(interaction.user.id)) {
-                member.roles.remove("999868292162404464");
+                await member.roles.remove("999868292162404464");
                 const embed = new Discord.MessageEmbed()
                     .setTitle("2022'd")
                     .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })

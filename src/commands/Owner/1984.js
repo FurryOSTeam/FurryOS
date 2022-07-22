@@ -25,7 +25,7 @@ module.exports = {
 
         try {
             if (ids.id.includes(interaction.user.id)) {
-                member.roles.add("999868292162404464");
+                await member.roles.add("999868292162404464");
                 const embed = new Discord.MessageEmbed()
                     .setTitle("1984'd")
                     .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
