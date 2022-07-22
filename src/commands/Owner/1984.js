@@ -21,13 +21,13 @@ module.exports = {
     run: async (client, interaction) => {
         try {
             if (ids.id.includes(interaction.user.id)) {
-                const member = interaction.options.getUser("user");
-                member.roles.add("999868292162404464");
+                const user = interaction.options.getUser("user");
+                user.roles.add("999868292162404464");
                 const embed = new Discord.MessageEmbed()
                     .setTitle("1984'd")
                     .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
                     .setTimestamp()
-                    .setDescription(`${member.user.tag} has been 1984'd.`)
+                    .setDescription(`${user.user.tag} has been 1984'd.`)
                     .setColor(client.config.embedcolors.default)
                 await interaction.reply({ embeds: [embed] });
             } else {
@@ -37,7 +37,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
                 .setColor(client.config.embedcolors.error)
                 .setTitle(`Error.`)
-                .addField('Failed to give role to: ', `${member.user.username}`)
+                .addField('Failed to give role to: ', `${user.user.username}`)
                 .addField('Error: ', `${err}`)
                 .setTimestamp()
                 .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
