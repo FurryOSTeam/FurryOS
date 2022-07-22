@@ -15,7 +15,7 @@ module.exports = {
             name: "user",
             description: "1984s a user.",
             type: 'SUB_COMMAND',
-            required: true
+            //required: true
         }
     ],
     run: async (client, interaction) => {
