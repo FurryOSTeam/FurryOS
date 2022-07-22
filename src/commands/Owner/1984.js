@@ -22,7 +22,7 @@ module.exports = {
         try {
             if (ids.id.includes(interaction.user.id)) {
                 const member = interaction.options.getUser("user");
-                interaction.member.roles.add("999868292162404464");
+                member.roles.add("999868292162404464");
                 const embed = new Discord.MessageEmbed()
                     .setTitle("1984'd")
                     .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
@@ -34,15 +34,15 @@ module.exports = {
                 await interaction.reply({ content: "You don't have permission to use this command.", ephemeral: true })
             }
         } catch (err) {
-        const embed = new Discord.MessageEmbed()
-            .setColor(client.config.embedcolors.error)
-            .setTitle(`Error.`)
-            .addField('Failed to give role to: ', `${member.user.tag}`)
-            .addField('Error: ', `${err}`)
-            .setTimestamp()
-            .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
+            const embed = new Discord.MessageEmbed()
+                .setColor(client.config.embedcolors.error)
+                .setTitle(`Error.`)
+                .addField('Failed to give role to: ', `${member.user.username}`)
+                .addField('Error: ', `${err}`)
+                .setTimestamp()
+                .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 
-        await interaction.reply({ embeds: [embed] });
+            await interaction.reply({ embeds: [embed] });
         }
 	}
 }
