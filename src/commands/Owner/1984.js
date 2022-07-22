@@ -6,10 +6,10 @@ module.exports = {
     category: "Owner",
     description: "1984s a user.",
     ownerOnly: false,
-    type: "SUB_COMMAND",
     options: [
         {
-            name: "type",
+            name: "user",
+            type: "SUB_COMMAND",
             description: "1984s a user.",
             type: 'USER',
             required: true
