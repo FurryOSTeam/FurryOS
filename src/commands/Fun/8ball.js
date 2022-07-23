@@ -6,7 +6,7 @@ module.exports = {
     category: "Fun",
     description: "A magic 8 ball for you to ask questions to.",
     ownerOnly: false,
-    type: ApplicationCommandType.ChatInput,
+    type: Discord.ApplicationCommandType.ChatInput,
     options: [
       {
           name: "question",

@@ -40,7 +40,7 @@ client.slashCommands = new Discord.Collection();
 module.exports = client;
 
 ['slashCommand', 'events'].forEach((handler) => {
-    require(`./handlers/${handler}`)(client, Discord)
+    require(`./handlers/${handler}`)(client)
 });
 
 //process.on("uncaughtException", (err) => {

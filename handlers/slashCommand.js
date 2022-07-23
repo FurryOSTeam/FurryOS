@@ -1,5 +1,6 @@
 const fs = require('fs');
 const chalk = require('chalk');
+require('dotenv').config();
 
 const { PermissionsBitField } = require('discord.js');
 const { Routes } = require('discord-api-types/v9');
@@ -19,7 +20,7 @@ module.exports = (client) => {
 		const files = fs.readdirSync(`./src/commands/${dir}/`).filter(file => file.endsWith('.js'));
 
 		for(const file of files) {
-				const slashCommand = require(`./src/commands/${dir}/${file}`);
+				const slashCommand = require(`../src/commands/${dir}/${file}`);
 				slashCommands.push({
 					name: slashCommand.name,
 					description: slashCommand.description,

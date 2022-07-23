@@ -1,5 +1,5 @@
 module.exports = {
-    botClientID: "840765753983762434",
+    botClientID: "854912437135736883",
     ownerID: ["345959027143999490"],
     embedfooterText: "FurryOS",
     messages: {
