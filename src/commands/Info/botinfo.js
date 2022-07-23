@@ -21,7 +21,7 @@ module.exports = {
                 return console.log(err);
             }
             const duration = moment.duration(interaction.client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
-            const botinfo = new Discord.MessageEmbed()
+            const botinfo = new Discord.EmbedBuilder()
                 .setAuthor({ name: interaction.client.user.username })
                 .setTitle("__**Stats:**__")
                 .setColor(client.config.embedcolors.default)

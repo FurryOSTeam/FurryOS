@@ -30,8 +30,6 @@ const client = new Discord.Client({
         Discord.GatewayIntentBits.DirectMessageTyping
     ],
 });
-const discordModals = require('discord-modals');
-discordModals(client);
 
 client.config = require('./config.js');
 client.aliases = new Discord.Collection()

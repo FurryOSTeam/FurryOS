@@ -7,7 +7,7 @@ client.on("ready", () => {
         `/help`,
 	      `shork owo`,
 	      `${client.guilds.cache.size} servers`,
-        `Discord.JS v13 wooooo`
+        `Discord.JS v14 wooooo`
       ];
       
       let i = 0;
