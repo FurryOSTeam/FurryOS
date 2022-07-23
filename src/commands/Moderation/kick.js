@@ -6,17 +6,19 @@ module.exports = {
     category: "Moderation",
     description: "Kicks a person from the server.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
       {
           name: "user-to-kick",
           description: "Specifies a user to kick.",
-          type: 'USER',
+          type: Discord.ApplicationCommandType.Mentionable,
           required: true
       },
       {
           name: "reason",
           description: "Reason for the kick.",
-          type: 'STRING',
+          type: Discord.ApplicationCommandType.String,
           required: true
       }
   ],

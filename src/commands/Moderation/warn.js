@@ -10,17 +10,19 @@ module.exports = {
     category: "Moderation",
     description: "Warns a user.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
       {
           name: "user",
           description: "User to warn.",
-          type: 'USER',
+          type: Discord.ApplicationCommandOptionType.Mentionable,
           required: true
       },
       {
           name: "reason",
           description: "Reason for the warn.",
-          type: 'STRING',
+          type: Discord.ApplicationCommandOptionType.String,
           required: true
       }
   ],

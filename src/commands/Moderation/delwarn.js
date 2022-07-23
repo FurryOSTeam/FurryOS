@@ -9,17 +9,19 @@ module.exports = {
     category: "Moderation",
     description: "Deletes a warn from a user.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
       {
           name: "user",
           description: "User with the warn.",
-          type: 'USER',
+          type: Discord.ApplicationCommandOptionType.Mentionable,
           required: true
       },
       {
           name: "id",
           description: "Id of the warn.",
-          type: 'STRING',
+          type: Discord.ApplicationCommandOptionType.String,
           required: true
       }
   ],

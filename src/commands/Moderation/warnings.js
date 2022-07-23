@@ -9,11 +9,13 @@ module.exports = {
     category: "Moderation",
     description: "Shows warnings for a user.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
       {
           name: "user",
           description: "User to show the warnings of.",
-          type: 'USER',
+          type: Discord.ApplicationCommandOptionType.Mentionable,
           required: true
       }
   ],

@@ -6,11 +6,13 @@ module.exports = {
     category: "Moderation",
     description: "Purges messages.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
       {
           name: "number",
           description: "Number of messages to delete.",
-          type: 'NUMBER',
+          type: Discord.ApplicationCommandOptionType.Number,
           required: true
       }
   ],

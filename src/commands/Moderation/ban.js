@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, Discord } = require('discord.js');
 
 module.exports = {
     name: "ban",
@@ -6,17 +6,19 @@ module.exports = {
     category: "Moderation",
     description: "Bans a person from the server.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
       {
           name: "user-to-ban",
           description: "Specifies a user to ban.",
-          type: 'USER',
+          type: Discord.ApplicationCommandType.Mentionable,
           required: true
       },
       {
           name: "reason",
           description: "Reason for the ban.",
-          type: 'STRING',
+          type: Discord.ApplicationCommandType.String,
           required: true
       }
   ],
