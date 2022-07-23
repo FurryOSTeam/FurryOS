@@ -6,11 +6,13 @@ module.exports = {
     category: "Owner",
     description: "Runs code on the bot.",
     ownerOnly: true,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
       {
           name: "code",
           description: "Code to run.",
-          type: 'STRING',
+          type: Discord.ApplicationCommandOptionType.String,
           required: true
       }
   ],

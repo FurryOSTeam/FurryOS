@@ -8,11 +8,13 @@ module.exports = {
     category: "NSFW",
     description: "Shows yiff that you pick.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
       {
           name: "type",
           description: "Sends the type of yiff. (gay, straight, or lesbian)",
-          type: 'STRING',
+          type: Discord.ApplicationCommandOptionType.String,
           required: true
       }
   ],

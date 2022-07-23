@@ -1,4 +1,4 @@
-const { MessageEmbed, Discord } = require('discord.js');
+const Discord = require('discord.js');
 
 module.exports = {
     name: "ban",
@@ -12,13 +12,13 @@ module.exports = {
       {
           name: "user-to-ban",
           description: "Specifies a user to ban.",
-          type: Discord.ApplicationCommandType.Mentionable,
+          type: Discord.ApplicationCommandOptionType.User,
           required: true
       },
       {
           name: "reason",
           description: "Reason for the ban.",
-          type: Discord.ApplicationCommandType.String,
+          type: Discord.ApplicationCommandOptionType.String,
           required: true
       }
   ],
@@ -37,7 +37,7 @@ module.exports = {
           await member.user.send(`You are banned from **\`${interaction.guild.name}\`** for \`${reason}\``).catch(err => {})
           await member.ban({ reason })
 
-          const embed = new MessageEmbed()
+          const embed = new Discord.MessageEmbed()
             .setColor(client.config.embedcolors.success)
             .setTitle(`Member banned by ${banner}`)
             .addField('Banned Member', `${banned}`, true)

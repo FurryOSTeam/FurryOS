@@ -7,7 +7,7 @@ module.exports = {
     category: "Info",
     description: "Shows the modal test.",
     ownerOnly: false,
-    type: Discord.ApplicationCommandType.ChatInput,
+    type: Discord.ApplicationCommandType.Message,
     cooldown: 3000,
     run: async (client, interaction) => {
     const modal = new Modal()

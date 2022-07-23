@@ -6,17 +6,19 @@ module.exports = {
     category: "Owner",
     description: "Talks as the bot.",
     ownerOnly: true,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
         {
             name: "message",
             description: "Message to send.",
-            type: 'STRING',
+            type: Discord.ApplicationCommandOptionType.String,
             required: true
         },
         {
             name: "channel",
             description: "Channel to send the message to.",
-            type: 'CHANNEL',
+            type: Discord.ApplicationCommandOptionType.Channel,
             required: true
         }
     ],

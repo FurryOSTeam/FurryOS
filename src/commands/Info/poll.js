@@ -13,7 +13,7 @@ module.exports = {
         {
             name: "question",
             description: "The question of the poll.",
-            type: Discord.ApplicationCommandType.String,
+            type: Discord.ApplicationCommandOptionType.String,
             required: true
         }
     ],

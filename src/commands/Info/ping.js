@@ -1,4 +1,3 @@
-const { MessageEmbed } = require('discord.js');
 const Discord = require('discord.js');
 
 module.exports = {
@@ -10,7 +9,7 @@ module.exports = {
     type: Discord.ApplicationCommandType.ChatInput,
     cooldown: 3000,
     run: async (client, interaction) => {
-    const embed = new MessageEmbed()
+    const embed = new Discord.MessageEmbed()
       .setDescription('`Pinging...`')
       .setColor(client.config.embedcolors.default);    
     const msg = await interaction.reply({ embeds: [embed], fetchReply: true });

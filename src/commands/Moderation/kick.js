@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const Discord = require('discord.js');
 
 module.exports = {
     name: "kick",
@@ -12,13 +12,13 @@ module.exports = {
       {
           name: "user-to-kick",
           description: "Specifies a user to kick.",
-          type: Discord.ApplicationCommandType.Mentionable,
+          type: Discord.ApplicationCommandOptionType.Mentionable,
           required: true
       },
       {
           name: "reason",
           description: "Reason for the kick.",
-          type: Discord.ApplicationCommandType.String,
+          type: Discord.ApplicationCommandOptionType.String,
           required: true
       }
   ],
@@ -37,7 +37,7 @@ module.exports = {
           await member.user.send(`You were kicked from **\`${interaction.guild.name}\`** for \`${reason}\``).catch(err => {})
           await member.kick({ reason })
 
-          const embed = new MessageEmbed()
+          const embed = new Discord.MessageEmbed()
             .setColor(client.config.embedcolors.success)
             .setTitle(`Member kicked by ${kicker}`)
             .addField('Kicked Member', `${kicked}`, true)

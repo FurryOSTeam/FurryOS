@@ -48,7 +48,7 @@ module.exports = {
         {
             name: 'role',
             description: 'The role to show info about.',
-            type: Discord.ApplicationCommandType.Role,
+            type: Discord.ApplicationCommandOptionType.Role,
             required: true
         }
     ],

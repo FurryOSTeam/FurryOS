@@ -11,11 +11,13 @@ module.exports = {
     category: "Owner",
     description: "2022s a user.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
         {
             name: "user",
             description: "2022s a user.",
-            type: 'USER',
+            type: Discord.ApplicationCommandOptionType.User,
             required: true
         }
     ],

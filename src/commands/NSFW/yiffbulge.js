@@ -8,6 +8,8 @@ module.exports = {
     category: "NSFW",
     description: "Shows a furries bulge.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     run: async (client, interaction) => {
     if (interaction.channel.nsfw) {
      y.furry.bulge("json", 1)

@@ -8,6 +8,8 @@ module.exports = {
     category: "NSFW",
     description: "Shows random yiff.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     run: async (client, interaction) => {
     if (interaction.channel.nsfw) {
 
