@@ -4,17 +4,19 @@ const Discord = require("discord.js");
 module.exports = {
     name: "help",
     usage: '/help <command>',
+    category: "Info",
+    description: "Return all commands, or one specific command!",
+    ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
         {
             name: 'command',
             description: 'What command do you need help with.',
-            type: 'STRING',
+            type: Discord.ApplicationCommandOptionType.String,
             required: false
         }
     ],
-    category: "Info",
-    description: "Return all commands, or one specific command!",
-    ownerOnly: false,
     run: async (client, interaction) => {
         const row = new client.discord.MessageActionRow()
             .addComponents(

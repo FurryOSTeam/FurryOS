@@ -6,11 +6,13 @@ module.exports = {
     category: "Info",
     description: "Shows info about a channel.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
         {
             name: "channel",
             description: "Channel to show info about.",
-            type: 'CHANNEL',
+            type: Discord.ApplicationCommandOptionType.Channel,
             required: true
         }
     ],

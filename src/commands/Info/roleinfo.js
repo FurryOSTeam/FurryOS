@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const moment = require('moment');
+const Discord = require('discord.js');
 
 const permissions = {
     ADMINISTRATOR: 'Administrator',
@@ -41,11 +42,13 @@ module.exports = {
     category: "Info",
     description: "Shows info a about a role.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
         {
             name: 'role',
             description: 'The role to show info about.',
-            type: 'ROLE',
+            type: Discord.ApplicationCommandType.Role,
             required: true
         }
     ],

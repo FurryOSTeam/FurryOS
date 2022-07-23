@@ -6,6 +6,8 @@ module.exports = {
     category: "Info",
     description: "Shows the uptime of the bot.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     run: async (client, interaction) => {
     const time = require('ms')
     const uptime = time(client.uptime)

@@ -13,6 +13,8 @@ module.exports = {
     category: "Info",
     description: "Shows lots of info about the bot.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     run: async (client, interaction) => {
       cpuStat.usagePercent(async function (err, percent, seconds) {
             if (err) {

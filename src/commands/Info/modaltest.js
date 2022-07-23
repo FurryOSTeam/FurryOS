@@ -1,4 +1,5 @@
 const { Modal, TextInputComponent, showModal } = require('discord-modals');
+const Discord = require('discord.js');
 
 module.exports = {
     name: "modaltest",
@@ -6,6 +7,8 @@ module.exports = {
     category: "Info",
     description: "Shows the modal test.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     run: async (client, interaction) => {
     const modal = new Modal()
         .setCustomId('test-modal')

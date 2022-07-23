@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const { oneLine } = require('common-tags');
+const Discord = require('discord.js');
 
 module.exports = {
     name: "invite",
@@ -7,6 +8,8 @@ module.exports = {
     category: "Info",
     description: "Gives an invite for the support server and an invite for the bot.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     run: async (client, interaction) => {
     const embed = new MessageEmbed()
       .setTitle('Invite Me')

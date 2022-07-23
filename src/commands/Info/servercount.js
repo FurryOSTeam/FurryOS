@@ -8,6 +8,8 @@ module.exports = {
     category: "Info",
     description: "Displays the number of servers the bot is in.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     run: async (client, interaction) => {
     const counts = stripIndent`
         Servers :: ${client.guilds.cache.size}

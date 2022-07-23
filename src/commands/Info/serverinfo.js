@@ -8,6 +8,8 @@ module.exports = {
     category: "Info",
     description: "Displays info about the server.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     run: async (client, interaction) => {
       let boosts = interaction.guild.premiumSubscriptionCount;
       var boostlevel = 0;

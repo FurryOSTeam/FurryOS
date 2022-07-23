@@ -8,11 +8,13 @@ module.exports = {
     category: "Info",
     description: "Shows the weather in a place you pick.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
       {
           name: "location",
           description: "Location for the weather.",
-          type: 'STRING',
+          type: Discord.ApplicationCommandOptionType.String,
           required: true
       }
   ],

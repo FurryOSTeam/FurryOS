@@ -24,11 +24,13 @@ module.exports = {
     category: "Info",
     description: "Shows info about a user.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
       {
           name: "user",
           description: "User to show info about.",
-          type: 'USER',
+          type: Discord.ApplicationCommandOptionType.User,
           required: true
       }
   ],

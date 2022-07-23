@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const Discord = require('discord.js');
 
 module.exports = {
     name: "ping",
@@ -6,6 +7,8 @@ module.exports = {
     category: "Info",
     description: "Shows the ping of the bot.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     run: async (client, interaction) => {
     const embed = new MessageEmbed()
       .setDescription('`Pinging...`')

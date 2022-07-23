@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const Discord = require('discord.js');
 
 module.exports = {
     name: "poll",
@@ -6,11 +7,13 @@ module.exports = {
     category: "Info",
     description: "Creates a poll.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
         {
             name: "question",
             description: "The question of the poll.",
-            type: 'STRING',
+            type: Discord.ApplicationCommandType.String,
             required: true
         }
     ],
