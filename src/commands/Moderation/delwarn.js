@@ -34,14 +34,14 @@ module.exports = {
       await mongo().then(async (mongoose) => {
         try{
            await warnSchema.findOneAndUpdate({ guildId: guild }, { $pull: { "warnings": { "warnID": interaction.options.getString("id") } }}, { safe: true, multi:true }, function(err, obj) {})
-         await interaction.reply({ embeds: [new Discord.MessageEmbed()
+         await interaction.reply({ embeds: [new Discord.EmbedBuilder()
             .setColor(client.config.embedcolors.success)
             .setTitle(`✅ Deleted warning!`)
             .setTimestamp()
             .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })]})
           mongoose.connection.close()
         }catch(err){
-          await interaction.reply({ embeds: [new Discord.MessageEmbed()
+          await interaction.reply({ embeds: [new Discord.EmbedBuilder()
             .setColor(client.config.embedcolors.error)
             .setTitle(`❌ This warning does not exist!`)
             .setTimestamp()

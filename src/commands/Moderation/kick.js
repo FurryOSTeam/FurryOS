@@ -37,11 +37,13 @@ module.exports = {
           await member.user.send(`You were kicked from **\`${interaction.guild.name}\`** for \`${reason}\``).catch(err => {})
           await member.kick({ reason })
 
-          const embed = new Discord.MessageEmbed()
+          const embed = new Discord.EmbedBuilder()
             .setColor(client.config.embedcolors.success)
             .setTitle(`Member kicked by ${kicker}`)
-            .addField('Kicked Member', `${kicked}`, true)
-            .addField('Server', `${interaction.guild.name}`, true)
+            .addFields([
+              { name: 'Kicked Member', value: `${kicked}`, inline: true },
+              { name: 'Server', value: `${interaction.guild.name}`, inline: true }
+            ])
             .setDescription(`**Reason:** ${reason}`)
             .setTimestamp()
             .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });

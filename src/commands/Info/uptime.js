@@ -11,14 +11,14 @@ module.exports = {
     run: async (client, interaction) => {
     const time = require('ms')
     const uptime = time(client.uptime)
-    await interaction.reply({embeds: [{
-      color: client.config.embedcolors.default,
-      description: `The bot has been up for ${uptime}.`,
-      footer: {
-        text: client.config.embedfooterText,
-        icon_url: client.user.displayAvatarURL({ dynamic: true })
-      },
-      timestamp: new Date()
-    }]})
+
+    const embed = new Discord.EmbedBuilder()
+      .setColor(client.config.embedcolors.default)
+      .setDescription(`The bot has been up for ${uptime}.`)
+      .setTimestamp()
+      .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
+      .setColor(client.config.embedcolors.default);
+
+    await interaction.reply({embeds: [embed]});
   }
 }

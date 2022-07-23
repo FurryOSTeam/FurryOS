@@ -28,18 +28,20 @@ module.exports = {
         var current = result[0].current;
         var location = result[0].location;
 
-        const weatherinfo = new Discord.MessageEmbed()
+        const weatherinfo = new Discord.EmbedBuilder()
             .setDescription(`**${current.skytext}**`)
             .setAuthor({ name: `Weather forecast for ${current.observationpoint}` })
             .setThumbnail(current.imageUrl)
             .setColor(client.config.embedcolors.default)
-            .addField('Timezone', `UTC${location.timezone}`, true)
-            .addField('Degree Type', 'Fahrenheit', true)
-            .addField('Temperature', `${current.temperature}°`, true)
-            .addField('Wind', current.winddisplay, true)
-            .addField('Feels like', `${current.feelslike}°`, true)
-            .addField('Humidity', `${current.humidity}%`, true)
-            .addField('Day', `${current.day}`, true)
+            .addFields([
+                { name: 'Timezone', value: `UTC${location.timezone}`, inline: true },
+                { name: 'Degree Type', value: 'Fahrenheit', inline: true },
+                { name: 'Temperature', value: `${current.temperature}°`, inline: true },
+                { name: 'Wind', value: current.winddisplay, inline: true },
+                { name: 'Feels like', value: `${current.feelslike}°`, inline: true },
+                { name: 'Humidity', value: `${current.humidity}%`, inline: true },
+                { name: 'Day', value: `${current.day}`, inline: true }
+            ])
             .setTimestamp()
             .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 

@@ -35,13 +35,13 @@ module.exports = {
           guildId,
           userId,
         })
-        if(!results || isempty === null) return await interaction.reply({ embeds: [new Discord.MessageEmbed()
+        if(!results || isempty === null) return await interaction.reply({ embeds: [new Discord.EmbedBuilder()
         .setColor(client.config.embedcolors.error)
         .setTitle(`No warnings found`)
         .setTimestamp()
         .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })]})
        
-        let reply = new Discord.MessageEmbed()
+        let reply = new Discord.EmbedBuilder()
         .setColor(client.config.embedcolors.default)
         .setTitle(`Warnings for: ${userId}`)
         .setTimestamp()

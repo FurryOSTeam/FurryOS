@@ -1,4 +1,3 @@
-const { MessageEmbed } = require('discord.js');
 const Discord = require('discord.js');
 
 module.exports = {
@@ -14,7 +13,7 @@ module.exports = {
     let result;
     if (n === 1) result = 'heads';
     else result = 'tails';
-    const embed = new MessageEmbed()
+    const embed = new Discord.EmbedBuilder()
       .setTitle(`🪙 Coinflip 🪙`)
       .setDescription(`I flipped a coin, ${interaction.member}. The result was **${result}**!`)
       .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })

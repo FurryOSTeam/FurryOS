@@ -23,19 +23,21 @@ module.exports = {
         const userid = await noblox.getIdFromUsername(name);
 
         await noblox.getPlayerInfo(userid).then((playerInfo) => {
-        const infoEmbed = new Discord.MessageEmbed()
+        const infoEmbed = new Discord.EmbedBuilder()
             .setURL(`https://www.roblox.com/users/${userid}/profile`)
             .setTitle(`${playerInfo.username}'s profile`)
             //.addField(`Status`, `${playerInfo.status}` || "Not available", true) //gone BOOHOO WAAA OSAHFDSHFGSDGFSUIRGFRUIGFHRGNFIUG
-            .addField(`User ID`, `${userid || "Not available"}`, true)
-            .addField(`Account Age (in days)`, `${playerInfo.age || "Not available"}`, true)
-            .addField(`Join Date`, `${playerInfo.joinDate || "Not available"}`, true)
-            .addField(`User Display Name`, `${playerInfo.displayName || "Not available"}`, true)
-            .addField(`Is Banned`, `${playerInfo.isBanned}`, true)
-            .addField(`Friends`, `${playerInfo.friendCount || "Not available"}`, true)
-            .addField(`Followers`, `${playerInfo.followerCount || "Not available"}`, true)
-            .addField(`Following`, `${playerInfo.followingCount || "Not available"}`, true)
-            .addField(`Description`, `${playerInfo.blurb || "Not available"}`)
+            .addFields([
+                { name: `User ID`, value: `${userid || "Not available"}`, inline: true },
+                { name: `Account Age (in days)`, value: `${playerInfo.age || "Not available"}`, inline: true },
+                { name: `Join Date`, value: `${playerInfo.joinDate || "Not available"}`, inline: true },
+                { name: `User Display Name`, value: `${playerInfo.displayName || "Not available"}`, inline: true },
+                { name: `Is Banned`, value: `${playerInfo.isBanned}`, inline: true },
+                { name: `Friends`, value: `${playerInfo.friendCount || "Not available"}`, inline: true },
+                { name: `Followers`, value: `${playerInfo.followerCount || "Not available"}`, inline: true },
+                { name: `Following`, value: `${playerInfo.followingCount || "Not available"}`, inline: true },
+                { name: `Description`, value: `${playerInfo.blurb || "Not available"}` }
+            ])
             .setTimestamp()
             .setThumbnail(`https://www.roblox.com/headshot-thumbnail/image?userId=${userid}&width=420&height=420&format=png`)
             .setColor(client.config.embedcolors.default)
@@ -43,7 +45,7 @@ module.exports = {
         interaction.reply({ embeds: [infoEmbed] });
         });
     } catch (e) {
-        interaction.reply({ embeds: [new Discord.MessageEmbed()
+        interaction.reply({ embeds: [new Discord.EmbedBuilder()
             .setColor(client.config.embedcolors.error)
             .setTitle(`Error.`)
             .setDescription(`Either you did not type the name correctly, the user does not exist, or the command errored.`)

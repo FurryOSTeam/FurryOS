@@ -30,7 +30,7 @@ module.exports = {
       function getImageEnding(arg1) {
         return `https://cdn.discordapp.com/guilds/${interaction.guild.id}/users/${user.id}/avatars/${res.data.avatar}.${arg1}`
       }
-        const embed = new Discord.MessageEmbed()
+        const embed = new Discord.EmbedBuilder()
           .setTitle(`${user.username}'s Server Avatar`)
           .setColor(client.config.embedcolors.default)
           .setImage(getImageEnding(`webp`))
@@ -39,7 +39,7 @@ module.exports = {
           .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
         await interaction.reply({ embeds: [embed] });
     } else {
-      const embed = new Discord.MessageEmbed()
+      const embed = new Discord.EmbedBuilder()
           .setTitle(`${user.username}'s Server Avatar`)
           .setColor(client.config.embedcolors.default)
           .setDescription(`This user has no server avatar.`)

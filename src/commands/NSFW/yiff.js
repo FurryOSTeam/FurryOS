@@ -24,7 +24,7 @@ module.exports = {
    try{
      y.furry.yiff[query]("json", 1)
     .then(json => {
-      const fboop = new Discord.MessageEmbed()
+      const fboop = new Discord.EmbedBuilder()
         .setTitle(`${query.charAt(0).toUpperCase() + query.slice(1)} yiff!`)
 				.setAuthor({ name: interaction.user.tag, iconURL: interaction.user.displayAvatarURL() })
 				.setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })

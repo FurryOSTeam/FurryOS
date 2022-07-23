@@ -1,4 +1,3 @@
-const { MessageEmbed } = require('discord.js');
 const moment = require('moment');
 const Discord = require('discord.js');
 
@@ -68,26 +67,21 @@ module.exports = {
             interaction.guild.roles.cache.size - role.position
         }\`/\`${interaction.guild.roles.cache.size}\``;
 
-        const embed = new MessageEmbed()
+        const embed = new Discord.EmbedBuilder()
             .setTitle('Role Information')
             .setThumbnail(interaction.guild.iconURL({dynamic: true}))
-            .addField('Role', role.toString(), true)
-            .addField('Role ID', `\`${role.id}\``, true)
-            .addField('Position', position, true)
-            .addField('Mentionable', `\`${role.mentionable}\``, true)
-            .addField('Bot Role', `\`${role.managed}\``, true)
-            .addField('Color', `\`${role.hexColor.toUpperCase()}\``, true)
-            .addField('Members', `\`${role.members.size}\``, true)
-            .addField('Hoisted', `\`${role.hoist}\``, true)
-            .addField(
-                'Created On',
-                `${moment(role.createdAt).format("DD/MM/YYYY") + "\n" + moment(role.createdAt).format("hh:mm:ss")}`,
-                true
-            )
-            .addField(
-                'Permissions',
-                `\`\`\`diff\n${finalPermissions.join('\n')}\`\`\``
-            )
+            .addFields([
+                { name: 'Role', value: role.toString(), inline: true },
+                { name: 'Role ID', value: `\`${role.id}\``, inline: true },
+                { name: 'Position', value: position, inline: true },
+                { name: 'Mentionable', value: `\`${role.mentionable}\``, inline: true },
+                { name: 'Bot Role', value: `\`${role.managed}\``, inline: true },
+                { name: 'Color', value: `\`${role.hexColor.toUpperCase()}\``, inline: true },
+                { name: 'Members', value: `\`${role.members.size}\``, inline: true },
+                { name: 'Hoisted', value: `\`${role.hoist}\``, inline: true },
+                { name: 'Created On', value: `${moment(role.createdAt).format("DD/MM/YYYY") + "\n" + moment(role.createdAt).format("hh:mm:ss")}`, inline: true },
+                { name: 'Permissions', value: `\`\`\`diff\n${finalPermissions.join('\n')}\`\`\``, inline: true }
+            ])
             .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true })})
             .setTimestamp()
             .setColor(client.config.embedcolors.default);

@@ -24,15 +24,13 @@ module.exports = {
             evaled = require("util").inspect(evaled);
         }
     } catch (err) {
-        return await interaction.reply({embeds: [{
-            color: client.config.embedcolors.default,
-            description: `**Error:**\n`
-            + `\`There was an error while compiling your code: ${err}\``,
-            author: {
-                name: client.config.embedfooterText,
-                icon_url: client.user.displayAvatarURL({ dynamic: true })
-            }
-        }]});
-    }
+        return await interaction.reply({embeds: [ new Discord.EmbedBuilder()
+            .setColor(client.config.embedcolors.error)
+            .setDescription(`**Error:**\n` + `\`There was an error while compiling your code: ${err}\``)
+            .setTimestamp()
+            .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
+            .setAuthor( { name: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
+            ]});
+        }
 	}
 }

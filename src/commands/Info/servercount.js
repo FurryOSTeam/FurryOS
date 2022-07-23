@@ -1,4 +1,3 @@
-const { MessageEmbed } = require('discord.js');
 const { stripIndent } = require('common-tags');
 const Discord = require("discord.js")
 
@@ -14,7 +13,7 @@ module.exports = {
     const counts = stripIndent`
         Servers :: ${client.guilds.cache.size}
     `;
-    const embed = new MessageEmbed()
+    const embed = new Discord.EmbedBuilder()
       .setTitle('FurryOS\'s Server Count')
       .setDescription(stripIndent`\`\`\`AsciiDoc\n${counts}\`\`\``)
       .setTimestamp()

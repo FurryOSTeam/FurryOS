@@ -18,15 +18,15 @@ module.exports = {
         }
     ],
     run: async (client, interaction) => {
-        const row = new client.discord.MessageActionRow()
+        const row = new Discord.ActionRowBuilder()
             .addComponents(
                 //new client.discord.MessageButton()
                 //    .setLabel("GitHub")
                 //    .setStyle("LINK")
                 //    .setURL(""),
-                new client.discord.MessageButton()
+                new Discord.ButtonBuilder()
                     .setLabel("Support")
-                    .setStyle("LINK")
+                    .setStyle(5)
                     .setURL("https://discord.gg/pD2QwAqdMY")
             );
 
@@ -74,43 +74,45 @@ module.exports = {
                 const name = `\`${filen.name}\``
                 infoCommandsList.push(name);
             });
-            const helpEmbed = new client.discord.MessageEmbed()
+            const helpEmbed = new Discord.EmbedBuilder()
                 .setTitle(`${client.user.username} SlashHelp`)
-                .setDescription(` Hello **<@${interaction.member.id}>**, I am <@${client.user.id}>.  \nYou can use \`/help <slash_command>\` to see more info about the SlashCommands!\n**Total SlashCommands:** ${client.slash.size}`)
-                .addField("🎉 - Fun", funCommandsList.map((data) => `${data}`).join(", "), true)
-                .addField("🌃 - Image", imageCommandsList.map((data) => `${data}`).join(", "), true)
-                .addField("📷 - Furry Images", furryimagesCommandsList.map((data) => `${data}`).join(", "), true)
-                .addField("🔧 - Moderation", moderationCommandsList.map((data) => `${data}`).join(", "), true)
-                .addField("🔒 - Owner", ownerCommandsList.map((data) => `${data}`).join(", "), true)
-                .addField("ℹ - Info", infoCommandsList.map((data) => `${data}`).join(", "), true)
+                .setDescription(` Hello **<@${interaction.member.id}>**, I am <@${client.user.id}>.  \nYou can use \`/help <slash_command>\` to see more info about the SlashCommands!\n**Total SlashCommands:** ${client.slashCommands.size}`)
+                .addFields([
+                    { name: "🎉 - Fun", value: funCommandsList.map((data) => `${data}`).join(", "), inline: true },
+                    { name: "🌃 - Image", value: imageCommandsList.map((data) => `${data}`).join(", "), inline: true },
+                    { name: "📷 - Furry Images", value: furryimagesCommandsList.map((data) => `${data}`).join(", "), inline: true },
+                    { name: "🔧 - Moderation", value: moderationCommandsList.map((data) => `${data}`).join(", "), inline: true },
+                    { name: "🔒 - Owner", value: ownerCommandsList.map((data) => `${data}`).join(", "), inline: true },
+                    { name: "ℹ - Info", value: infoCommandsList.map((data) => `${data}`).join(", "), inline: true }
+                ])
                 .setColor(client.config.embedcolors.default)
                 .setTimestamp()
                 .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 
                 if (interaction.channel.nsfw) {
-                    helpEmbed.addField("🔞 - NSFW", nsfwCommandsList.map((data) => `${data}`).join(", "), true);
+                    helpEmbed.addFields([{ name: "🔞 - NSFW", value: nsfwCommandsList.map((data) => `${data}`).join(", "), inline: true }]);
                 } else {
-                    helpEmbed.addField("🔞 - NSFW", "NSFW commands are only available in NSFW channels!", true);
+                    helpEmbed.addFields([{ name: "🔞 - NSFW", value: "NSFW commands are only available in NSFW channels!", inline: true }]);
                 };
 
             interaction.reply({ embeds: [helpEmbed], components: [row], ephemeral: true});
         } else {
-            const command = client.slash.get(commandInt.toLowerCase());
+            const command = client.slashCommands.get(commandInt.toLowerCase());
             if (!command) {
-                interaction.reply({ embeds: [new Discord.MessageEmbed()
+                interaction.reply({ embeds: [new Discord.EmbedBuilder()
                     .setColor(client.config.embedcolors.error)
                     .setTitle(`Error.`)
                     .setDescription(`There isn't any SlashCommand named "${commandInt}"`)
                     .setTimestamp()
                     .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })], ephemeral: true });
             } else {
-                let command = client.slash.get(commandInt.toLowerCase());
+                let command = client.slashCommands.get(commandInt.toLowerCase());
                 let name = command.name;
                 let description = command.description || "No descrpition provided"
                 let usage = command.usage || "No usage provided"
                 let category = command.category || "No category provided!"
 
-                let helpCmdEmbed = new client.discord.MessageEmbed()
+                let helpCmdEmbed = new Discord.EmbedBuilder()
                     .setTitle(`${client.user.username} Help | \`${(name.toLocaleString())}\` SlashCommand`)
                     .addFields(
                         { name: "Description", value: `${description}` },

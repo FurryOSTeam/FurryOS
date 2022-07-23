@@ -13,7 +13,7 @@ module.exports = {
     run: async (client, interaction) => {
     y.furry.hug("json", 1)
     .then(json => {
-      const fboop = new Discord.MessageEmbed()
+      const fboop = new Discord.EmbedBuilder()
         .setTitle('Huggies!')
 				.setAuthor({ name: interaction.user.tag, iconURL: interaction.user.displayAvatarURL() })
 				.setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })

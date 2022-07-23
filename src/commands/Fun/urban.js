@@ -1,7 +1,6 @@
-const { MessageEmbed } = require("discord.js")
+const Discord = require('discord.js');
 const { stripIndents } = require("common-tags");
 const urban = require('urban');
-const Discord = require('discord.js');
 
 module.exports = {
     name: "urban",
@@ -32,7 +31,7 @@ module.exports = {
 
         let { word, definition, example, thumbs_up, thumbs_down, permalink, author } = result;
 
-        let embed = new MessageEmbed()
+        let embed = new Discord.EmbedBuilder()
           .setColor(client.config.embedcolors.default)
           .setAuthor({ name: `Urban Dictionary | ${word}`, img })
           .setThumbnail(img)

@@ -24,11 +24,13 @@ module.exports = {
 
 		  let result = Math.floor((Math.random() * replies.length));
 
-		  let ballembed = new Discord.MessageEmbed()
+		  let ballembed = new Discord.EmbedBuilder()
 		  	.setAuthor({ name: interaction.user.tag})
 		  	.setColor(client.config.embedcolors.default)
-		  	.addField("Question", question)
-		  	.addField("Answer", replies[result])
+        .addFields([
+            { name: "Question", value: question },
+            { name: "Answer", value: replies[result]}
+        ])
         .setTimestamp()
         .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 

@@ -62,7 +62,7 @@ module.exports = {
           }
         )
       } finally {
-        await interaction.reply({ embeds: [new Discord.MessageEmbed()
+        await interaction.reply({ embeds: [new Discord.EmbedBuilder()
         .setColor(client.config.embedcolors.success)
         .setTitle(`✅ Warned user! || ${reason}`)
         .setTimestamp()

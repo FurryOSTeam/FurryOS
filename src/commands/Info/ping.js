@@ -9,7 +9,7 @@ module.exports = {
     type: Discord.ApplicationCommandType.ChatInput,
     cooldown: 3000,
     run: async (client, interaction) => {
-    const embed = new Discord.MessageEmbed()
+    const embed = new Discord.EmbedBuilder()
       .setDescription('`Pinging...`')
       .setColor(client.config.embedcolors.default);    
     const msg = await interaction.reply({ embeds: [embed], fetchReply: true });
@@ -18,8 +18,10 @@ module.exports = {
     const apiLatency = `\`\`\`ini\n[ ${Math.round(interaction.client.ws.ping)}ms ]\`\`\``;
     embed.setTitle(`Pong! 🏓`)
       .setDescription('')
-      .addField('Latency', latency, true)
-      .addField('API Latency', apiLatency, true)
+      .addFields([
+        { name: 'Latency', value: latency },
+        { name: 'API Latency', value: apiLatency }
+      ])
       .setTimestamp()
       .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
     msg.edit({ embeds: [embed] });

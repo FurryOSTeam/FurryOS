@@ -1,4 +1,3 @@
-const { MessageEmbed } = require('discord.js');
 const fetch = require("node-fetch");
 const Discord = require('discord.js');
 
@@ -13,7 +12,7 @@ module.exports = {
     run: async (client, interaction) => {
       const res = await fetch('https://dog.ceo/api/breeds/image/random/');
       const img = (await res.json()).message;
-      const embed = new MessageEmbed()
+      const embed = new Discord.EmbedBuilder()
         .setTitle('🐶  D O G  🐕')
         .setImage(img)
         .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })

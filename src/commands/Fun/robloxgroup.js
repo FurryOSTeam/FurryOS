@@ -27,21 +27,23 @@ module.exports = {
             const roles = await noblox.getRoles(group);
             const logo = await noblox.getLogo(group);
     
-            const embed = new Discord.MessageEmbed() //BRO WHY IS THERE A CHARACTER LIMIT TO STUFF SOME GROUPS HAVE LIKE THOUSANDS OF GAMES!11!!!1 Later: OH MY GOD WTF THE WALL IS SO BIG https://images.bigbenster702.com/bv4rQYc
+            const embed = new Discord.EmbedBuilder() //BRO WHY IS THERE A CHARACTER LIMIT TO STUFF SOME GROUPS HAVE LIKE THOUSANDS OF GAMES!11!!!1 Later: OH MY GOD WTF THE WALL IS SO BIG https://images.bigbenster702.com/bv4rQYc
                     .setTitle(`Info for group ${groupInfo.name}`)
                     .setThumbnail(logo)
                     .setDescription(`**Group games: ** ${groupGames.map((group) => " ``" + group.name + "``")} **\n\nGroup roles and ranks: ** ${roles.map((role) => "``" + role.name + " | " + role.rank +"``" )}`, true)
                     //.addField("**Group games**", `${groupGames.map((group) => " ``" + group.name + "``")}`, true)
                     //.addField("**Group roles and ranks**", `${roles.map((role) => "``" + role.name + " | " + role.rank +"``" )}`, true)
-                    .addField("**Group description**", `${groupInfo.description}`, true)
-                    .addField("**Group members**", `${groupInfo.memberCount}`, true)
+                    .addFields([
+                        { name: "**Group description**", value: `${groupInfo.description}`, inline: true },
+                        { name: "**Group members**", value: `${groupInfo.memberCount}`, inline: true }
+                    ])
                     .setTimestamp()
                     .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
                     .setColor(client.config.embedcolors.default);
             await interaction.reply({ embeds: [embed] });
             //await interaction.reply({ embeds: [embed], ephemeral: true });
         }catch(e){
-            interaction.reply({ embeds: [new Discord.MessageEmbed()
+            interaction.reply({ embeds: [new Discord.EmbedBuilder()
                 .setColor(client.config.embedcolors.error)
                 .setTitle(`Error.`)
                 .setDescription(`Either you did not type the name correctly, the group does not exist, or the command errored.`)

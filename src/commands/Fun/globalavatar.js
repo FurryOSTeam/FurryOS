@@ -19,7 +19,7 @@ module.exports = {
     run: async (client, interaction) => {
     const user = interaction.options.getUser("user")
 
-    const embed = new Discord.MessageEmbed()
+    const embed = new Discord.EmbedBuilder()
       .setTitle(`${user.username}'s Global Avatar`)
       .setColor(client.config.embedcolors.default)
       .setImage(user.displayAvatarURL({ dynamic: true, size: 1024 }))

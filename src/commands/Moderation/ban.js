@@ -37,11 +37,13 @@ module.exports = {
           await member.user.send(`You are banned from **\`${interaction.guild.name}\`** for \`${reason}\``).catch(err => {})
           await member.ban({ reason })
 
-          const embed = new Discord.MessageEmbed()
+          const embed = new Discord.EmbedBuilder()
             .setColor(client.config.embedcolors.success)
             .setTitle(`Member banned by ${banner}`)
-            .addField('Banned Member', `${banned}`, true)
-            .addField('Server', `${interaction.guild.name}`, true)
+            .addFields([
+              { name: 'Banned Member', value: `${banned}`, inline: true },
+              { name: 'Server', value: `${interaction.guild.name}`, inline: true }
+            ])
             .setDescription(`**Reason:** ${reason}`)
             .setTimestamp()
             .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });

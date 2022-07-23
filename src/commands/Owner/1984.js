@@ -28,7 +28,7 @@ module.exports = {
         try {
             if (ids.id.includes(interaction.user.id)) {
                 await member.roles.add("999868292162404464");
-                const embed = new Discord.MessageEmbed()
+                const embed = new Discord.EmbedBuilder()
                     .setTitle("1984'd")
                     .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
                     .setTimestamp()
@@ -39,11 +39,13 @@ module.exports = {
                 await interaction.reply({ content: "You don't have permission to use this command.", ephemeral: true })
             }
         } catch (err) {
-            const embed = new Discord.MessageEmbed()
+            const embed = new Discord.EmbedBuilder()
                 .setColor(client.config.embedcolors.error)
                 .setTitle(`Error.`)
-                .addField('Failed to give role to: ', `${member.user.username}`)
-                .addField('Error: ', `${err}`)
+                .addFields([
+                    { name: 'Failed to give role to: ', value: `${member.user.username}` },
+                    { name: 'Error: ', value: `${err}` }
+                ])
                 .setTimestamp()
                 .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });
 

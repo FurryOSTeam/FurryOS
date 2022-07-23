@@ -14,7 +14,7 @@ module.exports = {
     if (interaction.channel.nsfw) {
      y.furry.bulge("json", 1)
     .then(json => {
-      const fboop = new Discord.MessageEmbed()
+      const fboop = new Discord.EmbedBuilder()
         .setTitle('Furries Bulge!')
 				.setAuthor({ name: interaction.user.tag, iconURL: interaction.user.displayAvatarURL() })
 				.setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })

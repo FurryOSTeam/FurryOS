@@ -1,4 +1,3 @@
-const { MessageEmbed } = require('discord.js');
 const Discord = require('discord.js');
 
 module.exports = {
@@ -21,7 +20,7 @@ module.exports = {
         const question = interaction.options.getString("question");
         if (question.length > 4096) return interaction.reply({ content: '**You Are Not Allowed To Go Over 4096 Characters!**', ephemeral: true });
 
-        const embed = new MessageEmbed()
+        const embed = new Discord.EmbedBuilder()
         .setTitle("📊 Poll")
         .setDescription(question)
         .setColor(client.config.embedcolors.default)

@@ -14,7 +14,7 @@ const client = new Discord.Client({
       parse: [ ],
       repliedUser: false,
     },
-    partials: [Discord.Partials.GuildsMembers, Discord.Partials.Message, Discord.Partials.User, Discord.Partials.Channel],
+    partials: [Discord.Partials.GuildsMembers, Discord.Partials.Message, Discord.Partials.User, Discord.Partials.Channel, Discord.Partials.ThreadMember],
     intents: [ 
         Discord.GatewayIntentBits.Guilds,
         Discord.GatewayIntentBits.GuildMembers,
@@ -41,13 +41,13 @@ module.exports = client;
     require(`./handlers/${handler}`)(client)
 });
 
-//process.on("uncaughtException", (err) => {
-//    console.log("Uncaught Exception: " + err);
-//});
+process.on("uncaughtException", (err) => {
+    console.log("Uncaught Exception: " + err);
+});
   
-//process.on("unhandledRejection", (reason, promise) => {
-//    console.log("[FATAL] Possibly Unhandled Rejection at: Promise ", promise, " reason: ", reason.message);
-//});
+process.on("unhandledRejection", (reason, promise) => {
+    console.log("[FATAL] Possibly Unhandled Rejection at: Promise ", promise, " reason: ", reason.message);
+});
 
 app.get('/', (request, response) => {
     response.sendStatus(200);

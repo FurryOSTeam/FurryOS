@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const { MessageEmbed } = require("discord.js");
 const moment = require('moment');
 
 const flags = {
@@ -39,22 +38,24 @@ module.exports = {
         const member = interaction.guild.members.cache.get(user.id) || await interaction.guild.members.fetch(user.id).catch(err => {})
         const roles = member.roles;
         const userFlags = member.user.flags.toArray();
-        const embeduserinfo = new MessageEmbed()
-        embeduserinfo.setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512 }))
-        embeduserinfo.setAuthor({ name: "Information about: " + member.user.username + "#" + member.user.discriminator, iconURL: member.user.displayAvatarURL({ dynamic: true })})
-        embeduserinfo.addField('**❱ Username:**',`<@${member.user.id}>\n\`${member.user.tag}\``,true)
-        embeduserinfo.addField('**❱ ID:**',`\`${member.id}\``,true)
-        embeduserinfo.addField('**❱ Avatar:**',`[\`Link to avatar\`](${member.user.displayAvatarURL({ format: "png" })})`,true)
-        embeduserinfo.addField('**❱ Date Join DC:**', "\`"+moment(member.user.createdTimestamp).format("DD/MM/YYYY") + "\`\n" + "`"+ moment(member.user.createdTimestamp).format("hh:mm:ss") + "\`",true)
-        embeduserinfo.addField('**❱ Date Join Guild:**', "\`"+moment(member.joinedTimestamp).format("DD/MM/YYYY") + "\`\n" + "`"+ moment(member.joinedTimestamp).format("hh:mm:ss")+ "\`",true)
-        embeduserinfo.addField('**❱ Flags:**',`\`${userFlags.length ? userFlags.map(flag => flags[flag]).join(', ') : 'None'}\``,true)
-        embeduserinfo.addField('**❱ Highest Role:**',`${member.roles.highest.id === interaction.guild.id ? 'None' : member.roles.highest}`,true)
-        embeduserinfo.addField('**❱ Is a Bot:**',`\`${member.user.bot ? "✔️" : "❌"}\``,true)
-        embeduserinfo.addField('**❱ Permissions:**',`${member.permissions.toArray().map(p=>`\`${p}\``).join(", ")}`)
-        embeduserinfo.addField(`❱ [${roles.cache.size}] Roles: `, roles.cache.size < 25 ? Array.from(roles.cache.values()).sort((a, b) => b.rawPosition - a.rawPosition).map(role => `<@&${role.id}>`).join(', ') : roles.cache.size > 25 ? trimArray(roles.cache) : 'None')
-        embeduserinfo.setTimestamp()
-        embeduserinfo.setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
-        embeduserinfo.setColor(client.config.embedcolors.default)
+        const embeduserinfo = new Discord.EmbedBuilder()
+          .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512 }))
+          .setAuthor({ name: "Information about: " + member.user.username + "#" + member.user.discriminator, iconURL: member.user.displayAvatarURL({ dynamic: true })})
+          .addFields([
+            { name: '**❱ Username:**', value: `<@${member.user.id}>\n\`${member.user.tag}\``, inline: true },
+            { name: '**❱ ID:**', value: `\`${member.id}\``, inline: true },
+            { name: '**❱ Avatar:**', value: `[\`Link to avatar\`](${member.user.displayAvatarURL({ format: "png" })})`, inline: true },
+            { name: '**❱ Date Join DC:**', value: `\`${moment(member.user.createdTimestamp).format("DD/MM/YYYY")}\`\n\`${moment(member.user.createdTimestamp).format("hh:mm:ss")}\``, inline: true },
+            { name: '**❱ Date Join Guild:**', value: `\`${moment(member.joinedTimestamp).format("DD/MM/YYYY")}\`\n\`${moment(member.joinedTimestamp).format("hh:mm:ss")}\``, inline: true },
+            { name: '**❱ Flags:**', value: `\`${userFlags.length ? userFlags.map(flag => flags[flag]).join(', ') : 'None'}\``, inline: true },
+            { name: '**❱ Highest Role:**', value: `${member.roles.highest.id === interaction.guild.id ? 'None' : member.roles.highest}`, inline: true },
+            { name: '**❱ Is a Bot:**', value: `\`${member.user.bot ? "✔️" : "❌"}\``, inline: true },
+            { name: '**❱ Permissions:**', value: `${member.permissions.toArray().map(p=>`\`${p}\``).join(", ")}` },
+            { name: `❱ [${roles.cache.size}] Roles: `, value: roles.cache.size < 25 ? Array.from(roles.cache.values()).sort((a, b) => b.rawPosition - a.rawPosition).map(role => `<@&${role.id}>`).join(', ') : roles.cache.size > 25 ? trimArray(roles.cache) : 'None', inline: true }
+          ])
+          .setTimestamp()
+          .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
+          .setColor(client.config.embedcolors.default)
         await interaction.reply({embeds: [embeduserinfo]})
   }
 }

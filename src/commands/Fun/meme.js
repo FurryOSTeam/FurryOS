@@ -13,7 +13,7 @@ module.exports = {
     fetch('https://meme-api.herokuapp.com/gimme')
     .then(res => res.json())
     .then(json => {
-      const memeEmbed = new Discord.MessageEmbed()
+      const memeEmbed = new Discord.EmbedBuilder()
       .setColor(client.config.embedcolors.default)
       .setTitle(json.title)
       .setDescription('Here is your meme!')

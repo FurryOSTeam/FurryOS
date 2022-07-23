@@ -19,14 +19,16 @@ module.exports = {
     run: async (client, interaction) => {
         const channel = interaction.options.getChannel("channel");
 
-        const embed = new Discord.MessageEmbed()
+        const embed = new Discord.EmbedBuilder()
             .setTitle(`Channel Information for ${channel.name}`)
             .setThumbnail(interaction.guild.iconURL({ dynamic: true, size: 512 }))
-            .addField("**NSFW**", `${channel.nsfw || "Channel does not have nsfw setting enabled."}`, true)
-            .addField("**Channel ID**", `${channel.id}`, true)
-            .addField("**Channel Type**", `${channel.type}`)
-            .addField("**Channel Description**", `${channel.topic || "No Description"}`)
-            .addField("**Channel Created At**", `${channel.createdAt}`)
+            .addFields([
+                { name: "**NSFW**", value: `${channel.nsfw || "Channel does not have nsfw setting enabled."}`, inline: true },
+                { name: "**Channel ID**", value: `${channel.id}`, inline: true },
+                { name: "**Channel Type**", value: `${channel.type}`, inline: true },
+                { name: "**Channel Description**", value: `${channel.topic || "No Description"}`, inline: true },
+                { name: "**Channel Created At**", value: `${channel.createdAt}`, inline: true }
+            ])
             .setTimestamp()
             .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
             .setColor(client.config.embedcolors.default);

@@ -1,4 +1,3 @@
-const { MessageEmbed } = require('discord.js');
 const got = require("got");
 const Discord = require('discord.js');
 
@@ -15,7 +14,7 @@ module.exports = {
       got('https://www.reddit.com/r/otters/random/.json').then(response => {
           let content = JSON.parse(response.body);
           let otterimage = content[0].data.children[0].data.url;
-          let embed = new MessageEmbed()
+          let embed = new Discord.EmbedBuilder()
           embed.setTitle(`Otter 🦦`)
           embed.setImage(otterimage)
           embed.setTimestamp()
