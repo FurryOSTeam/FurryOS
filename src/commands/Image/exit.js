@@ -6,23 +6,25 @@ module.exports = {
     category: "Image",
     description: "Creates the exit car meme.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
       {
           name: "text-1",
           description: "Message on the left side of the sign.",
-          type: 'STRING',
+          type: Discord.ApplicationCommandOptionType.String,
           required: true
       },
       {
           name: "text-2",
           description: "Message on the right side of the sign.",
-          type: 'STRING',
+          type: Discord.ApplicationCommandOptionType.String,
           required: true
       },
       {
           name: "text-3",
           description: "Message on the car.",
-          type: 'STRING',
+          type: Discord.ApplicationCommandOptionType.String,
           required: true
       },
   ],

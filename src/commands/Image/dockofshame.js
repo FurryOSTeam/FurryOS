@@ -6,11 +6,13 @@ module.exports = {
     category: "Image",
     description: "Sends a user to the dock of shame.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
       {
           name: "user",
           description: "User to send.",
-          type: 'MENTIONABLE',
+          type: Discord.ApplicationCommandOptionType.Mentionable,
           required: true
       }
   ],

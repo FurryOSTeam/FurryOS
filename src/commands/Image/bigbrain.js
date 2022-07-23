@@ -6,29 +6,31 @@ module.exports = {
     category: "Image",
     description: "Creates the big brain meme.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
       {
           name: "text-1",
           description: "Text on first box.",
-          type: 'STRING',
+          type: Discord.ApplicationCommandOptionType.String,
           required: true
       },
       {
           name: "text-2",
           description: "Text on second box.",
-          type: 'STRING',
+          type: Discord.ApplicationCommandOptionType.String,
           required: true
       },
       {
           name: "text-3",
           description: "Text on third box.",
-          type: 'STRING',
+          type: Discord.ApplicationCommandOptionType.String,
           required: true
       },
       {
           name: "text-4",
           description: "Text on fourth box.",
-          type: 'STRING',
+          type: Discord.ApplicationCommandOptionType.String,
           required: true
       }
   ],

@@ -6,11 +6,13 @@ module.exports = {
     category: "Image",
     description: "Adios.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
       {
           name: "user",
           description: "User that leaves.",
-          type: 'MENTIONABLE',
+          type: Discord.ApplicationCommandOptionType.Mentionable,
           required: true
       }
   ],

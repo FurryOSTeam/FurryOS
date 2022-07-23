@@ -6,17 +6,19 @@ module.exports = {
     category: "Image",
     description: "Sends a picture of a woman yelling at a cat.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
       {
           name: "user-woman",
           description: "User to use as the woman.",
-          type: 'MENTIONABLE',
+          type: Discord.ApplicationCommandOptionType.Mentionable,
           required: true
       },
       {
         name: "user-cat",
         description: "User to use as the cat.",
-        type: 'MENTIONABLE',
+        type: Discord.ApplicationCommandOptionType.Mentionable,
         required: true
     }
   ],

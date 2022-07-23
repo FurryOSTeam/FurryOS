@@ -6,11 +6,13 @@ module.exports = {
     category: "Image",
     description: "Makes a user flip a table.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
       {
           name: "user",
           description: "User that flips a table.",
-          type: 'MENTIONABLE',
+          type: Discord.ApplicationCommandOptionType.Mentionable,
           required: true
       }
   ],
