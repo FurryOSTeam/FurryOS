@@ -3,14 +3,14 @@ const chalk = require('chalk');
 require('dotenv').config();
 
 const { PermissionsBitField } = require('discord.js');
-const { Routes } = require('discord-api-types/v9');
+const { Routes } = require('discord-api-types/v10');
 const { REST } = require('@discordjs/rest')
 
 const AsciiTable = require('ascii-table');
 const table = new AsciiTable().setHeading('Slash Commands', 'Stats').setBorder('|', '=', "0", "0")
 const TOKEN = process.env.token;
 
-const rest = new REST({ version: '9' }).setToken(TOKEN);
+const rest = new REST({ version: '10' }).setToken(TOKEN);
 
 module.exports = (client) => {
 	const CLIENT_ID = client.config.botClientID;
