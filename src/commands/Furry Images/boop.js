@@ -8,6 +8,8 @@ module.exports = {
     category: "Furry Images",
     description: "Shows a picture of a furry booping a snoot!",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     run: async (client, interaction) => {
     y.furry.boop("json", 1)
     .then(json => {

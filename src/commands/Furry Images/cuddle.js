@@ -8,6 +8,8 @@ module.exports = {
     category: "Furry Images",
     description: "Furry cuddle!",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     run: async (client, interaction) => {
     y.furry.cuddle("json", 1)
     .then(json => {
