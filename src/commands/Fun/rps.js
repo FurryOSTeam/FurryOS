@@ -6,11 +6,13 @@ module.exports = {
     category: "Fun",
     description: "Starts a game of rock, paper, scissors.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
         {
             name: 'option',
             description: 'Rock, paper, or scissors.',
-            type: 'STRING',
+            type: Discord.ApplicationCommandOptionType.String,
             required: true
         }
     ],

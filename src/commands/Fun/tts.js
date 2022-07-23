@@ -6,11 +6,13 @@ module.exports = {
     category: "Fun",
     description: "Sends an mp3 of the message with the text-to-speech engine.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
       {
           name: "message",
           description: "Message to convert to tts.",
-          type: 'STRING',
+          type: Discord.ApplicationCommandOptionType.String,
           required: true
       }
   ],

@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js")
 const { stripIndents } = require("common-tags");
 const urban = require('urban');
+const Discord = require('discord.js');
 
 module.exports = {
     name: "urban",
@@ -8,11 +9,13 @@ module.exports = {
     category: "Fun",
     description: "Shows a defnition from the urban dictionary.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
         {
             name: 'term',
             description: 'Term to look up.',
-            type: 'STRING',
+            type: Discord.ApplicationCommandOptionType.String,
             required: true
         }
     ],

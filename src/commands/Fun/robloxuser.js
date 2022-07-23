@@ -7,11 +7,13 @@ module.exports = {
     category: "Fun",
     description: "Shows info about a roblox user.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
         {
             name: 'username',
             description: 'The name of the roblox user.',
-            type: 'STRING',
+            type: Discord.ApplicationCommandOptionType.String,
             required: true
         }
     ],
