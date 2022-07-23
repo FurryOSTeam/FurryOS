@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const fetch = require("node-fetch");
+const Discord = require('discord.js');
 
 module.exports = {
     name: "fox",
@@ -7,6 +8,8 @@ module.exports = {
     category: "Fun",
     description: "Sends an image of a fox!",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     run: async (client, interaction) => {
       const res = await fetch('https://randomfox.ca/floof/');
       const img = (await res.json()).image;

@@ -7,6 +7,8 @@ module.exports = {
     category: "Fun",
     description: "Shows memes!",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     run: async (client, interaction) => {
     fetch('https://meme-api.herokuapp.com/gimme')
     .then(res => res.json())

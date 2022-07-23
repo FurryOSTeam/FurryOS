@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const got = require("got");
+const Discord = require('discord.js');
 
 module.exports = {
     name: "otter",
@@ -7,6 +8,8 @@ module.exports = {
     category: "Fun",
     description: "Shows a random image of an otter.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     run: async (client, interaction) => {
     try {
       got('https://www.reddit.com/r/otters/random/.json').then(response => {

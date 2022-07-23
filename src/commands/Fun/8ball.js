@@ -7,11 +7,12 @@ module.exports = {
     description: "A magic 8 ball for you to ask questions to.",
     ownerOnly: false,
     type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
       {
           name: "question",
           description: "A magic 8 ball for you to ask questions to.",
-          type: 3,
+          type: Discord.ApplicationCommandOptionType.String,
           required: true
       }
   ],

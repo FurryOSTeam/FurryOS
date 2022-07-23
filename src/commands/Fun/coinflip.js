@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const Discord = require('discord.js');
 
 module.exports = {
     name: "coinflip",
@@ -6,6 +7,8 @@ module.exports = {
     category: "Fun",
     description: "Flips a coin.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     run: async (client, interaction) => {
     const n = Math.floor(Math.random() * 2);
     let result;

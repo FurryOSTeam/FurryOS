@@ -7,11 +7,13 @@ module.exports = {
     category: "Fun",
     description: "Shows info about a roblox group.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
         {
             name: 'group-name',
             description: 'The name of the roblox group.',
-            type: 'STRING',
+            type: Discord.ApplicationCommandOptionType.String,
             required: true
         }
     ],

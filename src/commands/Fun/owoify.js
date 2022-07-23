@@ -7,11 +7,13 @@ module.exports = {
     category: "Fun",
     description: "Owoifys a message.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
         {
             name: 'message',
             description: 'Message you want to owoify.',
-            type: 'STRING',
+            type: Discord.ApplicationCommandOptionType.String,
             required: true
         }
     ],

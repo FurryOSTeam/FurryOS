@@ -6,11 +6,13 @@ module.exports = {
     category: "Fun",
     description: "Shows a persons global discord avatar.",
     ownerOnly: false,
+    type: Discord.ApplicationCommandType.ChatInput,
+    cooldown: 3000,
     options: [
         {
             name: 'user',
             description: 'User to get their profile picture of.',
-            type: 'USER',
+            type: Discord.ApplicationCommandOptionType.User,
             required: true
         }
     ],
