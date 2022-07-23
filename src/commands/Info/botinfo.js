@@ -25,18 +25,20 @@ module.exports = {
                 .setAuthor({ name: interaction.client.user.username })
                 .setTitle("__**Stats:**__")
                 .setColor(client.config.embedcolors.default)
-                .addField("`⏳` Mem Usage", `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} / ${(os.totalmem() / 1024 / 1024).toFixed(2)} MB`, true)
-                .addField("`⌚️` Uptime ", `${duration}`, true)
-                .addField("`📁` Users", `${interaction.client.users.cache.size}`, true)
-                .addField("`📁` Servers", `${interaction.client.guilds.cache.size}`, true)
-                .addField("`📁` Channels ", `${interaction.client.channels.cache.size}`, true)
-                .addField("`👾` Discord.js", `v${version}`, true)
-                .addField("`🤖` Node", `${process.version}`, true)
-                .addField("`🤖` CPU", `\`\`\`md\n${os.cpus().map(i => `${i.model}`)[0]}\`\`\``)
-                .addField("`🤖` CPU usage", `\`${percent.toFixed(2)}%\``, true)
-                .addField("`🤖` Arch", `\`${os.arch()}\``, true)
-                .addField("`💻` Platform", `\`\`${os.platform()}\`\``, true)
-                .addField("API Latency", `${(interaction.client.ws.ping)}ms`)
+                .addFields([
+                    { name: "`⏳` Mem Usage", value: `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} / ${(os.totalmem() / 1024 / 1024).toFixed(2)} MB`, inline: true },
+                    { name: "`⌚️` Uptime ", value: `${duration}`, inline: true },
+                    { name: "`📁` Users", value: `${interaction.client.users.cache.size}`, inline: true },
+                    { name: "`📁` Servers", value: `${interaction.client.guilds.cache.size}`, inline: true },
+                    { name: "`📁` Channels ", value: `${interaction.client.channels.cache.size}`, inline: true },
+                    { name: "`👾` Discord.js", value: `v${version}`, inline: true },
+                    { name: "`🤖` Node", value: `${process.version}`, inline: true },
+                    { name: "`🤖` CPU", value: `\`\`\`md\n${os.cpus().map(i => `${i.model}`)[0]}\`\`\`` },
+                    { name: "`🤖` CPU usage", value: `\`${percent.toFixed(2)}%\``, inline: true },
+                    { name: "`🤖` Arch", value: `\`${os.arch()}\``, inline: true },
+                    { name: "`💻` Platform", value: `\`\`${os.platform()}\`\``, inline: true },
+                    { name: "API Latency", value: `${(interaction.client.ws.ping)}ms` }
+                ])
                 .setTimestamp()
                 .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL() });
            await interaction.reply({ embeds: [botinfo] })
