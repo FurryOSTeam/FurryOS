@@ -1,4 +1,4 @@
-const { EmbedBuilder, Collection, PermissionsBitField } = require('discord.js');
+const { EmbedBuilder, Collection, PermissionsBitField, Discord } = require('discord.js');
 const ms = require('ms');
 const client = require('../..');
 const config = client.config
@@ -21,12 +21,12 @@ client.on('interactionCreate', async interaction => {
 				if(cooldown.has(`slash-${slashCommand.name}${interaction.user.id}`)) return interaction.reply({ content: config.messages["COOLDOWN_MESSAGE"].replace('<duration>', ms(cooldown.get(`slash-${slashCommand.name}${interaction.user.id}`) - Date.now(), {long : true}) ) })
 				if (slashCommand.ownerOnly) {
 					if (!client.config.ownerID.includes(interaction.user.id)) {
-						return interaction.reply({ embeds: [new Discord.MessageEmbed()
+						return interaction.reply({ embeds: [new EmbedBuilder()
 							.setColor(client.config.embedcolors.error)
 							.setTitle(`Error.`)
 							.setDescription(`This command only for the bot owner!`)
 							.setTimestamp()
-							.setFooter({ text: client.config.embedfooterText})], ephemeral: true });
+							.setFooter({ text: client.config.embedfooterText})]});
 					}
 				}
 				if(slashCommand.userPerms || slashCommand.botPerms) {
@@ -59,12 +59,12 @@ client.on('interactionCreate', async interaction => {
 			} else {
 				if (command.ownerOnly) {
 					if (!client.config.ownerID.includes(interaction.user.id)) {
-						return interaction.reply({ embeds: [new Discord.MessageEmbed()
+						return interaction.reply({ embeds: [new EmbedBuilder()
 							.setColor(client.config.embedcolors.error)
 							.setTitle(`Error.`)
 							.setDescription(`This command only for the bot owner!`)
 							.setTimestamp()
-							.setFooter({ text: client.config.embedfooterText})], ephemeral: true });
+							.setFooter({ text: client.config.embedfooterText})]});
 					}
 				}
 				if(slashCommand.userPerms || slashCommand.botPerms) {
