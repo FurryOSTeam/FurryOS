@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
 const Discord = require('discord.js');
-const handler = require("./handlers/index");
+const handler = require("./handlers/slashCommand");
+require('dotenv').config(); //Remember to remove.
 const client = new Discord.Client({
     messageCacheLifetime: 60,
     fetchAllMembers: false,
@@ -13,44 +14,42 @@ const client = new Discord.Client({
       parse: [ ],
       repliedUser: false,
     },
-    partials: ["GUILD_MEMBER", "MESSAGE", "USER", "CHANNEL"],
+    partials: [Discord.Partials.GuildsMembers, Discord.Partials.Message, Discord.Partials.User, Discord.Partials.Channel],
     intents: [ 
-        Discord.Intents.FLAGS.GUILDS,
-        Discord.Intents.FLAGS.GUILD_MEMBERS,
-        Discord.Intents.FLAGS.GUILD_BANS,
-        //Discord.Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
-        //Discord.Intents.FLAGS.GUILD_INTEGRATIONS,
-        //Discord.Intents.FLAGS.GUILD_WEBHOOKS,
-        //Discord.Intents.FLAGS.GUILD_INVITES,
-        Discord.Intents.FLAGS.GUILD_VOICE_STATES,
-        Discord.Intents.FLAGS.GUILD_PRESENCES,
-        Discord.Intents.FLAGS.GUILD_MESSAGES,
-        Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-        //Discord.Intents.FLAGS.GUILD_MESSAGE_TYPING,
-        //Discord.Intents.FLAGS.DIRECT_MESSAGES,
-        //Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
-        //Discord.Intents.FLAGS.DIRECT_MESSAGE_TYPING
+        Discord.GatewayIntentBits.Guilds,
+        Discord.GatewayIntentBits.GuildMembers,
+        Discord.GatewayIntentBits.GuildBans,
+        Discord.GatewayIntentBits.GuildEmojisAndStickers,
+        Discord.GatewayIntentBits.GuildIntegrations,
+        Discord.GatewayIntentBits.GuildVoiceStates,
+        Discord.GatewayIntentBits.GuildPresences,
+        Discord.GatewayIntentBits.GuildMessages,
+        Discord.GatewayIntentBits.GuildMessageReactions,
+        Discord.GatewayIntentBits.DirectMessages,
+        Discord.GatewayIntentBits.DirectMessageReactions,
+        Discord.GatewayIntentBits.DirectMessageTyping
     ],
 });
 const discordModals = require('discord-modals');
 discordModals(client);
 
+client.config = require('./config.js');
+client.aliases = new Discord.Collection()
+client.slashCommands = new Discord.Collection();
+
 module.exports = client;
 
-client.discord = Discord;
-client.slash = new Discord.Collection();
-client.config = require('./config');
-
-handler.loadEvents(client);
-handler.loadSlashCommands(client);
-
-process.on("uncaughtException", (err) => {
-    console.log("Uncaught Exception: " + err);
+['slashCommand', 'events'].forEach((handler) => {
+    require(`./handlers/${handler}`)(client, Discord)
 });
+
+//process.on("uncaughtException", (err) => {
+//    console.log("Uncaught Exception: " + err);
+//});
   
-process.on("unhandledRejection", (reason, promise) => {
-    console.log("[FATAL] Possibly Unhandled Rejection at: Promise ", promise, " reason: ", reason.message);
-});
+//process.on("unhandledRejection", (reason, promise) => {
+//    console.log("[FATAL] Possibly Unhandled Rejection at: Promise ", promise, " reason: ", reason.message);
+//});
 
 app.get('/', (request, response) => {
     response.sendStatus(200);

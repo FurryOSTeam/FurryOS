@@ -6,11 +6,12 @@ module.exports = {
     category: "Fun",
     description: "A magic 8 ball for you to ask questions to.",
     ownerOnly: false,
+    type: ApplicationCommandType.ChatInput,
     options: [
       {
           name: "question",
           description: "A magic 8 ball for you to ask questions to.",
-          type: 'STRING',
+          type: 3,
           required: true
       }
   ],
