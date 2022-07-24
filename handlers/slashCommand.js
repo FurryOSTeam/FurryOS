@@ -1,6 +1,5 @@
 const fs = require('fs');
 const chalk = require('chalk');
-require('dotenv').config();
 
 const { PermissionsBitField } = require('discord.js');
 const { Routes } = require('discord-api-types/v10');

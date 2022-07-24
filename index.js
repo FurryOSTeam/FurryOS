@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const Discord = require('discord.js');
 const handler = require("./handlers/slashCommand");
-require('dotenv').config(); //Remember to remove.
 const client = new Discord.Client({
     messageCacheLifetime: 60,
     fetchAllMembers: false,
