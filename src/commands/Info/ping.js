@@ -17,10 +17,10 @@ module.exports = {
     const latency = `\`\`\`ini\n[ ${Math.floor(msg.createdTimestamp - timestamp)}ms ]\`\`\``;
     const apiLatency = `\`\`\`ini\n[ ${Math.round(interaction.client.ws.ping)}ms ]\`\`\``;
     embed.setTitle(`Pong! 🏓`)
-      .setDescription('')
+      .setDescription(null)
       .addFields([
-        { name: 'Latency', value: latency },
-        { name: 'API Latency', value: apiLatency }
+        { name: 'Latency', value: latency, inline: true },
+        { name: 'API Latency', value: apiLatency, inline: true }
       ])
       .setTimestamp()
       .setFooter({ text: client.config.embedfooterText, iconURL: client.user.displayAvatarURL({ dynamic: true }) });

@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const { MessageEmbed } = require("discord.js");
 const moment = require("moment");
 
 module.exports = {
@@ -29,8 +28,8 @@ module.exports = {
           { name: "❱ You Joined", value: `\`${moment(interaction.member.joinedTimestamp).format("DD/MM/YYYY")}\`\n\`${moment(interaction.member.joinedTimestamp).format("hh:mm:ss")}\``, inline: true },
 
           { name: "❱ All Channels", value: "👁‍🗨 \`" + interaction.guild.channels.cache.size + "\`", inline: true },
-          { name: "❱ Text Channels", value: "💬 \`" + interaction.guild.channels.cache.filter((channel) => channel.type == "GuildText").size + "\`", inline: true },
-          { name: "❱ Voice Channels", value: "🔈 \`" + interaction.guild.channels.cache.filter((channel) => channel.type == "GuildVoice").size + "\`", inline: true },
+          { name: "❱ Text Channels", value: "💬 \`" + interaction.guild.channels.cache.filter((channel) => channel.type == Discord.GuildText).size + "\`", inline: true },
+          { name: "❱ Voice Channels", value: "🔈 \`" + interaction.guild.channels.cache.filter((channel) => channel.type == Discord.GuildVoice).size + "\`", inline: true },
 
           { name: "❱ Total USERS", value: "😀 \`" + interaction.guild.memberCount + "\`", inline: true },
           { name: "❱ Total HUMANS", value: "👤 \`" + interaction.guild.members.cache.filter(member => !member.user.bot).size + "\`", inline: true },
