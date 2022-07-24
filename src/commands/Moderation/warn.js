@@ -28,7 +28,7 @@ module.exports = {
   ],
     run: async (client, interaction) => {
     const target = interaction.options.getUser("user");
-    if(!interaction.member.permissions.has("KICK_MEMBERS")) {
+    if(!interaction.member.permissions.has("KickMembers")) {
       await interaction.reply({ content: "You do not have permission to warn someone! You need kick members on your role!", ephemeral: true }); return
     }
 

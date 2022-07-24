@@ -23,7 +23,7 @@ module.exports = {
       }
   ],
     run: async (client, interaction) => {
-    if(!interaction.member.permissions.has('KICK_MEMBERS')) {
+    if(!interaction.member.permissions.has('KickMembers')) {
       await interaction.reply({ content: "You do not have permission to kick someone! You need to have kick members on your role!", ephemeral: true });
     } else {
         const kicker = interaction.user.tag;

@@ -27,7 +27,7 @@ module.exports = {
   ],
     run: async (client, interaction) => {
     const guild = interaction.guild.id
-    if(!interaction.member.permissions.has("KICK_MEMBERS")) {
+    if(!interaction.member.permissions.has("KickMembers")) {
       await interaction.reply({ content: "You do not have permission to delete someones warn! You need kick members on your role!", ephemeral: true }); return
     }
 

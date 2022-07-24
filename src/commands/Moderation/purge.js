@@ -17,7 +17,7 @@ module.exports = {
       }
   ],
     run: async (client, interaction) => {
-    if (interaction.member.permissions.has("MANAGE_MESSAGES")) {
+    if (interaction.member.permissions.has("ManageMessages")) {
         let numberofmessages = interaction.options.getNumber("number");
         await interaction.channel.bulkDelete(numberofmessages, true);
         await interaction.reply({ content: `Deleted ${numberofmessages} messages.` })

@@ -23,7 +23,7 @@ module.exports = {
       }
   ],
     run: async (client, interaction) => {
-    if(!interaction.member.permissions.has('BAN_MEMBERS')) {
+    if(!interaction.member.permissions.has('BanMembers')) {
       await interaction.reply({ content: "You do not have permission to ban someone! You need ban members on your role!", ephemeral: true });
     } else {
         const banner = interaction.user.tag;
