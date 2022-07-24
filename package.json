@@ -1,6 +1,6 @@
 {
   "name": "furry-os",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "A furry discord bot.",
   "main": "index.js",
   "scripts": {
