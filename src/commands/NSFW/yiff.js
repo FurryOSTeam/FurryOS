@@ -1,5 +1,5 @@
 const Yiffy = require("yiffy");
-const y = new Yiffy();
+const y = new Yiffy({ apiKey: process.env.yiffykey });
 const Discord = require("discord.js");
 
 module.exports = {
