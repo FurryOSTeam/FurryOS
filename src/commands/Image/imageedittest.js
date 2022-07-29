@@ -1,4 +1,7 @@
 const Discord = require('discord.js');
+const { createCanvas, Image } = require('@napi-rs/canvas');
+const { readFile } = require('fs/promises');
+const { request } = require('undici');
 
 module.exports = {
     name: "imageedittest",
@@ -48,7 +51,7 @@ module.exports = {
 		avatar.src = Buffer.from(await body.arrayBuffer());
 		context.drawImage(avatar, 25, 25, 200, 200);
 
-		const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), { name: 'profile-image.png' });
+		const attachment = new Discord.AttachmentBuilder(canvas.toBuffer('image/png'), { name: 'profile-image.png' });
 
 		interaction.reply({ files: [attachment] });
 	}
