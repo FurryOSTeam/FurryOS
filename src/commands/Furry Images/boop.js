@@ -20,7 +20,6 @@ module.exports = {
 				.setTimestamp()
 				.setDescription([
 					`[[shortURL]](${json.shortURL})`,
-					`[[reportURL]](${json.reportURL})`,
 					`${!json.sources || json.sources.length === 0 || !json.sources[0] ? `[noSource]` : `[[source]](${json.sources[0]})`}`
 				].join("\n"))
 				.setColor(client.config.embedcolors.default)
