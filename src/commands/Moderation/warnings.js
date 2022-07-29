@@ -15,7 +15,7 @@ module.exports = {
       {
           name: "user",
           description: "User to show the warnings of.",
-          type: Discord.ApplicationCommandOptionType.Mentionable,
+          type: Discord.ApplicationCommandOptionType.User,
           required: true
       }
   ],

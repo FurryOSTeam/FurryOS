@@ -12,7 +12,7 @@ module.exports = {
       {
           name: "user-to-kick",
           description: "Specifies a user to kick.",
-          type: Discord.ApplicationCommandOptionType.Mentionable,
+          type: Discord.ApplicationCommandOptionType.User,
           required: true
       },
       {
