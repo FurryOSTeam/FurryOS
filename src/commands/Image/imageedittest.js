@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const { createCanvas, Image } = require('@napi-rs/canvas');
 const { readFile } = require('fs/promises');
 const { request } = require('undici');
+const path = require('path');
 
 module.exports = {
     name: "imageedittest",
@@ -22,12 +23,19 @@ module.exports = {
     run: async (client, interaction) => {
         let user = interaction.options.getMentionable("user");
 
+        const applyText = (canvas, text) => {
+            const ctx = canvas.getContext('2d');
+            let fontSize = 70;
+            do {
+                ctx.font = `${fontSize -= 10}px sans-serif`;
+            } while (ctx.measureText(text).width > canvas.width - 300);
+            return ctx.font;
+        };
+
         const canvas = createCanvas(700, 250);
 		const context = canvas.getContext('2d');
 
-        const background = await readFile(
-            path.resolve(__dirname, '../../images/wallpaper.jpg'),
-          );
+        const background = await readFile(path.resolve(__dirname, '../../images/wallpaper.jpg'));
 		const backgroundImage = new Image();
 		backgroundImage.src = background;
 		context.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
