@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const { createCanvas, Image } = require('@napi-rs/canvas');
 const { readFile } = require('fs/promises');
 const { request } = require('undici');
-const wallpaper = require('../../images/wallpaper.jpg')
 
 module.exports = {
     name: "imageedittest",
@@ -26,7 +25,7 @@ module.exports = {
         const canvas = createCanvas(700, 250);
 		const context = canvas.getContext('2d');
 
-		const background = await readFile(wallpaper);
+		const background = await readFile('./images/wallpaper.jpg');
 		const backgroundImage = new Image();
 		backgroundImage.src = background;
 		context.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
