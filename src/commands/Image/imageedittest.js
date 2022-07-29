@@ -11,7 +11,7 @@ module.exports = {
     description: "Image test thingy.",
     ownerOnly: false,
     type: Discord.ApplicationCommandType.ChatInput,
-    cooldown: 3000,
+    cooldown: 10000,
     options: [
       {
           name: "user",
